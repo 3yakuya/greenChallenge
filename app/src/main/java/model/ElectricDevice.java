@@ -1,4 +1,4 @@
-package greensaver.app.model;
+package model;
 
 public class ElectricDevice {
 
@@ -39,5 +39,9 @@ public class ElectricDevice {
         /** Result in Wh */
         int standbyPowerUsage = getDailyStandbyPowerUsage();
         return standbyPowerUsage + amount*powerConsumption*hoursPerDay;
+    }
+
+    public void increaseAmount() {
+        this.amount++;
     }
 }

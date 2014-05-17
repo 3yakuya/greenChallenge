@@ -1,4 +1,4 @@
-package greensaver.app.model;
+package model;
 
 public class WaterActivity {
 
@@ -22,5 +22,9 @@ public class WaterActivity {
 
     public int getDailyWaterUsage() {
         return litersUsed*timesPerDay;
+    }
+
+    public void increaseTimesPerDay() {
+        this.timesPerDay++;
     }
 }
