@@ -1,17 +1,18 @@
 package model;
 
 import java.util.ArrayList;
+
 import services.UsageCalculator;
 
 public class User {
-    //TODO decide on refuseProduction units.
+    //TODO decide on refuseProductionPoints units.
 
     private static User instance = null;
 
     private int powerUsage;         /** kWh/week */
     private int standbyPowerUsage;  /** kWh/week */
     private int waterUsage;         /** Liters/week */
-    private int refuseProduction;   /** own units */
+    private int refuseProductionPoints;   /** own units */
     private UsageCalculator usageCalculator;
 
     private ArrayList<ElectricDevice> electricDevices;
@@ -24,10 +25,22 @@ public class User {
         this.refuseProductions = new ArrayList<RefuseProduction>();
     }
 
-    public User getInstance() {
+    public static User getInstance() {
         if (instance == null)
             instance = new User();
         return instance;
+    }
+
+    public ArrayList<ElectricDevice> getElectricDevices() {
+        return this.electricDevices;
+    }
+
+    public ArrayList<WaterActivity> getWaterActivities() {
+        return this.waterActivities;
+    }
+
+    public ArrayList<RefuseProduction> getRefuseProductions() {
+        return this.refuseProductions;
     }
 
     public void setUserStats() {
@@ -35,7 +48,7 @@ public class User {
         this.powerUsage = usageCalculator.calculateDailyPowerUsage(this.electricDevices);
         this.standbyPowerUsage = usageCalculator.calculateDailyStandbyPowerUsage(this.electricDevices);
         this.waterUsage = usageCalculator.calculateDailyWaterUsage(this.waterActivities);
-        this.refuseProduction = usageCalculator.calculateRefuseProductionPoints(this.refuseProductions);
+        this.refuseProductionPoints = usageCalculator.calculateRefuseProductionPoints(this.refuseProductions);
     }
 
     public int getPowerUsage() {
@@ -50,8 +63,8 @@ public class User {
         return this.waterUsage;
     }
 
-    public int getRefuseProduction() {
-        return this.refuseProduction;
+    public int getRefuseProductionPoints() {
+        return this.refuseProductionPoints;
     }
 
     public void addElectricDevice(ElectricDevice electricDevice) {

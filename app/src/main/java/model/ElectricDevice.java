@@ -30,6 +30,26 @@ public class ElectricDevice {
         return this.name;
     }
 
+    public int getAmount() {
+        return this.amount;
+    }
+
+    public int getPowerConsumption() {
+        return this.powerConsumption;
+    }
+
+    public int getHoursPerDay() {
+        return this.hoursPerDay;
+    }
+
+    public int getStandbyPowerConsumption() {
+        return this.standbyPowerConsumption;
+    }
+
+    public int getStandbyHoursPerDay() {
+        return this.standbyHoursPerDay;
+    }
+
     public int getDailyStandbyPowerUsage() {
         /** Result in Wh */
         return amount*standbyPowerConsumption*standbyHoursPerDay;

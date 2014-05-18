@@ -20,6 +20,14 @@ public class WaterActivity {
         return this.name;
     }
 
+    public int getLitersUsed() {
+        return this.litersUsed;
+    }
+
+    public int getTimesPerDay() {
+        return this.timesPerDay;
+    }
+
     public int getDailyWaterUsage() {
         return litersUsed*timesPerDay;
     }

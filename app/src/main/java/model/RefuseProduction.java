@@ -2,6 +2,7 @@ package model;
 
 public class RefuseProduction {
     //TODO add all necessary fields and methods.
+    //IF anything added - update DataLoader and DataSaver services.
 
     private String name;
     private int pointValue;
@@ -13,6 +14,10 @@ public class RefuseProduction {
 
     public RefuseProduction() {
         this("DefaultRefuseProduction", 0);
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public int getPointValue() {
