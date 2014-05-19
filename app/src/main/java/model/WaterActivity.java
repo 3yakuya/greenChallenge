@@ -36,4 +36,12 @@ public class WaterActivity {
         this.timesPerDay = timesPerDay;
     }
 
+    @Override
+    public boolean equals(Object other) {
+        if (other == null) return false;
+        if (!(other instanceof WaterActivity)) return false;
+        WaterActivity otherWaterActivity = (WaterActivity)other;
+        return (otherWaterActivity.getName() == this.getName());
+    }
+
 }

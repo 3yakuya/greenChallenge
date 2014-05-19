@@ -27,4 +27,12 @@ public class RefuseProduction {
     public void setPointValue(int pointValue) {
         this.pointValue = pointValue;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == null) return false;
+        if (!(other instanceof RefuseProduction)) return false;
+        RefuseProduction otherRefuseProduction = (RefuseProduction)other;
+        return (otherRefuseProduction.getName() == this.getName());
+    }
 }

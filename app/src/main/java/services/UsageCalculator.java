@@ -19,21 +19,21 @@ public class UsageCalculator {
     public int calculateDailyPowerUsage(ArrayList<ElectricDevice> electricDevices) {
         int powerUsage = 0;
         for (ElectricDevice device: electricDevices)
-            powerUsage += getElectricDeviceDailyTotalPowerUsage(device);
+            powerUsage += calculateElectricDeviceDailyTotalPowerUsage(device);
         return powerUsage;
     }
 
     public int calculateDailyStandbyPowerUsage(ArrayList<ElectricDevice> electricDevices) {
         int powerUsage = 0;
         for (ElectricDevice device: electricDevices)
-            powerUsage += getElectricDeviceDailyStandbyPowerUsage(device);
+            powerUsage += calculateElectricDeviceDailyStandbyPowerUsage(device);
         return powerUsage;
     }
 
     public int calculateDailyWaterUsage(ArrayList<WaterActivity> waterActivities) {
         int waterUsage = 0;
         for (WaterActivity waterActivity : waterActivities)
-            waterUsage += getWaterActivityDailyWaterUsage(waterActivity);
+            waterUsage += calculateWaterActivityDailyWaterUsage(waterActivity);
         return waterUsage;
     }
 
@@ -44,7 +44,7 @@ public class UsageCalculator {
         return refuseProductionPoints;
     }
 
-    private int getElectricDeviceDailyStandbyPowerUsage(ElectricDevice electricDevice) {
+    private int calculateElectricDeviceDailyStandbyPowerUsage(ElectricDevice electricDevice) {
         /** Result in Wh */
         int amount = electricDevice.getAmount();
         int standbyPowerConsumption = electricDevice.getStandbyPowerConsumption();
@@ -52,16 +52,16 @@ public class UsageCalculator {
         return amount*standbyPowerConsumption*standbyHoursPerDay;
     }
 
-    private int getElectricDeviceDailyTotalPowerUsage(ElectricDevice electricDevice) {
+    private int calculateElectricDeviceDailyTotalPowerUsage(ElectricDevice electricDevice) {
         /** Result in Wh */
         int amount = electricDevice.getAmount();
         int powerConsumption = electricDevice.getPowerConsumption();
         int hoursPerDay = electricDevice.getHoursPerDay();
-        int standbyPowerUsage = getElectricDeviceDailyStandbyPowerUsage(electricDevice);
+        int standbyPowerUsage = calculateElectricDeviceDailyStandbyPowerUsage(electricDevice);
         return standbyPowerUsage + amount*powerConsumption*hoursPerDay;
     }
 
-    public int getWaterActivityDailyWaterUsage(WaterActivity waterActivity) {
+    public int calculateWaterActivityDailyWaterUsage(WaterActivity waterActivity) {
         int litersUsed = waterActivity.getLitersUsed();
         int timesPerDay = waterActivity.getTimesPerDay();
         return litersUsed*timesPerDay;

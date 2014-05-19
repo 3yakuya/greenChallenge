@@ -51,7 +51,7 @@ public class DataSaver {
         return true;
     }
 
-    public void saveElectricDevicesToFile(BufferedWriter bw) throws IOException {
+    private void saveElectricDevicesToFile(BufferedWriter bw) throws IOException {
         for (ElectricDevice electricDevice : this.user.getElectricDevices()) {
             bw.write("E");
             bw.newLine();
@@ -70,7 +70,7 @@ public class DataSaver {
         }
     }
 
-    public void saveWaterActivitiesToFile(BufferedWriter bw) throws IOException {
+    private void saveWaterActivitiesToFile(BufferedWriter bw) throws IOException {
         for (WaterActivity waterActivity : this.user.getWaterActivities()) {
             bw.write("W");
             bw.newLine();
@@ -83,7 +83,7 @@ public class DataSaver {
         }
     }
 
-    public void saveRefuseProductionsToFile(BufferedWriter bw) throws IOException {
+    private void saveRefuseProductionsToFile(BufferedWriter bw) throws IOException {
         for (RefuseProduction refuseProduction : this.user.getRefuseProductions()) {
             bw.write("R");
             bw.newLine();
