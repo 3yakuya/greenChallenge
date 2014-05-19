@@ -23,4 +23,8 @@ public class RefuseProduction {
     public int getPointValue() {
         return pointValue;
     }
+
+    public void setPointValue(int pointValue) {
+        this.pointValue = pointValue;
+    }
 }

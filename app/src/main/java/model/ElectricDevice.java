@@ -50,18 +50,24 @@ public class ElectricDevice {
         return this.standbyHoursPerDay;
     }
 
-    public int getDailyStandbyPowerUsage() {
-        /** Result in Wh */
-        return amount*standbyPowerConsumption*standbyHoursPerDay;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
-    public int getDailyTotalPowerUsage() {
-        /** Result in Wh */
-        int standbyPowerUsage = getDailyStandbyPowerUsage();
-        return standbyPowerUsage + amount*powerConsumption*hoursPerDay;
+    public void setPowerConsumption(int powerConsumption) {
+        this.powerConsumption = powerConsumption;
     }
 
-    public void increaseAmount() {
-        this.amount++;
+    public void setHoursPerDay(int hoursPerDay) {
+        this.hoursPerDay = hoursPerDay;
     }
+
+    public void setStandbyPowerConsumption(int standbyPowerConsumption) {
+        this.standbyPowerConsumption = standbyPowerConsumption;
+    }
+
+    public void setStandbyHoursPerDay(int standbyHoursPerDay) {
+        this.standbyHoursPerDay = standbyHoursPerDay;
+    }
+
 }

@@ -28,11 +28,12 @@ public class WaterActivity {
         return this.timesPerDay;
     }
 
-    public int getDailyWaterUsage() {
-        return litersUsed*timesPerDay;
+    public void setLitersUsed(int litersUsed) {
+        this.litersUsed = litersUsed;
     }
 
-    public void increaseTimesPerDay() {
-        this.timesPerDay++;
+    public void setTimesPerDay(int timesPerDay) {
+        this.timesPerDay = timesPerDay;
     }
+
 }

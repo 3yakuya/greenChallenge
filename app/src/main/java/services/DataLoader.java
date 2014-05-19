@@ -59,21 +59,21 @@ public class DataLoader {
                     ElectricDevice electricDevice = readElectricDeviceDataFromFile(br);
                     if (electricDevice == null)
                         return false;
-                    user.addElectricDevice(electricDevice);
+                    user.insertElectricDevice(electricDevice);
                     break;
 
                 case 'W':
                     WaterActivity waterActivity = readWaterActivityDataFromFile(br);
                     if (waterActivity == null)
                         return false;
-                    user.addWaterActivity(waterActivity);
+                    user.insertWaterActivity(waterActivity);
                     break;
 
                 case 'R':
                     RefuseProduction refuseProduction = readRefuseProductionDataFromFile(br);
                     if (refuseProduction == null)
                         return false;
-                    user.addRefuseProduction(refuseProduction);
+                    user.insertRefuseProduction(refuseProduction);
                     break;
 
                 default:

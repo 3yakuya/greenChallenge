@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
+import services.DataManager;
 import services.UsageCalculator;
 
 public class User {
@@ -9,8 +10,8 @@ public class User {
 
     private static User instance = null;
 
-    private int powerUsage;         /** kWh/week */
-    private int standbyPowerUsage;  /** kWh/week */
+    private int powerUsage;         /** Wh/week */
+    private int standbyPowerUsage;  /** Wh/week */
     private int waterUsage;         /** Liters/week */
     private int refuseProductionPoints;   /** own units */
 
@@ -66,27 +67,37 @@ public class User {
         return this.refuseProductionPoints;
     }
 
-    public void addElectricDevice(ElectricDevice electricDevice) {
+    public void insertElectricDevice(ElectricDevice electricDevice) {
         int index = this.electricDevices.indexOf(electricDevice);
-        if (index >= 0)
-            this.electricDevices.get(index).increaseAmount();
-        else
+        if (index >= 0) {
+            DataManager dataManager = DataManager.getInstance();
+            ElectricDevice existingElectricDevice = this.electricDevices.get(index);
+            dataManager.cloneElectricDevice(electricDevice, existingElectricDevice);
+        } else {
             this.electricDevices.add(electricDevice);
+        }
     }
 
-    public void addWaterActivity(WaterActivity waterActivity) {
+    public void insertWaterActivity(WaterActivity waterActivity) {
         int index = this.waterActivities.indexOf(waterActivity);
-        if (index >= 0)
-            this.waterActivities.get(index).increaseTimesPerDay();
-        else
+        if (index >= 0) {
+            DataManager dataManager = DataManager.getInstance();
+            WaterActivity existingWaterActivity = this.waterActivities.get(index);
+            dataManager.cloneWaterActivity(waterActivity, existingWaterActivity);
+        } else {
             this.waterActivities.add(waterActivity);
+        }
     }
 
-    public void addRefuseProduction(RefuseProduction refuseProduction) {
+    public void insertRefuseProduction(RefuseProduction refuseProduction) {
         int index = this.refuseProductions.indexOf(refuseProduction);
-        if (index >= 0)
-            return;
-        this.refuseProductions.add(refuseProduction);
+        if (index >= 0) {
+            DataManager dataManager = DataManager.getInstance();
+            RefuseProduction existingRefuseProduction = this.refuseProductions.get(index);
+            dataManager.cloneRefuseProduction(refuseProduction, existingRefuseProduction);
+        } else {
+            this.refuseProductions.add(refuseProduction);
+        }
     }
 
 }
