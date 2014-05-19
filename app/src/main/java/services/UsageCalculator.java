@@ -61,7 +61,7 @@ public class UsageCalculator {
         return standbyPowerUsage + amount*powerConsumption*hoursPerDay;
     }
 
-    public int calculateWaterActivityDailyWaterUsage(WaterActivity waterActivity) {
+    private int calculateWaterActivityDailyWaterUsage(WaterActivity waterActivity) {
         int litersUsed = waterActivity.getLitersUsed();
         int timesPerDay = waterActivity.getTimesPerDay();
         return litersUsed*timesPerDay;
