@@ -13,7 +13,6 @@ public class User {
     private int standbyPowerUsage;  /** kWh/week */
     private int waterUsage;         /** Liters/week */
     private int refuseProductionPoints;   /** own units */
-    private UsageCalculator usageCalculator;
 
     private ArrayList<ElectricDevice> electricDevices;
     private ArrayList<WaterActivity> waterActivities;
@@ -44,7 +43,7 @@ public class User {
     }
 
     public void setUserStats() {
-        usageCalculator.getInstance();
+        UsageCalculator usageCalculator = UsageCalculator.getInstance();
         this.powerUsage = usageCalculator.calculateDailyPowerUsage(this.electricDevices);
         this.standbyPowerUsage = usageCalculator.calculateDailyStandbyPowerUsage(this.electricDevices);
         this.waterUsage = usageCalculator.calculateDailyWaterUsage(this.waterActivities);

@@ -10,7 +10,7 @@ public class UsageCalculator {
 
     private static UsageCalculator instance = null;
 
-    public UsageCalculator getInstance() {
+    public static UsageCalculator getInstance() {
         if (instance == null)
             instance = new UsageCalculator();
         return instance;
