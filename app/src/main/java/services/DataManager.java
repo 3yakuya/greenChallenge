@@ -1,6 +1,5 @@
 package services;
 
-import java.sql.Ref;
 import java.util.ArrayList;
 
 import model.ElectricDevice;
@@ -14,9 +13,13 @@ public class DataManager {
     private static DataManager instance = null;
 
     private User user;
+    private UserStats userStats;
+    private UsageCalculator usageCalculator;
 
     private DataManager() {
         this.user = User.getInstance();
+        this.userStats = UserStats.getInstance();
+        this.usageCalculator = UsageCalculator.getInstance();
     }
 
     public static DataManager getInstance() {
@@ -58,16 +61,14 @@ public class DataManager {
     }
 
     public void prepareUserStats() {
-        UsageCalculator usageCalculator = UsageCalculator.getInstance();
-        UserStats userStats = UserStats.getInstance();
-        int powerUsage = usageCalculator.calculateDailyPowerUsage(this.user.getElectricDevices());
-        int standbyPowerUsage = usageCalculator.calculateDailyStandbyPowerUsage(this.user.getElectricDevices());
-        int waterUsage = usageCalculator.calculateDailyWaterUsage(this.user.getWaterActivities());
-        int refuseProductionPoints = usageCalculator.calculateRefuseProductionPoints(this.user.getRefuseProductions());
-        userStats.setPowerUsage(powerUsage);
-        userStats.setStandbyPowerUsage(standbyPowerUsage);
-        userStats.setWaterUsage(waterUsage);
-        userStats.setRefuseProductionPoints(refuseProductionPoints);
+        int powerUsage = this.usageCalculator.calculateDailyPowerUsage(this.user.getElectricDevices());
+        int standbyPowerUsage = this.usageCalculator.calculateDailyStandbyPowerUsage(this.user.getElectricDevices());
+        int waterUsage = this.usageCalculator.calculateDailyWaterUsage(this.user.getWaterActivities());
+        int refuseProductionPoints = this.usageCalculator.calculateRefuseProductionPoints(this.user.getRefuseProductions());
+        this.userStats.setPowerUsage(powerUsage);
+        this.userStats.setStandbyPowerUsage(standbyPowerUsage);
+        this.userStats.setWaterUsage(waterUsage);
+        this.userStats.setRefuseProductionPoints(refuseProductionPoints);
     }
 
 }
