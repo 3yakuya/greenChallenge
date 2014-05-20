@@ -120,6 +120,7 @@ public class DataLoader {
         try {
             String name = br.readLine();
             int pointValue = Integer.parseInt(br.readLine());
+            refuseProduction = new RefuseProduction(name, pointValue);
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
