@@ -33,7 +33,7 @@ public class RefuseProduction {
         if (other == null) return false;
         if (!(other instanceof RefuseProduction)) return false;
         RefuseProduction otherRefuseProduction = (RefuseProduction)other;
-        return (otherRefuseProduction.getName() == this.getName());
+        return (otherRefuseProduction.getName().equals(this.getName()));
     }
 
     public void cloneRefuseProduction(RefuseProduction source) {
