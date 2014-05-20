@@ -41,7 +41,7 @@ public class WaterActivity {
         if (other == null) return false;
         if (!(other instanceof WaterActivity)) return false;
         WaterActivity otherWaterActivity = (WaterActivity)other;
-        return (otherWaterActivity.getName() == this.getName());
+        return (otherWaterActivity.getName().equals(this.getName()));
     }
 
     public void cloneWaterActivity(WaterActivity source) {
