@@ -30,6 +30,8 @@ public class DataSaver {
 
     public boolean saveDataToFile(Context context) {
         File file = new File(context.getFilesDir(), "userStats");
+        if (!clearFileContent(file))
+            return false;
         if (!file.exists()) {
             try {
                 file.createNewFile();
@@ -92,6 +94,18 @@ public class DataSaver {
             bw.write(String.valueOf(refuseProduction.getPointValue()));
             bw.newLine();
         }
+    }
+    
+    private boolean clearFileContent(File file) {
+        try {
+            PrintWriter fileClearer = new PrintWriter(file);
+            fileClearer.write("");
+            fileClearer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 
 }
