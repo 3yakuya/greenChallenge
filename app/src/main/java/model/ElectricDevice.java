@@ -90,7 +90,7 @@ public class ElectricDevice {
         if (other == null) return false;
         if (!(other instanceof ElectricDevice)) return false;
         ElectricDevice otherElectricDevice = (ElectricDevice)other;
-        return (otherElectricDevice.getName() == this.getName());
+        return (otherElectricDevice.getName().equals(this.getName()));
     }
 
     public void cloneElectricDevice(ElectricDevice source) {
