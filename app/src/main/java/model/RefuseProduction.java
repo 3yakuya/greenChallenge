@@ -35,4 +35,8 @@ public class RefuseProduction {
         RefuseProduction otherRefuseProduction = (RefuseProduction)other;
         return (otherRefuseProduction.getName() == this.getName());
     }
+
+    public void cloneRefuseProduction(RefuseProduction source) {
+        this.setPointValue(source.getPointValue());
+    }
 }

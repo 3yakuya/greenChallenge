@@ -92,4 +92,12 @@ public class ElectricDevice {
         ElectricDevice otherElectricDevice = (ElectricDevice)other;
         return (otherElectricDevice.getName() == this.getName());
     }
+
+    public void cloneElectricDevice(ElectricDevice source) {
+        this.setAmount(source.getAmount());
+        this.setPowerConsumption(source.getPowerConsumption());
+        this.setHoursPerDay(source.getHoursPerDay());
+        this.setStandbyPowerConsumption(source.getStandbyPowerConsumption());
+        this.setStandbyHoursPerDay(source.getStandbyHoursPerDay());
+    }
 }

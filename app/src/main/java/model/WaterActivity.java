@@ -44,4 +44,9 @@ public class WaterActivity {
         return (otherWaterActivity.getName() == this.getName());
     }
 
+    public void cloneWaterActivity(WaterActivity source) {
+        this.setLitersUsed(source.getLitersUsed());
+        this.setTimesPerDay(source.getTimesPerDay());
+    }
+
 }

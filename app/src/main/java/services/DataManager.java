@@ -1,13 +1,23 @@
 package services;
 
+import java.sql.Ref;
+import java.util.ArrayList;
+
 import model.ElectricDevice;
 import model.RefuseProduction;
 import model.User;
+import model.UserStats;
 import model.WaterActivity;
 
 public class DataManager {
 
     private static DataManager instance = null;
+
+    private User user;
+
+    private DataManager() {
+        this.user = User.getInstance();
+    }
 
     public static DataManager getInstance() {
         if (instance == null)
@@ -22,36 +32,42 @@ public class DataManager {
                                         int standbyHoursPerDay) {
         ElectricDevice electricDevice = new ElectricDevice(name, amount, powerConsumption,
                 hoursPerDay, standbyPowerConsumption, standbyHoursPerDay);
-        User user = User.getInstance();
-        user.insertElectricDevice(electricDevice);
+        this.user.insertElectricDevice(electricDevice);
     }
 
     public void storeWaterActivityData(String name, int litersUsed, int timesPerDay) {
         WaterActivity waterActivity = new WaterActivity(name, litersUsed, timesPerDay);
-        User user = User.getInstance();
-        user.insertWaterActivity(waterActivity);
+        this.user.insertWaterActivity(waterActivity);
     }
 
     public void storeRefuseProductionData(String name, int pointValue) {
         RefuseProduction refuseProduction = new RefuseProduction(name, pointValue);
-        User user = User.getInstance();
-        user.insertRefuseProduction(refuseProduction);
+        this.user.insertRefuseProduction(refuseProduction);
     }
 
-    public void cloneElectricDevice(ElectricDevice source, ElectricDevice target) {
-        target.setAmount(source.getAmount());
-        target.setPowerConsumption(source.getPowerConsumption());
-        target.setHoursPerDay(source.getHoursPerDay());
-        target.setStandbyPowerConsumption(source.getStandbyPowerConsumption());
-        target.setStandbyHoursPerDay(source.getStandbyHoursPerDay());
+    public ArrayList<ElectricDevice> fetchElectricDeviceData() {
+        return user.getElectricDevices();
     }
 
-    public void cloneWaterActivity(WaterActivity source, WaterActivity target) {
-        target.setLitersUsed(source.getLitersUsed());
-        target.setTimesPerDay(source.getTimesPerDay());
+    public ArrayList<WaterActivity> fetchWaterActivityData() {
+        return user.getWaterActivities();
     }
 
-    public void cloneRefuseProduction(RefuseProduction source, RefuseProduction target) {
-        target.setPointValue(source.getPointValue());
+    public ArrayList<RefuseProduction> fetchRefuseProductionData() {
+        return user.getRefuseProductions();
     }
+
+    public void prepareUserStats() {
+        UsageCalculator usageCalculator = UsageCalculator.getInstance();
+        UserStats userStats = UserStats.getInstance();
+        int powerUsage = usageCalculator.calculateDailyPowerUsage(this.user.getElectricDevices());
+        int standbyPowerUsage = usageCalculator.calculateDailyStandbyPowerUsage(this.user.getElectricDevices());
+        int waterUsage = usageCalculator.calculateDailyWaterUsage(this.user.getWaterActivities());
+        int refuseProductionPoints = usageCalculator.calculateRefuseProductionPoints(this.user.getRefuseProductions());
+        userStats.setPowerUsage(powerUsage);
+        userStats.setStandbyPowerUsage(standbyPowerUsage);
+        userStats.setWaterUsage(waterUsage);
+        userStats.setRefuseProductionPoints(refuseProductionPoints);
+    }
+
 }
