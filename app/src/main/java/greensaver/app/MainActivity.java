@@ -1,5 +1,6 @@
 package greensaver.app;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,6 +24,8 @@ public class MainActivity extends Activity {
         electricityImageButton.setImageResource(R.drawable.ic_launcher);
         waterImageButton.setImageResource(R.drawable.ic_launcher);
         refuseImageButton.setImageResource(R.drawable.ic_launcher);
+        ActionBar actionBar = getActionBar();
+        actionBar.show();
     }
 
 
