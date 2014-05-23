@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 
 public class MainActivity extends Activity {
@@ -14,6 +15,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //////////////////////////////////////////TEST stuff /////////////////////////////
+        RelativeLayout layout =(RelativeLayout) findViewById(R.id.background);
+        layout.setBackgroundResource(R.drawable.background_main);
         ImageButton electricityImageButton = (ImageButton) findViewById(R.id.electricityImageButton);
         ImageButton waterImageButton = (ImageButton) findViewById(R.id.waterImageButton);
         ImageButton refuseImageButton = (ImageButton) findViewById(R.id.refuseImageButton);
