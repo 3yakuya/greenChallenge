@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageButton;
 
 
 public class MainActivity extends Activity {
@@ -12,6 +13,13 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //////////////////////////////////////////TEST stuff /////////////////////////////
+        ImageButton electricityImageButton = (ImageButton) findViewById(R.id.electricityImageButton);
+        ImageButton waterImageButton = (ImageButton) findViewById(R.id.waterImageButton);
+        ImageButton refuseImageButton = (ImageButton) findViewById(R.id.refuseImageButton);
+        electricityImageButton.setImageResource(R.drawable.ic_launcher);
+        waterImageButton.setImageResource(R.drawable.ic_launcher);
+        refuseImageButton.setImageResource(R.drawable.ic_launcher);
     }
 
 
