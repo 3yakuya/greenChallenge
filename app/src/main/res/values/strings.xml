@@ -4,5 +4,10 @@
     <string name="app_name">GreenSaver</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="add_electrical_device">Add electrical device</string>
+    <string name="add_water_activity">Add water activity</string>
+    <string name="add_refuse_production">Add refuse production</string>
+    <string name="show_user">Show User's elements</string>
+    <string name="show_authors">About</string>
 
 </resources>
