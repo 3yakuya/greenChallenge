@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="greensaver.app.ShowUserActivity" >
+
+    <item android:id="@+id/action_add_electric_device"
+        android:icon="@drawable/ic_launcher"
+        android:title="@string/add_electric_device"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/action_add_water_activity"
+        android:icon="@drawable/ic_launcher"
+        android:title="@string/add_water_activity"
+        app:showAsAction="ifRoom"/>
+    <item android:id="@+id/action_add_refuse_production"
+        android:icon="@drawable/ic_launcher"
+        android:title="@string/add_refuse_production"
+        app:showAsAction="ifRoom"/>
+</menu>

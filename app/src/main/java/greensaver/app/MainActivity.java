@@ -2,6 +2,7 @@ package greensaver.app;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -43,7 +44,10 @@ public class MainActivity extends Activity {
         switch (item.getItemId()) {
             case R.id.action_show_user:
                 //TODO call method to show user's elements.
+                Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
+                startActivity(intent);
                 return true;
+
             case R.id.action_show_authors:
                 //TODO call method to show authors.
                 return true;
