@@ -1,6 +1,6 @@
 package model;
 
-public class WaterActivity {
+public class WaterActivity implements INamable {
 
     private String name;
     private int litersUsed;

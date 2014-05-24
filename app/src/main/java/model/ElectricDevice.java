@@ -1,7 +1,7 @@
 package model;
 
 
-public class ElectricDevice {
+public class ElectricDevice implements INamable {
 
 
     private String name;

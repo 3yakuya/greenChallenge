@@ -4,11 +4,17 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
+
+import model.User;
+import services.DataLoader;
+import services.DataManager;
+import services.DataSaver;
 
 
 public class MainActivity extends Activity {
@@ -28,6 +34,17 @@ public class MainActivity extends Activity {
         refuseImageButton.setImageResource(R.drawable.ic_launcher);
         ActionBar actionBar = getActionBar();
         actionBar.show();
+        DataManager dataManager = DataManager.getInstance();
+        dataManager.storeElectricDeviceData("TV", 0, 0, 0, 0, 0);
+        dataManager.storeElectricDeviceData("Komp", 10, 100, 123, 32, 132);
+        dataManager.storeElectricDeviceData("Router", 10, 10, 10, 10, 10);
+        dataManager.storeWaterActivityData("Bath", 100, 1);
+        dataManager.storeWaterActivityData("Washing Machine", 50, 1);
+        dataManager.storeRefuseProductionData("Bags", 10);
+        DataSaver dataSaver = DataSaver.getInstance();
+        dataSaver.saveDataToFile(this);
+        DataLoader dataLoader = DataLoader.getInstance();
+        dataLoader.loadDataFromFile(this);
     }
 
 
