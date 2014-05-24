@@ -14,6 +14,7 @@
     <string name="water_activity_list">Water</string>
     <string name="refuse_production_list">Litter</string>
     <string name="title_activity_add_electric_device">AddElectricDeviceActivity</string>
+    <string name="zero_value">0</string>
 
     <string name="electric_device_spinner">Select a device</string>
     <string-array name="electric_device_spinner_list">
@@ -27,5 +28,10 @@
         <item>Microwave</item>
     </string-array>
     <string name="add_electric_device_button">Add Electric Device</string>
+    <string name="add_electric_device_amount">Amount</string>
+    <string name="add_electric_device_power_consumption">Power consumption [Watts]</string>
+    <string name="add_electric_device_hours">Hours per day</string>
+    <string name="add_electric_device_standby_power">Standby power consumption [Watts]</string>
+    <string name="add_electric_device_standby_hours">Standby hours per day</string>
 
 </resources>
