@@ -1,0 +1,107 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context="greensaver.app.AddElectricDeviceActivity">
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/electric_device_spinner"
+        android:entries="@array/electric_device_spinner_list"
+        android:prompt="@string/electric_device_spinner"
+        android:layout_marginTop="30dp" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/electric_device_amount_bar" />
+        <TextView
+            android:id="@+id/electric_device_amount_box"
+            android:layout_weight="0"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/electric_device_power_consumption_bar"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal" />
+        <TextView
+            android:id="@+id/electric_device_power_consumption_box"
+            android:layout_weight="0"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/electric_device_hours_per_day_bar"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal" />
+        <TextView
+            android:id="@+id/electric_device_hours_per_day_box"
+            android:layout_weight="0"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/electric_device_standby_power_bar"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/electric_device_standby_power_box"
+            android:layout_weight="0"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/electric_device_standby_hours_bar"
+            android:layout_weight="1"
+            android:layout_gravity="center_horizontal" />
+        <TextView
+            android:id="@+id/electric_device_standby_hours_box"
+            android:layout_weight="0"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_electric_device_button"
+        android:id="@+id/add_electric_device_button"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>

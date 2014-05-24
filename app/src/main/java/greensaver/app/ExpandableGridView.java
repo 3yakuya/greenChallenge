@@ -21,9 +21,13 @@ public class ExpandableGridView extends GridView {
 
     @Override
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        int expandSpec = MeasureSpec.makeMeasureSpec(MEASURED_SIZE_MASK, MeasureSpec.AT_MOST);
-        super.onMeasure(widthMeasureSpec, expandSpec);
-        ViewGroup.LayoutParams params = getLayoutParams();
-        params.height = getMeasuredHeight();
+        try {
+            int expandSpec = MeasureSpec.makeMeasureSpec(MEASURED_SIZE_MASK, MeasureSpec.AT_MOST);
+            super.onMeasure(widthMeasureSpec, expandSpec);
+            ViewGroup.LayoutParams params = getLayoutParams();
+            params.height = getMeasuredHeight();
+        } catch (Exception e) {
+            super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        }
     }
 }

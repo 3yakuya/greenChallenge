@@ -13,5 +13,19 @@
     <string name="electric_device_list">Electric Devices</string>
     <string name="water_activity_list">Water</string>
     <string name="refuse_production_list">Litter</string>
+    <string name="title_activity_add_electric_device">AddElectricDeviceActivity</string>
+
+    <string name="electric_device_spinner">Select a device</string>
+    <string-array name="electric_device_spinner_list">
+        <item>TV</item>
+        <item>Radio</item>
+        <item>Computer</item>
+        <item>Printer</item>
+        <item>Router</item>
+        <item>Set-Top Box</item>
+        <item>DVD set</item>
+        <item>Microwave</item>
+    </string-array>
+    <string name="add_electric_device_button">Add Electric Device</string>
 
 </resources>

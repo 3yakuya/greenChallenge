@@ -1,6 +1,7 @@
 package greensaver.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -43,6 +44,8 @@ public class ShowUserActivity extends Activity {
         electricDevicesGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 //TODO call method showing add electric device activity.
+                Intent intent = new Intent(getApplicationContext(), AddElectricDeviceActivity.class);
+                startActivity(intent);
             }
         });
         waterActivityGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -71,6 +74,8 @@ public class ShowUserActivity extends Activity {
         switch (item.getItemId()) {
             case R.id.action_add_electric_device:
                 //TODO call method to add electric device.
+                Intent intent = new Intent(getApplicationContext(), AddElectricDeviceActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.action_add_water_activity:
                 //TODO call method to add water activity.

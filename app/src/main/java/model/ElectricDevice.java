@@ -3,7 +3,6 @@ package model;
 
 public class ElectricDevice implements INamable {
 
-
     private String name;
     private int amount;
     private int powerConsumption;           /** Watts */
