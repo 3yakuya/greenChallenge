@@ -30,7 +30,7 @@
                 android:id="@+id/electric_devices_grid"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:numColumns="2">
+                android:numColumns="2" >
 
             </greensaver.app.ExpandableGridView>
 
