@@ -74,7 +74,7 @@ public class ElectricInfoActivity extends Activity {
         if (powerUsage > this.powerLimits[0])
             electricValue.setTextColor(Color.parseColor("#FF0000"));
         else if (powerUsage > this.powerLimits[1])
-            electricValue.setTextColor(Color.parseColor("#00FFFF"));
+            electricValue.setTextColor(Color.parseColor("#FCC800"));
         else
             electricValue.setTextColor(Color.parseColor("#00FF00"));
 

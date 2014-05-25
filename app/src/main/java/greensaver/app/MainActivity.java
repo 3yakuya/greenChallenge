@@ -23,8 +23,6 @@ import services.DataSaver;
 
 public class MainActivity extends Activity {
 
-    private String[] bckgrnd = {"0", "1", "2", "10", "20", "baa", "caa"};
-
     private final int[] powerLimits = {6000, 3000};
     private final int[] waterLimits = {160, 100};
     private final int[] refuseLimits = {14, 30};
@@ -35,20 +33,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         //////////////////////////////////////////TEST stuff /////////////////////////////
         RelativeLayout layout =(RelativeLayout) findViewById(R.id.background);
-        layout.setBackgroundResource(this.selectBackgroundImage());
-        DataManager dataManager = DataManager.getInstance();
-//        dataManager.storeElectricDeviceData("TV", 0, 0, 0, 0, 0);
-//        dataManager.storeElectricDeviceData("Computer", 10, 1000, 12, 320, 13);
-//        dataManager.storeElectricDeviceData("Router", 10, 1000, 10, 10, 10);
-//        dataManager.storeElectricDeviceData("DVD set", 10, 1000, 12, 320, 13);
-//        dataManager.storeElectricDeviceData("Radio", 10, 1000, 12, 320, 13);
-        dataManager.storeWaterActivityData("Bath", 100, 1);
-        dataManager.storeWaterActivityData("Washing Machine", 50, 1);
-        dataManager.storeRefuseProductionData("Bags", 10);
-        DataSaver dataSaver = DataSaver.getInstance();
-        dataSaver.saveDataToFile(this);
-        DataLoader dataLoader = DataLoader.getInstance();
-        dataLoader.loadDataFromFile(this);
+        //DataLoader.getInstance().loadDataFromFile(this);
+        DataSaver.getInstance().saveDataToFile(this);
         layout.setBackgroundResource(this.selectBackgroundImage());
     }
 
@@ -88,14 +74,54 @@ public class MainActivity extends Activity {
                 return R.drawable.aac;
             case 10:
                 return R.drawable.aba;
+            case 11:
+                return R.drawable.abb;
+            case 12:
+                return R.drawable.abc;
             case 20:
                 return R.drawable.aca;
+            case 21:
+                return R.drawable.acb;
+            case 22:
+                return R.drawable.acc;
             case 100:
                 return R.drawable.baa;
+            case 101:
+                return R.drawable.bab;
+            case 102:
+                return R.drawable.bac;
+            case 110:
+                return R.drawable.bba;
+            case 111:
+                return R.drawable.bbb;
+            case 112:
+                return R.drawable.bbc;
+            case 120:
+                return R.drawable.aca;
+            case 121:
+                return R.drawable.bcb;
+            case 122:
+                return R.drawable.bcc;
             case 200:
                 return R.drawable.caa;
+            case 201:
+                return R.drawable.cab;
+            case 202:
+                return R.drawable.cac;
+            case 210:
+                return R.drawable.cba;
+            case 211:
+                return R.drawable.cbb;
+            case 212:
+                return R.drawable.cbc;
+            case 220:
+                return R.drawable.cca;
+            case 221:
+                return R.drawable.ccb;
+            case 222:
+                return R.drawable.ccc;
             default:
-                return R.drawable.caa;
+                return R.drawable.aaa;
         }
     }
 
@@ -137,6 +163,11 @@ public class MainActivity extends Activity {
 
     public void showWaterInfo(View v) {
         Intent intent = new Intent(getApplicationContext(), WaterInfoActivity.class);
+        startActivity(intent);
+    }
+
+    public void showRefuseInfo(View v) {
+        Intent intent = new Intent(getApplicationContext(), RefuseInfoActivity.class);
         startActivity(intent);
     }
 }

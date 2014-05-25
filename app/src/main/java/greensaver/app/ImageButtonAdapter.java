@@ -99,9 +99,9 @@ public class ImageButtonAdapter extends BaseAdapter{
                 else
                     return "medicine";
             case 'W':
-                if (name.charAt(9) == 'm')
+                if (name.charAt(8) == 'm')
                     return "washing_machine";
-                else if (name.charAt(9) == 'u')
+                else if (name.charAt(8) == 'u')
                     return "washing_up";
                 else
                     return "washing_car";

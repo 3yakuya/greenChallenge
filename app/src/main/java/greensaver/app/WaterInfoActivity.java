@@ -72,7 +72,7 @@ public class WaterInfoActivity extends Activity {
         if (waterUsage > this.waterLimits[0])
             waterValue.setTextColor(Color.parseColor("#FF0000"));
         else if (waterUsage > this.waterLimits[1])
-            waterValue.setTextColor(Color.parseColor("#00FFFF"));
+            waterValue.setTextColor(Color.parseColor("#FCC800"));
         else
             waterValue.setTextColor(Color.parseColor("#00FF00"));
     }

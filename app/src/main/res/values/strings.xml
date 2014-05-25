@@ -34,8 +34,8 @@
     <string name="add_electric_device_hours">Hours per day</string>
     <string name="add_electric_device_standby_power">Standby power consumption [Watts]</string>
     <string name="add_electric_device_standby_hours">Standby hours per day</string>
-    <string name="title_activity_electric_info">ElectricInfoActivity</string>
-    <string name="title_activity_add_water">AddWaterActivityActivity</string>
+    <string name="title_activity_electric_info">Electric devices info</string>
+    <string name="title_activity_add_water">Add water activity</string>
     <string name="water_activity_spinner">Select water activity</string>
 
     <string-array name="water_activity_spinner_list">
@@ -52,7 +52,7 @@
     <string name="add_water_activity_liters_used">Liters used</string>
     <string name="add_water_activity_times_per_day">Times per day</string>
     <string name="add_water_activity_button">Add water activity</string>
-    <string name="title_activity_add_refuse_production">AddRefuseProductionActivity</string>
+    <string name="title_activity_add_refuse_production">Add waste segregation</string>
 
     <string-array name="refuse_production_spinner_list">
         <item>Segregation</item>
@@ -66,9 +66,10 @@
 
     <string name="add_refuse_production_point_value">Point value</string>
     <string name="refuse_production_spinner">Select waste production</string>
-    <string name="add_refuse_production_button">Add waste production</string>
+    <string name="add_refuse_production_button">Add waste segregation</string>
     <string name="refuse_production_info">The point value represents how important it is
         to segregate waste this way or to take care of proper disposal of this kind of waste.</string>
-    <string name="title_activity_water_info">WaterInfoActivity</string>
+    <string name="title_activity_water_info">Water usage info</string>
+    <string name="title_activity_refuse_info">Rubbish segregation info</string>
 
 </resources>

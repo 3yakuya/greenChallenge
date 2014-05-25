@@ -43,6 +43,7 @@
         android:layout_marginTop="80dp"
         android:layout_alignParentEnd="true"
         android:background="@drawable/smieci"
+        android:onClick="showRefuseInfo"
         android:minHeight="50dp"
         android:minWidth="50dp"
         android:layout_marginRight="25dp"
