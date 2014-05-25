@@ -15,12 +15,36 @@ import android.widget.TextView;
 public class AddElectricDeviceActivity extends Activity
         implements AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener {
 
+    private final int[] minPowerConsumptions = {50, 5, 30, 5, 3, 5, 10, 650};
+    private final int[] maxPowerConsumptions = {100, 50, 300, 170, 10, 45, 40, 1750};
+    private final int[] minStandbyPowerConsumptions = {1, 1, 1, 0, 3, 3, 5, 1};
+    private final int[] maxStandbyPowerConsumptions = {6, 25, 98, 5, 8, 40, 15, 40};
+
+    private TextView amountBox;
+    private TextView powerConsumptionBox;
+    private TextView hoursPerDayBox;
+    private TextView standbyPowerBox;
+    private TextView standbyHoursBox;
+
+    private SeekBar amountBar;
+    private SeekBar powerConsumptionBar;
+    private SeekBar hoursPerDayBar;
+    private SeekBar standbyPowerBar;
+    private SeekBar standbyHoursBar;
+
+    private Spinner electricDeviceSpinner;
+
+    private int selectedDeviceNumber = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_electric_device);
         /////////////////////TEST stuff//////////////////////
-        setListenerForAllBars();
+        this.initializeElectricDeviceSpinner();
+        this.initializeAllSeekBars();
+        this.initializeAllTextBoxes();
+        this.getActionBar().hide();
     }
 
 
@@ -42,17 +66,15 @@ public class AddElectricDeviceActivity extends Activity
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
+        this.selectedDeviceNumber = pos;
+        System.out.println("LOL co sie dzieje! Pozdro :)");
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        TextView textProgress = findTextViewHavingSeekBar(seekBar);
-        if (textProgress == null)
-            return;
-
-        textProgress.setText(Integer.toString(progress));
+        this.setTextBoxHavingSeekBar(seekBar, progress);
     }
 
     public void onStartTrackingTouch(SeekBar seekBar) {
@@ -61,53 +83,97 @@ public class AddElectricDeviceActivity extends Activity
     public void onStopTrackingTouch(SeekBar seekBar) {
     }
 
-    private void setElectricDeviceSpinner() {
-        Spinner spinner = (Spinner)findViewById(R.id.electric_device_spinner);
+    private void initializeElectricDeviceSpinner() {
+        this.electricDeviceSpinner = (Spinner)findViewById(R.id.electric_device_spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.electric_device_spinner_list, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        spinner.setOnItemSelectedListener(this);
+        this.electricDeviceSpinner.setAdapter(adapter);
+        this.electricDeviceSpinner.setOnItemSelectedListener(this);
     }
 
-    private TextView findTextViewHavingSeekBar(SeekBar seekBar) {
-        TextView textProgress;
+    private void initializeAllTextBoxes() {
+        amountBox = (TextView) findViewById(R.id.electric_device_amount_box);
+        powerConsumptionBox = (TextView) findViewById(R.id.electric_device_power_consumption_box);
+        hoursPerDayBox = (TextView) findViewById(R.id.electric_device_hours_per_day_box);
+        standbyPowerBox = (TextView) findViewById(R.id.electric_device_standby_power_box);
+        standbyHoursBox = (TextView) findViewById(R.id.electric_device_standby_hours_box);
+    }
+
+    private void initializeAllSeekBars() {
+        this.amountBar = (SeekBar) findViewById(R.id.electric_device_amount_bar);
+        this.amountBar.setOnSeekBarChangeListener(this);
+        this.powerConsumptionBar = (SeekBar) findViewById(R.id.electric_device_power_consumption_bar);
+        this.powerConsumptionBar.setOnSeekBarChangeListener(this);
+        this.hoursPerDayBar = (SeekBar) findViewById(R.id.electric_device_hours_per_day_bar);
+        this.hoursPerDayBar.setOnSeekBarChangeListener(this);
+        this.standbyPowerBar = (SeekBar) findViewById(R.id.electric_device_standby_power_bar);
+        this.standbyPowerBar.setOnSeekBarChangeListener(this);
+        this.standbyHoursBar = (SeekBar) findViewById(R.id.electric_device_standby_hours_bar);
+        this.standbyHoursBar.setOnSeekBarChangeListener(this);
+    }
+
+    private void setTextBoxHavingSeekBar(SeekBar seekBar, int percentage) {
         int id = seekBar.getId();
+        int actualValue;
         switch (id) {
             case R.id.electric_device_amount_bar:
-                textProgress = (TextView) findViewById(R.id.electric_device_amount_box);
+                actualValue = calculateAmountForDevice(percentage);
+                amountBox.setText(Integer.toString(actualValue));
                 break;
             case R.id.electric_device_power_consumption_bar:
-                textProgress = (TextView) findViewById(R.id.electric_device_power_consumption_box);
+                actualValue = this.calculatePowerForDevice(percentage, this.selectedDeviceNumber);
+                powerConsumptionBox.setText(Integer.toString(actualValue));
                 break;
             case R.id.electric_device_hours_per_day_bar:
-                textProgress = (TextView) findViewById(R.id.electric_device_hours_per_day_box);
+                actualValue = calculateHoursForDevice(percentage);
+                hoursPerDayBox.setText(Integer.toString(actualValue));
                 break;
             case R.id.electric_device_standby_power_bar:
-                textProgress = (TextView) findViewById(R.id.electric_device_standby_power_box);
+                actualValue = calculateStandbyPowerForDevice(percentage, this.selectedDeviceNumber);
+                standbyPowerBox.setText(Integer.toString(actualValue));
                 break;
             case R.id.electric_device_standby_hours_bar:
-                textProgress = (TextView) findViewById(R.id.electric_device_standby_hours_box);
+                actualValue = calculateHoursForDevice(percentage);
+                standbyHoursBox.setText(Integer.toString(actualValue));
                 break;
             default:
-                textProgress = null;
                 break;
         }
-        return textProgress;
     }
 
-    private void setListenerForAllBars() {
-        SeekBar seekBar;
-        seekBar = (SeekBar) findViewById(R.id.electric_device_amount_bar);
-        seekBar.setOnSeekBarChangeListener(this);
-        seekBar = (SeekBar) findViewById(R.id.electric_device_power_consumption_bar);
-        seekBar.setOnSeekBarChangeListener(this);
-        seekBar = (SeekBar) findViewById(R.id.electric_device_hours_per_day_bar);
-        seekBar.setOnSeekBarChangeListener(this);
-        seekBar = (SeekBar) findViewById(R.id.electric_device_standby_power_bar);
-        seekBar.setOnSeekBarChangeListener(this);
-        seekBar = (SeekBar) findViewById(R.id.electric_device_standby_hours_bar);
-        seekBar.setOnSeekBarChangeListener(this);
+    private int calculatePowerForDevice(int percentage, int deviceNumber) {
+        int difference = this.maxPowerConsumptions[deviceNumber]
+                - this.minPowerConsumptions[deviceNumber];
+        double preciseResult = percentage*difference;
+        preciseResult /= 100;
+        preciseResult += minPowerConsumptions[deviceNumber];
+        return (int) Math.round(preciseResult);
+    }
+
+    private int calculateStandbyPowerForDevice(int percentage, int deviceNumber) {
+        int difference = this.maxStandbyPowerConsumptions[deviceNumber]
+                - this.minStandbyPowerConsumptions[deviceNumber];
+        double preciseResult = percentage*difference;
+        preciseResult /= 100;
+        preciseResult += minStandbyPowerConsumptions[deviceNumber];
+        return (int) Math.round(preciseResult);
+    }
+
+    private int calculateAmountForDevice(int percentage) {
+        double preciseResult = percentage * 5;
+        preciseResult /= 100;
+        if (preciseResult < 1)
+            preciseResult = 1;
+        return (int) Math.round(preciseResult);
+    }
+
+    private int calculateHoursForDevice(int percentage) {
+        double preciseResult = percentage * 24;
+        preciseResult /= 100;
+        if (preciseResult < 1)
+            preciseResult = 1;
+        return (int) Math.round(preciseResult);
     }
 
 }
