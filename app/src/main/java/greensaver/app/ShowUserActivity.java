@@ -71,14 +71,15 @@ public class ShowUserActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.action_add_electric_device:
-                //TODO call method to add electric device.
-                Intent intent = new Intent(getApplicationContext(), AddElectricDeviceActivity.class);
+                intent = new Intent(getApplicationContext(), AddElectricDeviceActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.action_add_water_activity:
-                //TODO call method to add water activity.
+                intent = new Intent(getApplicationContext(), AddWaterActivityActivity.class);
+                startActivity(intent);
                 return true;
             case R.id.action_add_refuse_production:
                 //TODO call method to add refuse production.

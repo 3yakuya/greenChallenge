@@ -26,7 +26,7 @@ public class ElectricInfoActivity extends Activity {
             "Buy energy saver bulbs for all the rooms you spend a lot of time in.",
             "If you are going to walk away from your computer for a longer while, put it to sleep.",
             "More powerful kettles boil water faster and therefore loose less energy.",
-            "Traditional or plasma-screen TV/'s are much more energy consuming than LED ones.",
+            "Traditional or plasma-screen TVs are much more energy consuming than LED ones.",
             "Ink printers usually consume much less power than laser ones.",
             "Turn off the TV if you are not watching it. Do the same with the radio.",
             "Remember - saving power is not only good for the planet. It is also great for your wallet."
@@ -57,9 +57,6 @@ public class ElectricInfoActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 

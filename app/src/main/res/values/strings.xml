@@ -35,5 +35,23 @@
     <string name="add_electric_device_standby_power">Standby power consumption [Watts]</string>
     <string name="add_electric_device_standby_hours">Standby hours per day</string>
     <string name="title_activity_electric_info">ElectricInfoActivity</string>
+    <string name="title_activity_add_water">AddWaterActivityActivity</string>
+    <string name="water_activity_spinner">Select water activity</string>
+
+    <string-array name="water_activity_spinner_list">
+        <item>Washing machine</item>
+        <item>Dishwasher</item>
+        <item>Washing up</item>
+        <item>Bath</item>
+        <item>Shower</item>
+        <item>Cleaning hands</item>
+        <item>Brushing teeth/shaving</item>
+        <item>Washing the car</item>
+    </string-array>
+
+    <string name="add_water_activity_liters_used">Liters used</string>
+    <string name="add_water_activity_times_per_day">Times per day</string>
+    <string name="add_water_activity_button">Add water activity</string>
+    <string name="title_activity_add_refuse_production">AddRefuseProductionActivity</string>
 
 </resources>

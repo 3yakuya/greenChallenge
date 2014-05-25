@@ -6,10 +6,10 @@
     <item android:id="@+id/action_show_user"
         android:icon="@drawable/ic_launcher"
         android:title="@string/show_user"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="never"/>
     <item android:id="@+id/action_show_authors"
         android:icon="@drawable/ic_launcher"
         android:title="@string/show_authors"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="never"/>
 
 </menu>
