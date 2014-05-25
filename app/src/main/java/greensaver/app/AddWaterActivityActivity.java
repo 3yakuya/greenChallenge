@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import services.DataManager;
+import services.DataSaver;
 
 
 public class AddWaterActivityActivity extends Activity
@@ -146,6 +147,7 @@ public class AddWaterActivityActivity extends Activity
         int timesPerDay = Integer.parseInt(this.timesPerDayBox.getText().toString());
         dataManager.storeWaterActivityData(name, litersUsed, timesPerDay);
         Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
+        DataSaver.getInstance().saveDataToFile(this);
         startActivity(intent);
     }
 }

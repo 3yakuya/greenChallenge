@@ -40,6 +40,7 @@ public class ElectricInfoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_electric_info);
+        this.showInfo();
     }
 
 
@@ -94,7 +95,7 @@ public class ElectricInfoActivity extends Activity {
         UserStats userStats = UserStats.getInstance();
         int powerUsage = userStats.getPowerUsage();
         int standbyPowerUsage = userStats.getStandbyPowerUsage();
-        DecimalFormat decimalFormat = new DecimalFormat("#.00");
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
         double approximateCost = (powerUsage/1000.0) * 0.16;
         String info = "Basic devices you selected consume approximately " + powerUsage + " Wh per day.";
         info = info.concat("This includes " + standbyPowerUsage + " Wh used by stand-by devices.");

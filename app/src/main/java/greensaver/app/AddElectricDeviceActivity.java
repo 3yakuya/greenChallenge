@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import services.DataManager;
+import services.DataSaver;
 
 
 public class AddElectricDeviceActivity extends Activity
@@ -198,6 +199,7 @@ public class AddElectricDeviceActivity extends Activity
         dataManager.storeElectricDeviceData(name, amount, powerConsumption, hoursPerDay,
                 standbyPowerConsumption, standbyHoursPerDay);
         Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
+        DataSaver.getInstance().saveDataToFile(this);
         startActivity(intent);
     }
 

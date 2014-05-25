@@ -69,5 +69,6 @@
     <string name="add_refuse_production_button">Add waste production</string>
     <string name="refuse_production_info">The point value represents how important it is
         to segregate waste this way or to take care of proper disposal of this kind of waste.</string>
+    <string name="title_activity_water_info">WaterInfoActivity</string>
 
 </resources>

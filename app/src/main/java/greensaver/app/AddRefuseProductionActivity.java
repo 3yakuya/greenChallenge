@@ -13,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import services.DataManager;
+import services.DataSaver;
 
 
 public class AddRefuseProductionActivity extends Activity
@@ -76,6 +77,7 @@ public class AddRefuseProductionActivity extends Activity
         int pointValue = Integer.parseInt(this.pointValueBox.getText().toString());
         dataManager.storeRefuseProductionData(name, pointValue);
         Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
+        DataSaver.getInstance().saveDataToFile(this);
         startActivity(intent);
     }
 }

@@ -134,4 +134,9 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(getApplicationContext(), ElectricInfoActivity.class);
         startActivity(intent);
     }
+
+    public void showWaterInfo(View v) {
+        Intent intent = new Intent(getApplicationContext(), WaterInfoActivity.class);
+        startActivity(intent);
+    }
 }
