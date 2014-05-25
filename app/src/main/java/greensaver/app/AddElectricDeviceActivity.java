@@ -44,6 +44,7 @@ public class AddElectricDeviceActivity extends Activity
         this.initializeElectricDeviceSpinner();
         this.initializeAllSeekBars();
         this.initializeAllTextBoxes();
+        this.prepareAverageValuesForDevice();
         this.getActionBar().hide();
     }
 
@@ -67,14 +68,14 @@ public class AddElectricDeviceActivity extends Activity
         // An item was selected. You can retrieve the selected item using
         // parent.getItemAtPosition(pos)
         this.selectedDeviceNumber = pos;
-        System.out.println("LOL co sie dzieje! Pozdro :)");
+        this.prepareAverageValuesForDevice();
     }
 
     public void onNothingSelected(AdapterView<?> parent) {
     }
 
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-        this.setTextBoxHavingSeekBar(seekBar, progress);
+        this.setTextBoxHavingSeekBar(seekBar);
     }
 
     public void onStartTrackingTouch(SeekBar seekBar) {
@@ -113,8 +114,9 @@ public class AddElectricDeviceActivity extends Activity
         this.standbyHoursBar.setOnSeekBarChangeListener(this);
     }
 
-    private void setTextBoxHavingSeekBar(SeekBar seekBar, int percentage) {
+    private void setTextBoxHavingSeekBar(SeekBar seekBar) {
         int id = seekBar.getId();
+        int percentage = seekBar.getProgress();
         int actualValue;
         switch (id) {
             case R.id.electric_device_amount_bar:
@@ -174,6 +176,14 @@ public class AddElectricDeviceActivity extends Activity
         if (preciseResult < 1)
             preciseResult = 1;
         return (int) Math.round(preciseResult);
+    }
+
+    private void prepareAverageValuesForDevice() {
+        this.setTextBoxHavingSeekBar(this.amountBar);
+        this.setTextBoxHavingSeekBar(this.powerConsumptionBar);
+        this.setTextBoxHavingSeekBar(this.hoursPerDayBar);
+        this.setTextBoxHavingSeekBar(this.standbyPowerBar);
+        this.setTextBoxHavingSeekBar(this.standbyHoursBar);
     }
 
 }
