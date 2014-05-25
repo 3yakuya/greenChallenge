@@ -8,6 +8,7 @@ import android.provider.ContactsContract;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
@@ -35,14 +36,12 @@ public class MainActivity extends Activity {
         //////////////////////////////////////////TEST stuff /////////////////////////////
         RelativeLayout layout =(RelativeLayout) findViewById(R.id.background);
         layout.setBackgroundResource(this.selectBackgroundImage());
-        ActionBar actionBar = getActionBar();
-        actionBar.show();
         DataManager dataManager = DataManager.getInstance();
-        dataManager.storeElectricDeviceData("TV", 0, 0, 0, 0, 0);
-        dataManager.storeElectricDeviceData("Computer", 10, 1000, 1230, 320, 132);
-        dataManager.storeElectricDeviceData("Router", 10, 1000, 10, 10, 10);
-        dataManager.storeElectricDeviceData("DVD set", 10, 1000, 1230, 320, 132);
-        dataManager.storeElectricDeviceData("Radio", 10, 1000, 1230, 320, 132);
+//        dataManager.storeElectricDeviceData("TV", 0, 0, 0, 0, 0);
+//        dataManager.storeElectricDeviceData("Computer", 10, 1000, 12, 320, 13);
+//        dataManager.storeElectricDeviceData("Router", 10, 1000, 10, 10, 10);
+//        dataManager.storeElectricDeviceData("DVD set", 10, 1000, 12, 320, 13);
+//        dataManager.storeElectricDeviceData("Radio", 10, 1000, 12, 320, 13);
         dataManager.storeWaterActivityData("Bath", 100, 1);
         dataManager.storeWaterActivityData("Washing Machine", 50, 1);
         dataManager.storeRefuseProductionData("Bags", 10);
@@ -66,7 +65,6 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_show_user:
-                //TODO call method to show user's elements.
                 Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
                 startActivity(intent);
                 return true;
@@ -97,7 +95,7 @@ public class MainActivity extends Activity {
             case 200:
                 return R.drawable.caa;
             default:
-                return R.drawable.aaa;
+                return R.drawable.caa;
         }
     }
 
@@ -130,5 +128,10 @@ public class MainActivity extends Activity {
         }
 
         return score;
+    }
+
+    public void showElectricInfo(View v) {
+        Intent intent = new Intent(getApplicationContext(), ElectricInfoActivity.class);
+        startActivity(intent);
     }
 }

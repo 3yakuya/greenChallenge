@@ -1,6 +1,7 @@
 package greensaver.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import services.DataManager;
 
 
 public class AddElectricDeviceActivity extends Activity
@@ -45,7 +48,6 @@ public class AddElectricDeviceActivity extends Activity
         this.initializeAllSeekBars();
         this.initializeAllTextBoxes();
         this.prepareAverageValuesForDevice();
-        this.getActionBar().hide();
     }
 
 
@@ -184,6 +186,20 @@ public class AddElectricDeviceActivity extends Activity
         this.setTextBoxHavingSeekBar(this.hoursPerDayBar);
         this.setTextBoxHavingSeekBar(this.standbyPowerBar);
         this.setTextBoxHavingSeekBar(this.standbyHoursBar);
+    }
+
+    public void addElectricDevice(View v) {
+        DataManager dataManager = DataManager.getInstance();
+        String name = this.electricDeviceSpinner.getSelectedItem().toString();
+        int amount = Integer.parseInt(this.amountBox.getText().toString());
+        int powerConsumption = Integer.parseInt(this.powerConsumptionBox.getText().toString());
+        int hoursPerDay = Integer.parseInt(this.hoursPerDayBox.getText().toString());
+        int standbyPowerConsumption = Integer.parseInt(this.standbyPowerBox.getText().toString());
+        int standbyHoursPerDay = Integer.parseInt(this.standbyHoursBox.getText().toString());
+        dataManager.storeElectricDeviceData(name, amount, powerConsumption, hoursPerDay,
+                standbyPowerConsumption, standbyHoursPerDay);
+        Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
+        startActivity(intent);
     }
 
 }
