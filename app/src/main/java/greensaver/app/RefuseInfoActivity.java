@@ -19,14 +19,11 @@ public class RefuseInfoActivity extends Activity {
     private final int[] refuseLimits = {14, 30};
 
     private final String[] tips = {
-            "Food packagings are usually made of many materials. Segregate them as plastic " +
-                "(even if they appear to be made of cardboard!)",
-            "There is no need to wash empty youghurt cups (it's just a waste of water), but do not " +
-                    "throw a half-full cup away.",
+            "Food packagings are usually made of many materials. Segregate them as plastic.",
+            "There is no need to wash empty yoghurt cups - it's just a waste of water.",
             "Crush plastic bottles, cartons and cans before throwing them away. This will save a lot " +
                     "of space in the bin.",
-            "When you throw a bottle away, throw its cap and label seperately. This may be helpful later, " +
-                    "when rubbish will be segregated for recycling.",
+            "When you throw a bottle away, throw its cap and label seperately - it is good for recycling.",
             "Do not throw diapers, wallpapers or sanitary towels to bins for paper.",
             "Old batteries, electronic devices or paints should be brought to specialistic points.",
             "In many countries you pay less if you segregate your waste. Save the environment and money " +

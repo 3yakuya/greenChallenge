@@ -130,8 +130,6 @@ public class AddWaterActivityActivity extends Activity
     private int calculateTimesPerDayForActivity(int percentage) {
         double preciseResult = percentage * 5;
         preciseResult /= 100;
-        if (preciseResult < 1)
-            preciseResult = 1;
         return (int) Math.round(preciseResult);
     }
 

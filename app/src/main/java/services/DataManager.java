@@ -71,4 +71,9 @@ public class DataManager {
         this.userStats.setRefuseProductionPoints(refuseProductionPoints);
     }
 
+    public void resetAllUserElements() {
+        User user = User.getInstance();
+        user.reset();
+    }
+
 }

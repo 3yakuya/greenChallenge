@@ -16,6 +16,7 @@ import model.RefuseProduction;
 import model.User;
 import model.WaterActivity;
 import services.DataManager;
+import services.DataSaver;
 
 
 public class ShowUserActivity extends Activity {
@@ -44,8 +45,6 @@ public class ShowUserActivity extends Activity {
         electricDevicesGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 //TODO call method showing add electric device activity.
-                Intent intent = new Intent(getApplicationContext(), AddElectricDeviceActivity.class);
-                startActivity(intent);
             }
         });
         waterActivityGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -77,14 +76,25 @@ public class ShowUserActivity extends Activity {
                 intent = new Intent(getApplicationContext(), AddElectricDeviceActivity.class);
                 startActivity(intent);
                 return true;
+
             case R.id.action_add_water_activity:
                 intent = new Intent(getApplicationContext(), AddWaterActivityActivity.class);
                 startActivity(intent);
                 return true;
+
             case R.id.action_add_refuse_production:
-                //TODO call method to add refuse production.
                 intent = new Intent(getApplicationContext(), AddRefuseProductionActivity.class);
                 startActivity(intent);
+                return true;
+
+            case R.id.reset_all_user_elements:
+                DataManager dataManager = DataManager.getInstance();
+                dataManager.resetAllUserElements();
+                DataSaver.getInstance().saveDataToFile(this);
+                intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

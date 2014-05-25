@@ -15,4 +15,7 @@
         android:icon="@drawable/ic_launcher"
         android:title="@string/add_refuse_production"
         app:showAsAction="never"/>
+    <item android:id="@+id/reset_all_user_elements"
+        android:title="@string/reset_button"
+        app:showAsAction="never"/>
 </menu>

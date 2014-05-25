@@ -65,4 +65,10 @@ public class User {
         }
     }
 
+    public void reset() {
+        this.electricDevices.clear();
+        this.waterActivities.clear();
+        this.refuseProductions.clear();
+    }
+
 }
