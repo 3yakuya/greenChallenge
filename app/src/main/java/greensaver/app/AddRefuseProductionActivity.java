@@ -19,13 +19,11 @@ import services.DataSaver;
 public class AddRefuseProductionActivity extends Activity
         implements AdapterView.OnItemSelectedListener {
 
-    private final int[] pointValues = {10, 8, 4, 5, 5, 5};
+    private final int[] pointValues = {10, 8, 4, 5, 5, 5, 5};
 
     private TextView pointValueBox;
 
     private Spinner refuseProductionSpinner;
-
-    private int selectedProductionNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

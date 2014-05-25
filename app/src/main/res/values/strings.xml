@@ -6,7 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="add_electric_device">Add electric device</string>
     <string name="add_water_activity">Add water activity</string>
-    <string name="add_refuse_production">Add refuse production</string>
+    <string name="add_refuse_production">Add waste segregation</string>
     <string name="show_user">Show User\'s elements</string>
     <string name="show_authors">About</string>
     <string name="title_activity_show_user">User\'s Elements</string>
@@ -71,5 +71,6 @@
         to segregate waste this way or to take care of proper disposal of this kind of waste.</string>
     <string name="title_activity_water_info">Water usage info</string>
     <string name="title_activity_refuse_info">Rubbish segregation info</string>
+    <string name="title_activity_about">About</string>
 
 </resources>

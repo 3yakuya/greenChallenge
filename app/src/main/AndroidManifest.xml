@@ -8,7 +8,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/green_saver_logo"
         android:label="@string/app_name"
         android:theme="@style/GreenSaverTheme" >
         <activity
@@ -71,6 +71,14 @@
         <activity
             android:name="greensaver.app.RefuseInfoActivity"
             android:label="@string/title_activity_refuse_info"
+            android:parentActivityName="greensaver.app.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
+        </activity>
+        <activity
+            android:name="greensaver.app.AboutActivity"
+            android:label="@string/title_activity_about"
             android:parentActivityName="greensaver.app.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

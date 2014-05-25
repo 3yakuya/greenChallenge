@@ -28,8 +28,7 @@ public class RefuseInfoActivity extends Activity {
             "When you throw a bottle away, throw its cap and label seperately. This may be helpful later, " +
                     "when rubbish will be segregated for recycling.",
             "Do not throw diapers, wallpapers or sanitary towels to bins for paper.",
-            "Old batteries, electronic devices or paints should be brought to specialistic points " +
-                    "- professional shops should accept them for special recycling.",
+            "Old batteries, electronic devices or paints should be brought to specialistic points.",
             "In many countries you pay less if you segregate your waste. Save the environment and money " +
                     "at once!",
             "Old windows, windscreens, mirrors, ceramic elements or light bulbs should not be segregated " +
