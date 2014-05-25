@@ -167,7 +167,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/add_electric_device_button"
                 android:id="@+id/add_electric_device_button"
-                android:onClick="addWaterActivity"
+                android:onClick="addElectricDevice"
                 android:layout_marginTop="20dp" />
         </LinearLayout>
     </ScrollView>

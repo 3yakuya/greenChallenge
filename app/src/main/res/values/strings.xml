@@ -54,4 +54,20 @@
     <string name="add_water_activity_button">Add water activity</string>
     <string name="title_activity_add_refuse_production">AddRefuseProductionActivity</string>
 
+    <string-array name="refuse_production_spinner_list">
+        <item>Segregation</item>
+        <item>Plastic bags</item>
+        <item>Pressing bottles</item>
+        <item>Medicine</item>
+        <item>Batteries and bulbs</item>
+        <item>Household facilities</item>
+        <item>Big size waste</item>
+    </string-array>
+
+    <string name="add_refuse_production_point_value">Point value</string>
+    <string name="refuse_production_spinner">Select waste production</string>
+    <string name="add_refuse_production_button">Add waste production</string>
+    <string name="refuse_production_info">The point value represents how important it is
+        to segregate waste this way or to take care of proper disposal of this kind of waste.</string>
+
 </resources>

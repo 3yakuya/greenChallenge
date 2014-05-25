@@ -83,6 +83,8 @@ public class ShowUserActivity extends Activity {
                 return true;
             case R.id.action_add_refuse_production:
                 //TODO call method to add refuse production.
+                intent = new Intent(getApplicationContext(), AddRefuseProductionActivity.class);
+                startActivity(intent);
             default:
                 return super.onOptionsItemSelected(item);
         }
