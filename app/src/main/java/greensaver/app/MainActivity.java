@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
 
     private final int[] powerLimits = {6000, 3000};
     private final int[] waterLimits = {160, 100};
-    private final int[] refuseLimits = {31, 14};
+    private final int[] refuseLimits = {14, 30};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,9 +121,9 @@ public class MainActivity extends Activity {
         }
 
         int refuseScore = userStats.getRefuseProductionPoints();
-        if (refuseScore > refuseLimits[0]) {
+        if (refuseScore < refuseLimits[0]) {
             score += 2;
-        } else if (refuseScore > refuseLimits[1]) {
+        } else if (refuseScore < refuseLimits[1]) {
             score += 1;
         }
 

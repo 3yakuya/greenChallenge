@@ -1,6 +1,5 @@
 package greensaver.app;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,16 +58,53 @@ public class ImageButtonAdapter extends BaseAdapter{
                     return "radio";
                 else
                     return "router";
+            case 'B':
+                if (name.charAt(3) == 'h')
+                    return "bath";
+                else if (name.charAt(3) == 't')
+                    return "batteries_and_bulbs";
+                else if (name.charAt(1) == 'i')
+                    return "big_size_waste";
+                else
+                    return "brushing_shaving";
             case 'C':
-                return "computer";
+                if (name.charAt(1) == 'o')
+                    return "computer";
+                else
+                    return "cleaning_hands";
+            case 'H':
+                return "household";
             case 'P':
-                return "printer";
+                if (name.charAt(2) == 'i')
+                    return "printer";
+                else if (name.charAt(2) == 'e')
+                    return "pressing_bottles";
+                else
+                    return "plastic_bags";
             case 'S':
-                return "set_top_box";
+                if (name.charAt(2) == 't')
+                    return "set_top_box";
+                else if (name.charAt(2) == 'g')
+                    return "segregation";
+                else
+                    return "shower";
             case 'D':
-                return "dvd_set";
+                if (name.charAt(1) == 'v')
+                    return "dvd_set";
+                else
+                    return "dishwasher";
             case 'M':
-                return "microwave";
+                if (name.charAt(1) == 'i')
+                    return "microwave";
+                else
+                    return "medicine";
+            case 'W':
+                if (name.charAt(9) == 'm')
+                    return "washing_machine";
+                else if (name.charAt(9) == 'u')
+                    return "washing_up";
+                else
+                    return "washing_car";
             default:
                 return "ic_launcher";
         }
