@@ -10,10 +10,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 
+import java.util.ArrayList;
+
 import model.ElectricDevice;
-import model.INamable;
 import model.RefuseProduction;
-import model.User;
 import model.WaterActivity;
 import services.DataManager;
 import services.DataSaver;
@@ -31,12 +31,15 @@ public class ShowUserActivity extends Activity {
         GridView waterActivityGrid = (GridView) findViewById(R.id.water_activity_grid);
         GridView refuseProductionGrid = (GridView) findViewById(R.id.refuse_production_grid);
 
+        ArrayList<ElectricDevice> fetchedElectricDeviceData = dataManager.fetchElectricDeviceData();
         ElectricDevice[] electricDevices =
-                dataManager.fetchElectricDeviceData().toArray(new ElectricDevice[dataManager.fetchElectricDeviceData().size()]);
+                fetchedElectricDeviceData.toArray(new ElectricDevice[fetchedElectricDeviceData.size()]);
+        ArrayList<WaterActivity> fetchedWaterActivityData = dataManager.fetchWaterActivityData();
         WaterActivity[] waterActivities =
-                dataManager.fetchWaterActivityData().toArray(new WaterActivity[dataManager.fetchWaterActivityData().size()]);
+                fetchedWaterActivityData.toArray(new WaterActivity[fetchedWaterActivityData.size()]);
+        ArrayList<RefuseProduction> fetchedRefuseProductionData = dataManager.fetchRefuseProductionData();
         RefuseProduction[] refuseProductions =
-                dataManager.fetchRefuseProductionData().toArray(new RefuseProduction[dataManager.fetchRefuseProductionData().size()]);
+                fetchedRefuseProductionData.toArray(new RefuseProduction[fetchedRefuseProductionData.size()]);
 
         electricDevicesGrid.setAdapter(new ImageButtonAdapter(this, electricDevices));
         waterActivityGrid.setAdapter(new ImageButtonAdapter(this, waterActivities));
