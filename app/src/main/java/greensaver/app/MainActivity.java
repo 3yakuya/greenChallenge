@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import model.UserStats;
+import model.User;
 import services.DataLoader;
 import services.DataManager;
 
@@ -121,9 +121,8 @@ public class MainActivity extends Activity {
     private int getCurrentUserScore() {
         DataManager dataManager = DataManager.getInstance();
         dataManager.prepareUserStats();
-        UserStats userStats = UserStats.getInstance();
         int score;
-        int electricPowerScore = userStats.getPowerUsage();
+        int electricPowerScore = User.getUserStats().getPowerUsage();
         if (electricPowerScore > powerLimits[0]) {
             score = 200;
         } else if (electricPowerScore > powerLimits[1]) {
@@ -132,14 +131,14 @@ public class MainActivity extends Activity {
             score = 0;
         }
 
-        int waterScore = userStats.getWaterUsage();
+        int waterScore = User.getUserStats().getWaterUsage();
         if (waterScore > waterLimits[0]) {
             score += 20;
         } else if (waterScore > waterLimits[1]) {
             score += 10;
         }
 
-        int refuseScore = userStats.getRefuseProductionPoints();
+        int refuseScore = User.getUserStats().getRefuseProductionPoints();
         if (refuseScore < refuseLimits[0]) {
             score += 2;
         } else if (refuseScore < refuseLimits[1]) {

@@ -79,4 +79,24 @@ public class UserTest extends InstrumentationTestCase {
         assertTrue(User.getWaterActivities().isEmpty());
         assertTrue(User.getRefuseProductions().isEmpty());
     }
+
+    public void testUserStatsModification() {
+        User.getUserStats().setPowerUsage(10);
+        User.getUserStats().setRefuseProductionPoints(20);
+        User.getUserStats().setStandbyPowerUsage(30);
+        User.getUserStats().setWaterUsage(40);
+        assertTrue(User.getUserStats().getPowerUsage() == 10);
+        assertTrue(User.getUserStats().getRefuseProductionPoints() == 20);
+        assertTrue(User.getUserStats().getStandbyPowerUsage() == 30);
+        assertTrue(User.getUserStats().getWaterUsage() == 40);
+
+        User.getUserStats().setPowerUsage(4);
+        User.getUserStats().setRefuseProductionPoints(3);
+        User.getUserStats().setStandbyPowerUsage(2);
+        User.getUserStats().setWaterUsage(1);
+        assertTrue(User.getUserStats().getPowerUsage() == 4);
+        assertTrue(User.getUserStats().getRefuseProductionPoints() == 3);
+        assertTrue(User.getUserStats().getStandbyPowerUsage() == 2);
+        assertTrue(User.getUserStats().getWaterUsage() == 1);
+    }
 }

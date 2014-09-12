@@ -2,24 +2,16 @@ package model;
 
 public class UserStats {
 
-    private static UserStats instance;
-
     private int powerUsage;
     private int standbyPowerUsage;
     private int waterUsage;
     private int refuseProductionPoints;
 
-    private UserStats() {
+    public UserStats() {
         this.powerUsage = 0;
         this.standbyPowerUsage = 0;
         this.waterUsage = 0;
         this.refuseProductionPoints = 0;
-    }
-
-    public static UserStats getInstance() {
-        if (instance == null)
-            instance = new UserStats();
-        return instance;
     }
 
     public void setPowerUsage(int powerUsage) {

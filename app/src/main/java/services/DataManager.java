@@ -12,11 +12,9 @@ public class DataManager {
 
     private static DataManager instance = null;
 
-    private UserStats userStats;
     private UsageCalculator usageCalculator;
 
     private DataManager() {
-        this.userStats = UserStats.getInstance();
         this.usageCalculator = UsageCalculator.getInstance();
     }
 
@@ -63,10 +61,10 @@ public class DataManager {
         int standbyPowerUsage = this.usageCalculator.calculateDailyStandbyPowerUsage(User.getElectricDevices());
         int waterUsage = this.usageCalculator.calculateDailyWaterUsage(User.getWaterActivities());
         int refuseProductionPoints = this.usageCalculator.calculateRefuseProductionPoints(User.getRefuseProductions());
-        this.userStats.setPowerUsage(powerUsage);
-        this.userStats.setStandbyPowerUsage(standbyPowerUsage);
-        this.userStats.setWaterUsage(waterUsage);
-        this.userStats.setRefuseProductionPoints(refuseProductionPoints);
+        User.getUserStats().setPowerUsage(powerUsage);
+        User.getUserStats().setStandbyPowerUsage(standbyPowerUsage);
+        User.getUserStats().setWaterUsage(waterUsage);
+        User.getUserStats().setRefuseProductionPoints(refuseProductionPoints);
     }
 
     public void resetAllUserElements() {

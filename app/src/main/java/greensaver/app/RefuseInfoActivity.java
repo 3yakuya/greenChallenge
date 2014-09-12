@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.Random;
 
+import model.User;
 import model.UserStats;
 import services.DataManager;
 
@@ -67,8 +68,7 @@ public class RefuseInfoActivity extends Activity {
         int index = new Random().nextInt(tips.length);
         this.refuseHint.setText(tips[index]);
         this.refuseValue.setText(this.getValue());
-        UserStats userStats = UserStats.getInstance();
-        int refusePoints = userStats.getRefuseProductionPoints();
+        int refusePoints = User.getUserStats().getRefuseProductionPoints();
         if (refusePoints < this.refuseLimits[0])
             refuseValue.setTextColor(Color.parseColor("#FF0000"));
         else if (refusePoints < this.refuseLimits[1])
@@ -80,8 +80,7 @@ public class RefuseInfoActivity extends Activity {
     private String getValue() {
         DataManager dataManager = DataManager.getInstance();
         dataManager.prepareUserStats();
-        UserStats userStats = UserStats.getInstance();
-        int refusePoints = userStats.getRefuseProductionPoints();
+        int refusePoints = User.getUserStats().getRefuseProductionPoints();
         String value = Integer.toString(refusePoints) + " points";
         return value;
     }
@@ -89,8 +88,7 @@ public class RefuseInfoActivity extends Activity {
     private String getUsageInfo() {
         DataManager dataManager = DataManager.getInstance();
         dataManager.prepareUserStats();
-        UserStats userStats = UserStats.getInstance();
-        int refusePoints = userStats.getRefuseProductionPoints();
+        int refusePoints = User.getUserStats().getRefuseProductionPoints();
         String info = "Your way of dealing with waste was graded for " + refusePoints + " points.";
         info = info.concat("\n\n The more points the better for the environment.");
         info = info.concat("\n\nIf you are unsure what to do with some kind of rubbish or waste, " +

@@ -7,6 +7,7 @@ public class User {
     private static ArrayList<ElectricDevice> electricDevices = new ArrayList<ElectricDevice>();
     private static ArrayList<WaterActivity> waterActivities = new ArrayList<WaterActivity>();
     private static ArrayList<RefuseProduction> refuseProductions = new ArrayList<RefuseProduction>();
+    private static UserStats userStats = new UserStats();
 
     public static ArrayList<ElectricDevice> getElectricDevices() {
         return electricDevices;
@@ -18,6 +19,10 @@ public class User {
 
     public static ArrayList<RefuseProduction> getRefuseProductions() {
         return refuseProductions;
+    }
+
+    public static UserStats getUserStats() {
+        return userStats;
     }
 
     public static void insertElectricDevice(ElectricDevice electricDevice) {

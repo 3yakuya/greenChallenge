@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 import java.util.Random;
 
+import model.User;
 import model.UserStats;
 import services.DataManager;
 
@@ -68,8 +69,7 @@ public class ElectricInfoActivity extends Activity {
         int index = new Random().nextInt(tips.length);
         this.electricHint.setText(tips[index]);
         this.electricValue.setText(this.getValue());
-        UserStats userStats = UserStats.getInstance();
-        int powerUsage = userStats.getPowerUsage();
+        int powerUsage = User.getUserStats().getPowerUsage();
         if (powerUsage > this.powerLimits[0])
             electricValue.setTextColor(Color.parseColor("#FF0000"));
         else if (powerUsage > this.powerLimits[1])
@@ -82,8 +82,7 @@ public class ElectricInfoActivity extends Activity {
     private String getValue() {
         DataManager dataManager = DataManager.getInstance();
         dataManager.prepareUserStats();
-        UserStats userStats = UserStats.getInstance();
-        int powerUsage = userStats.getPowerUsage();
+        int powerUsage = User.getUserStats().getPowerUsage();
         String value = Integer.toString(powerUsage) + " Wh per day";
         return value;
     }
@@ -91,9 +90,8 @@ public class ElectricInfoActivity extends Activity {
     private String getUsageInfo() {
         DataManager dataManager = DataManager.getInstance();
         dataManager.prepareUserStats();
-        UserStats userStats = UserStats.getInstance();
-        int powerUsage = userStats.getPowerUsage();
-        int standbyPowerUsage = userStats.getStandbyPowerUsage();
+        int powerUsage = User.getUserStats().getPowerUsage();
+        int standbyPowerUsage = User.getUserStats().getStandbyPowerUsage();
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         double approximateCost = (powerUsage/1000.0) * 0.16;
         String info = "Basic devices you selected consume approximately " + powerUsage + " Wh per day.";

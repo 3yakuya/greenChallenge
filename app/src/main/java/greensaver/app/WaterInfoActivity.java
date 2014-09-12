@@ -10,7 +10,7 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 import java.util.Random;
 
-import model.UserStats;
+import model.User;
 import services.DataManager;
 
 
@@ -67,8 +67,7 @@ public class WaterInfoActivity extends Activity {
         int index = new Random().nextInt(tips.length);
         this.waterHint.setText(tips[index]);
         this.waterValue.setText(this.getValue());
-        UserStats userStats = UserStats.getInstance();
-        int waterUsage = userStats.getWaterUsage();
+        int waterUsage = User.getUserStats().getWaterUsage();
         if (waterUsage > this.waterLimits[0])
             waterValue.setTextColor(Color.parseColor("#FF0000"));
         else if (waterUsage > this.waterLimits[1])
@@ -80,8 +79,7 @@ public class WaterInfoActivity extends Activity {
     private String getValue() {
         DataManager dataManager = DataManager.getInstance();
         dataManager.prepareUserStats();
-        UserStats userStats = UserStats.getInstance();
-        int waterUsage = userStats.getWaterUsage();
+        int waterUsage = User.getUserStats().getWaterUsage();
         String value = Integer.toString(waterUsage) + " liters per day";
         return value;
     }
@@ -89,8 +87,7 @@ public class WaterInfoActivity extends Activity {
     private String getUsageInfo() {
         DataManager dataManager = DataManager.getInstance();
         dataManager.prepareUserStats();
-        UserStats userStats = UserStats.getInstance();
-        int waterUsage = userStats.getWaterUsage();
+        int waterUsage = User.getUserStats().getWaterUsage();
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         double approximateCost = (waterUsage/1000.0) * 1.28;
         String info = "Every day you use about " + waterUsage + " liters of water.";
