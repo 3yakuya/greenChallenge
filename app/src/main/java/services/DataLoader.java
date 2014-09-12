@@ -16,12 +16,6 @@ public class DataLoader {
 
     private static DataLoader instance = null;
 
-    private User user;
-
-    private DataLoader() {
-        this.user = User.getInstance();
-    }
-
     public static DataLoader getInstance() {
         if (instance == null)
             instance = new DataLoader();
@@ -59,21 +53,21 @@ public class DataLoader {
                     ElectricDevice electricDevice = readElectricDeviceDataFromFile(br);
                     if (electricDevice == null)
                         return false;
-                    user.insertElectricDevice(electricDevice);
+                    User.insertElectricDevice(electricDevice);
                     break;
 
                 case 'W':
                     WaterActivity waterActivity = readWaterActivityDataFromFile(br);
                     if (waterActivity == null)
                         return false;
-                    user.insertWaterActivity(waterActivity);
+                    User.insertWaterActivity(waterActivity);
                     break;
 
                 case 'R':
                     RefuseProduction refuseProduction = readRefuseProductionDataFromFile(br);
                     if (refuseProduction == null)
                         return false;
-                    user.insertRefuseProduction(refuseProduction);
+                    User.insertRefuseProduction(refuseProduction);
                     break;
 
                 default:
