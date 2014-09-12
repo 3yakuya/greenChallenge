@@ -1,8 +1,6 @@
 package model;
 
 public class RefuseProduction implements INamable {
-    //TODO add all necessary fields and methods.
-    //IF anything added - update DataLoader and DataSaver services.
 
     private String name;
     private int pointValue;

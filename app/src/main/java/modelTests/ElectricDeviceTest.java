@@ -1,7 +1,20 @@
 package modelTests;
 
-/**
- * Created by Kuba on 2014-09-12.
- */
-public class ElectricDeviceTest {
+import android.test.InstrumentationTestCase;
+
+import model.ElectricDevice;
+
+public class ElectricDeviceTest extends InstrumentationTestCase {
+
+    public void testCloneElectricDevice() {
+        ElectricDevice electricDeviceOne = new ElectricDevice("TestDebice", 0, 100, 10, 10, 20);
+        ElectricDevice electricDeviceTwo = new ElectricDevice();
+        electricDeviceTwo.cloneElectricDevice(electricDeviceOne);
+        assertEquals(electricDeviceOne.getAmount(), electricDeviceTwo.getAmount());
+        assertEquals(electricDeviceOne.getPowerConsumption(), electricDeviceTwo.getPowerConsumption());
+        assertEquals(electricDeviceOne.getHoursPerDay(), electricDeviceTwo.getHoursPerDay());
+        assertEquals(electricDeviceOne.getStandbyPowerConsumption(), electricDeviceTwo.getStandbyPowerConsumption());
+        assertEquals(electricDeviceOne.getStandbyHoursPerDay(), electricDeviceTwo.getStandbyHoursPerDay());
+    }
+
 }
