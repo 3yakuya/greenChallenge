@@ -62,18 +62,7 @@ public class UserTest extends InstrumentationTestCase {
 
     public void testReset() {
         User user = User.getInstance();
-        ElectricDevice electricDeviceOne = new ElectricDevice("DeviceOne", 1, 100, 2, 5, 22);
-        ElectricDevice electricDeviceTwo = new ElectricDevice("DeviceTwo", 1, 100, 2, 5, 22);
-        user.insertElectricDevice(electricDeviceOne);
-        user.insertElectricDevice(electricDeviceTwo);
-        WaterActivity waterActivityOne = new WaterActivity("ActivityOne", 10, 10);
-        WaterActivity waterActivityTwo = new WaterActivity("ActivityTwo", 5, 5);
-        user.insertWaterActivity(waterActivityOne);
-        user.insertWaterActivity(waterActivityTwo);
-        RefuseProduction refuseProductionOne = new RefuseProduction("ProductionOne", 10);
-        RefuseProduction refuseProductionTwo = new RefuseProduction("ProductionTwo", 20);
-        user.insertRefuseProduction(refuseProductionOne);
-        user.insertRefuseProduction(refuseProductionTwo);
+        this.prepareUser(user);
         assertFalse(user.getElectricDevices().isEmpty());
         assertFalse(user.getWaterActivities().isEmpty());
         assertFalse(user.getRefuseProductions().isEmpty());
@@ -103,5 +92,20 @@ public class UserTest extends InstrumentationTestCase {
         assertTrue(user.getUserStats().getRefuseProductionPoints() == 3);
         assertTrue(user.getUserStats().getStandbyPowerUsage() == 2);
         assertTrue(user.getUserStats().getWaterUsage() == 1);
+    }
+
+    private void prepareUser(User user) {
+        ElectricDevice electricDeviceOne = new ElectricDevice("DeviceOne", 1, 100, 2, 5, 22);
+        ElectricDevice electricDeviceTwo = new ElectricDevice("DeviceTwo", 1, 100, 2, 5, 22);
+        user.insertElectricDevice(electricDeviceOne);
+        user.insertElectricDevice(electricDeviceTwo);
+        WaterActivity waterActivityOne = new WaterActivity("ActivityOne", 10, 10);
+        WaterActivity waterActivityTwo = new WaterActivity("ActivityTwo", 5, 5);
+        user.insertWaterActivity(waterActivityOne);
+        user.insertWaterActivity(waterActivityTwo);
+        RefuseProduction refuseProductionOne = new RefuseProduction("ProductionOne", 10);
+        RefuseProduction refuseProductionTwo = new RefuseProduction("ProductionTwo", 20);
+        user.insertRefuseProduction(refuseProductionOne);
+        user.insertRefuseProduction(refuseProductionTwo);
     }
 }

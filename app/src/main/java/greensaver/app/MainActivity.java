@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         RelativeLayout layout =(RelativeLayout) findViewById(R.id.background);
-        DataLoader.getInstance().loadDataFromFile(this);
+        DataLoader.loadDataFromFile(this);
         layout.setBackgroundResource(this.selectBackgroundImage());
     }
 

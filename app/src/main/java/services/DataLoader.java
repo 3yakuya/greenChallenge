@@ -14,20 +14,7 @@ import model.WaterActivity;
 
 public class DataLoader {
 
-    private static DataLoader instance = null;
-    private User user;
-
-    private DataLoader() {
-        this.user = User.getInstance();
-    }
-
-    public static DataLoader getInstance() {
-        if (instance == null)
-            instance = new DataLoader();
-        return instance;
-    }
-
-    public boolean loadDataFromFile(Context context) {
+    public static boolean loadDataFromFile(Context context) {
         File file = new File(context.getFilesDir(), "userStats");
         boolean status = false;
         if (!file.exists()) {
@@ -41,7 +28,8 @@ public class DataLoader {
         }
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
-            status = parseDataFromFile(br);
+            User user = User.getInstance();
+            status = parseDataFromFile(br, user);
             br.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -50,7 +38,7 @@ public class DataLoader {
         return status;
     }
 
-    private boolean parseDataFromFile(BufferedReader br) throws IOException{
+    private static boolean parseDataFromFile(BufferedReader br, User user) throws IOException{
         String line;
         while ((line = br.readLine()) != null) {
             switch (line.charAt(0)) {
@@ -82,7 +70,7 @@ public class DataLoader {
         return true;
     }
 
-    private ElectricDevice readElectricDeviceDataFromFile(BufferedReader br) {
+    private static ElectricDevice readElectricDeviceDataFromFile(BufferedReader br) {
         ElectricDevice electricDevice = null;
         try {
             String name = br.readLine();
@@ -100,7 +88,7 @@ public class DataLoader {
         }
     }
 
-    private WaterActivity readWaterActivityDataFromFile(BufferedReader br) {
+    private static WaterActivity readWaterActivityDataFromFile(BufferedReader br) {
         WaterActivity waterActivity = null;
         try {
             String name = br.readLine();
@@ -114,7 +102,7 @@ public class DataLoader {
         }
     }
 
-    private RefuseProduction readRefuseProductionDataFromFile(BufferedReader br) {
+    private static RefuseProduction readRefuseProductionDataFromFile(BufferedReader br) {
         RefuseProduction refuseProduction = null;
         try {
             String name = br.readLine();

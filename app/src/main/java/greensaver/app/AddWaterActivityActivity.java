@@ -145,7 +145,7 @@ public class AddWaterActivityActivity extends Activity
         int timesPerDay = Integer.parseInt(this.timesPerDayBox.getText().toString());
         dataManager.storeWaterActivityData(name, litersUsed, timesPerDay);
         Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
-        DataSaver.getInstance().saveDataToFile(this);
+        DataSaver.saveDataToFile(this);
         startActivity(intent);
     }
 }

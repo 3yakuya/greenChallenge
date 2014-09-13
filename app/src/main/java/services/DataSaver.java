@@ -15,20 +15,7 @@ import model.WaterActivity;
 
 public class DataSaver {
 
-    private static DataSaver instance = null;
-    private User user;
-
-    public static DataSaver getInstance() {
-        if (instance == null)
-            instance = new DataSaver();
-        return instance;
-    }
-
-    private DataSaver() {
-        this.user = User.getInstance();
-    }
-
-    public boolean saveDataToFile(Context context) {
+    public static boolean saveDataToFile(Context context) {
         File file = new File(context.getFilesDir(), "userStats");
         if (!clearFileContent(file))
             return false;
@@ -42,9 +29,10 @@ public class DataSaver {
         }
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
-            saveElectricDevicesToFile(bw);
-            saveWaterActivitiesToFile(bw);
-            saveRefuseProductionsToFile(bw);
+            User user = User.getInstance();
+            saveElectricDevicesToFile(bw, user);
+            saveWaterActivitiesToFile(bw, user);
+            saveRefuseProductionsToFile(bw, user);
             bw.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -53,7 +41,7 @@ public class DataSaver {
         return true;
     }
 
-    private void saveElectricDevicesToFile(BufferedWriter bw) throws IOException {
+    private static void saveElectricDevicesToFile(BufferedWriter bw, User user) throws IOException {
         for (ElectricDevice electricDevice : user.getElectricDevices()) {
             bw.write("E");
             bw.newLine();
@@ -72,7 +60,7 @@ public class DataSaver {
         }
     }
 
-    private void saveWaterActivitiesToFile(BufferedWriter bw) throws IOException {
+    private static void saveWaterActivitiesToFile(BufferedWriter bw, User user) throws IOException {
         for (WaterActivity waterActivity : user.getWaterActivities()) {
             bw.write("W");
             bw.newLine();
@@ -85,7 +73,7 @@ public class DataSaver {
         }
     }
 
-    private void saveRefuseProductionsToFile(BufferedWriter bw) throws IOException {
+    private static void saveRefuseProductionsToFile(BufferedWriter bw, User user) throws IOException {
         for (RefuseProduction refuseProduction : user.getRefuseProductions()) {
             bw.write("R");
             bw.newLine();
@@ -96,7 +84,7 @@ public class DataSaver {
         }
     }
     
-    private boolean clearFileContent(File file) {
+    private static boolean clearFileContent(File file) {
         try {
             PrintWriter fileClearer = new PrintWriter(file);
             fileClearer.write("");

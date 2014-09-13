@@ -74,7 +74,7 @@ public class AddRefuseProductionActivity extends Activity
         int pointValue = Integer.parseInt(this.pointValueBox.getText().toString());
         dataManager.storeRefuseProductionData(name, pointValue);
         Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
-        DataSaver.getInstance().saveDataToFile(this);
+        DataSaver.saveDataToFile(this);
         startActivity(intent);
     }
 }

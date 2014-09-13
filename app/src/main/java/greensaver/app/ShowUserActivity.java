@@ -93,7 +93,7 @@ public class ShowUserActivity extends Activity {
             case R.id.reset_all_user_elements:
                 DataManager dataManager = DataManager.getInstance();
                 dataManager.resetAllUserElements();
-                DataSaver.getInstance().saveDataToFile(this);
+                DataSaver.saveDataToFile(this);
                 intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 return true;
