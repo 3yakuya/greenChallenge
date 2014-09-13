@@ -12,12 +12,6 @@ public class DataManager {
     private static DataManager instance = null;
     private User user = User.getInstance();
 
-    private UsageCalculator usageCalculator;
-
-    private DataManager() {
-        this.usageCalculator = UsageCalculator.getInstance();
-    }
-
     public static DataManager getInstance() {
         if (instance == null)
             instance = new DataManager();
@@ -57,10 +51,10 @@ public class DataManager {
     }
 
     public void prepareUserStats() {
-        int powerUsage = this.usageCalculator.calculateDailyPowerUsage(user.getElectricDevices());
-        int standbyPowerUsage = this.usageCalculator.calculateDailyStandbyPowerUsage(user.getElectricDevices());
-        int waterUsage = this.usageCalculator.calculateDailyWaterUsage(user.getWaterActivities());
-        int refuseProductionPoints = this.usageCalculator.calculateRefuseProductionPoints(user.getRefuseProductions());
+        int powerUsage = UsageCalculator.calculateDailyPowerUsage(user.getElectricDevices());
+        int standbyPowerUsage = UsageCalculator.calculateDailyStandbyPowerUsage(user.getElectricDevices());
+        int waterUsage = UsageCalculator.calculateDailyWaterUsage(user.getWaterActivities());
+        int refuseProductionPoints = UsageCalculator.calculateRefuseProductionPoints(user.getRefuseProductions());
         user.getUserStats().setPowerUsage(powerUsage);
         user.getUserStats().setStandbyPowerUsage(standbyPowerUsage);
         user.getUserStats().setWaterUsage(waterUsage);

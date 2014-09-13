@@ -8,43 +8,35 @@ import model.WaterActivity;
 
 public class UsageCalculator {
 
-    private static UsageCalculator instance = null;
-
-    public static UsageCalculator getInstance() {
-        if (instance == null)
-            instance = new UsageCalculator();
-        return instance;
-    }
-
-    public int calculateDailyPowerUsage(ArrayList<ElectricDevice> electricDevices) {
+    public static int calculateDailyPowerUsage(ArrayList<ElectricDevice> electricDevices) {
         int powerUsage = 0;
         for (ElectricDevice device: electricDevices)
             powerUsage += calculateElectricDeviceDailyTotalPowerUsage(device);
         return powerUsage;
     }
 
-    public int calculateDailyStandbyPowerUsage(ArrayList<ElectricDevice> electricDevices) {
+    public static int calculateDailyStandbyPowerUsage(ArrayList<ElectricDevice> electricDevices) {
         int powerUsage = 0;
         for (ElectricDevice device: electricDevices)
             powerUsage += calculateElectricDeviceDailyStandbyPowerUsage(device);
         return powerUsage;
     }
 
-    public int calculateDailyWaterUsage(ArrayList<WaterActivity> waterActivities) {
+    public static int calculateDailyWaterUsage(ArrayList<WaterActivity> waterActivities) {
         int waterUsage = 0;
         for (WaterActivity waterActivity : waterActivities)
             waterUsage += calculateWaterActivityDailyWaterUsage(waterActivity);
         return waterUsage;
     }
 
-    public int calculateRefuseProductionPoints(ArrayList<RefuseProduction> refuseProductions) {
+    public static int calculateRefuseProductionPoints(ArrayList<RefuseProduction> refuseProductions) {
         int refuseProductionPoints = 0;
         for (RefuseProduction refuseProduction : refuseProductions)
             refuseProductionPoints += refuseProduction.getPointValue();
         return refuseProductionPoints;
     }
 
-    private int calculateElectricDeviceDailyStandbyPowerUsage(ElectricDevice electricDevice) {
+    private static int calculateElectricDeviceDailyStandbyPowerUsage(ElectricDevice electricDevice) {
         /** Result in Wh */
         int amount = electricDevice.getAmount();
         int standbyPowerConsumption = electricDevice.getStandbyPowerConsumption();
@@ -52,7 +44,7 @@ public class UsageCalculator {
         return amount*standbyPowerConsumption*standbyHoursPerDay;
     }
 
-    private int calculateElectricDeviceDailyTotalPowerUsage(ElectricDevice electricDevice) {
+    private static int calculateElectricDeviceDailyTotalPowerUsage(ElectricDevice electricDevice) {
         /** Result in Wh */
         int amount = electricDevice.getAmount();
         int powerConsumption = electricDevice.getPowerConsumption();
@@ -61,7 +53,7 @@ public class UsageCalculator {
         return standbyPowerUsage + amount*powerConsumption*hoursPerDay;
     }
 
-    private int calculateWaterActivityDailyWaterUsage(WaterActivity waterActivity) {
+    private static int calculateWaterActivityDailyWaterUsage(WaterActivity waterActivity) {
         int litersUsed = waterActivity.getLitersUsed();
         int timesPerDay = waterActivity.getTimesPerDay();
         return litersUsed*timesPerDay;
