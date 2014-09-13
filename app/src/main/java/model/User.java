@@ -4,28 +4,43 @@ import java.util.ArrayList;
 
 public class User {
 
-    private static ArrayList<ElectricDevice> electricDevices = new ArrayList<ElectricDevice>();
-    private static ArrayList<WaterActivity> waterActivities = new ArrayList<WaterActivity>();
-    private static ArrayList<RefuseProduction> refuseProductions = new ArrayList<RefuseProduction>();
-    private static UserStats userStats = new UserStats();
+    private static User instance;
 
-    public static ArrayList<ElectricDevice> getElectricDevices() {
+    public static User getInstance() {
+        if (instance == null)
+            instance = new User();
+        return instance;
+    }
+
+    private ArrayList<ElectricDevice> electricDevices;
+    private ArrayList<WaterActivity> waterActivities;
+    private ArrayList<RefuseProduction> refuseProductions;
+    private UserStats userStats;
+
+    private User() {
+        this.electricDevices = new ArrayList<ElectricDevice>();
+        this.waterActivities = new ArrayList<WaterActivity>();
+        this.refuseProductions = new ArrayList<RefuseProduction>();
+        this.userStats = new UserStats();
+    }
+
+    public ArrayList<ElectricDevice> getElectricDevices() {
         return electricDevices;
     }
 
-    public static ArrayList<WaterActivity> getWaterActivities() {
+    public ArrayList<WaterActivity> getWaterActivities() {
         return waterActivities;
     }
 
-    public static ArrayList<RefuseProduction> getRefuseProductions() {
+    public ArrayList<RefuseProduction> getRefuseProductions() {
         return refuseProductions;
     }
 
-    public static UserStats getUserStats() {
+    public UserStats getUserStats() {
         return userStats;
     }
 
-    public static void insertElectricDevice(ElectricDevice electricDevice) {
+    public void insertElectricDevice(ElectricDevice electricDevice) {
         int index = electricDevices.indexOf(electricDevice);
         if (index >= 0) {
             electricDevices.get(index).cloneElectricDevice(electricDevice);
@@ -34,7 +49,7 @@ public class User {
         }
     }
 
-    public static void insertWaterActivity(WaterActivity waterActivity) {
+    public void insertWaterActivity(WaterActivity waterActivity) {
         int index = waterActivities.indexOf(waterActivity);
         if (index >= 0) {
             waterActivities.get(index).cloneWaterActivity(waterActivity);
@@ -43,7 +58,7 @@ public class User {
         }
     }
 
-    public static void insertRefuseProduction(RefuseProduction refuseProduction) {
+    public void insertRefuseProduction(RefuseProduction refuseProduction) {
         int index = refuseProductions.indexOf(refuseProduction);
         if (index >= 0) {
             refuseProductions.get(index).cloneRefuseProduction(refuseProduction);
@@ -52,7 +67,7 @@ public class User {
         }
     }
 
-    public static void reset() {
+    public void reset() {
         electricDevices.clear();
         waterActivities.clear();
         refuseProductions.clear();

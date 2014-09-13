@@ -63,11 +63,12 @@ public class WaterInfoActivity extends Activity {
         this.waterInfo = (TextView) findViewById(R.id.water_info);
         this.waterHint = (TextView) findViewById(R.id.water_hint);
         this.waterValue = (TextView) findViewById(R.id.water_value);
+        User user = User.getInstance();
         this.waterInfo.setText(getUsageInfo());
         int index = new Random().nextInt(tips.length);
         this.waterHint.setText(tips[index]);
         this.waterValue.setText(this.getValue());
-        int waterUsage = User.getUserStats().getWaterUsage();
+        int waterUsage = user.getUserStats().getWaterUsage();
         if (waterUsage > this.waterLimits[0])
             waterValue.setTextColor(Color.parseColor("#FF0000"));
         else if (waterUsage > this.waterLimits[1])
@@ -78,16 +79,18 @@ public class WaterInfoActivity extends Activity {
 
     private String getValue() {
         DataManager dataManager = DataManager.getInstance();
+        User user = User.getInstance();
         dataManager.prepareUserStats();
-        int waterUsage = User.getUserStats().getWaterUsage();
+        int waterUsage = user.getUserStats().getWaterUsage();
         String value = Integer.toString(waterUsage) + " liters per day";
         return value;
     }
 
     private String getUsageInfo() {
         DataManager dataManager = DataManager.getInstance();
+        User user = User.getInstance();
         dataManager.prepareUserStats();
-        int waterUsage = User.getUserStats().getWaterUsage();
+        int waterUsage = user.getUserStats().getWaterUsage();
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         double approximateCost = (waterUsage/1000.0) * 1.28;
         String info = "Every day you use about " + waterUsage + " liters of water.";

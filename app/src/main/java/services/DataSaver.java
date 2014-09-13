@@ -16,11 +16,16 @@ import model.WaterActivity;
 public class DataSaver {
 
     private static DataSaver instance = null;
+    private User user;
 
     public static DataSaver getInstance() {
         if (instance == null)
             instance = new DataSaver();
         return instance;
+    }
+
+    private DataSaver() {
+        this.user = User.getInstance();
     }
 
     public boolean saveDataToFile(Context context) {
@@ -49,7 +54,7 @@ public class DataSaver {
     }
 
     private void saveElectricDevicesToFile(BufferedWriter bw) throws IOException {
-        for (ElectricDevice electricDevice : User.getElectricDevices()) {
+        for (ElectricDevice electricDevice : user.getElectricDevices()) {
             bw.write("E");
             bw.newLine();
             bw.write(electricDevice.getName());
@@ -68,7 +73,7 @@ public class DataSaver {
     }
 
     private void saveWaterActivitiesToFile(BufferedWriter bw) throws IOException {
-        for (WaterActivity waterActivity : User.getWaterActivities()) {
+        for (WaterActivity waterActivity : user.getWaterActivities()) {
             bw.write("W");
             bw.newLine();
             bw.write(waterActivity.getName());
@@ -81,7 +86,7 @@ public class DataSaver {
     }
 
     private void saveRefuseProductionsToFile(BufferedWriter bw) throws IOException {
-        for (RefuseProduction refuseProduction : User.getRefuseProductions()) {
+        for (RefuseProduction refuseProduction : user.getRefuseProductions()) {
             bw.write("R");
             bw.newLine();
             bw.write(refuseProduction.getName());

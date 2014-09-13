@@ -5,12 +5,12 @@ import java.util.ArrayList;
 import model.ElectricDevice;
 import model.RefuseProduction;
 import model.User;
-import model.UserStats;
 import model.WaterActivity;
 
 public class DataManager {
 
     private static DataManager instance = null;
+    private User user = User.getInstance();
 
     private UsageCalculator usageCalculator;
 
@@ -31,44 +31,44 @@ public class DataManager {
                                         int standbyHoursPerDay) {
         ElectricDevice electricDevice = new ElectricDevice(name, amount, powerConsumption,
                 hoursPerDay, standbyPowerConsumption, standbyHoursPerDay);
-        User.insertElectricDevice(electricDevice);
+        user.insertElectricDevice(electricDevice);
     }
 
     public void storeWaterActivityData(String name, int litersUsed, int timesPerDay) {
         WaterActivity waterActivity = new WaterActivity(name, litersUsed, timesPerDay);
-        User.insertWaterActivity(waterActivity);
+        user.insertWaterActivity(waterActivity);
     }
 
     public void storeRefuseProductionData(String name, int pointValue) {
         RefuseProduction refuseProduction = new RefuseProduction(name, pointValue);
-        User.insertRefuseProduction(refuseProduction);
+        user.insertRefuseProduction(refuseProduction);
     }
 
     public ArrayList<ElectricDevice> fetchElectricDeviceData() {
-        return User.getElectricDevices();
+        return user.getElectricDevices();
     }
 
     public ArrayList<WaterActivity> fetchWaterActivityData() {
-        return User.getWaterActivities();
+        return user.getWaterActivities();
     }
 
     public ArrayList<RefuseProduction> fetchRefuseProductionData() {
-        return User.getRefuseProductions();
+        return user.getRefuseProductions();
     }
 
     public void prepareUserStats() {
-        int powerUsage = this.usageCalculator.calculateDailyPowerUsage(User.getElectricDevices());
-        int standbyPowerUsage = this.usageCalculator.calculateDailyStandbyPowerUsage(User.getElectricDevices());
-        int waterUsage = this.usageCalculator.calculateDailyWaterUsage(User.getWaterActivities());
-        int refuseProductionPoints = this.usageCalculator.calculateRefuseProductionPoints(User.getRefuseProductions());
-        User.getUserStats().setPowerUsage(powerUsage);
-        User.getUserStats().setStandbyPowerUsage(standbyPowerUsage);
-        User.getUserStats().setWaterUsage(waterUsage);
-        User.getUserStats().setRefuseProductionPoints(refuseProductionPoints);
+        int powerUsage = this.usageCalculator.calculateDailyPowerUsage(user.getElectricDevices());
+        int standbyPowerUsage = this.usageCalculator.calculateDailyStandbyPowerUsage(user.getElectricDevices());
+        int waterUsage = this.usageCalculator.calculateDailyWaterUsage(user.getWaterActivities());
+        int refuseProductionPoints = this.usageCalculator.calculateRefuseProductionPoints(user.getRefuseProductions());
+        user.getUserStats().setPowerUsage(powerUsage);
+        user.getUserStats().setStandbyPowerUsage(standbyPowerUsage);
+        user.getUserStats().setWaterUsage(waterUsage);
+        user.getUserStats().setRefuseProductionPoints(refuseProductionPoints);
     }
 
     public void resetAllUserElements() {
-        User.reset();
+        user.reset();
     }
 
 }

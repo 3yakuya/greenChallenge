@@ -10,7 +10,6 @@ import android.widget.TextView;
 import java.util.Random;
 
 import model.User;
-import model.UserStats;
 import services.DataManager;
 
 
@@ -64,11 +63,12 @@ public class RefuseInfoActivity extends Activity {
         this.refuseInfo = (TextView) findViewById(R.id.refuse_info);
         this.refuseHint = (TextView) findViewById(R.id.refuse_hint);
         this.refuseValue = (TextView) findViewById(R.id.refuse_value);
+        User user = User.getInstance();
         this.refuseInfo.setText(getUsageInfo());
         int index = new Random().nextInt(tips.length);
         this.refuseHint.setText(tips[index]);
         this.refuseValue.setText(this.getValue());
-        int refusePoints = User.getUserStats().getRefuseProductionPoints();
+        int refusePoints = user.getUserStats().getRefuseProductionPoints();
         if (refusePoints < this.refuseLimits[0])
             refuseValue.setTextColor(Color.parseColor("#FF0000"));
         else if (refusePoints < this.refuseLimits[1])
@@ -79,16 +79,18 @@ public class RefuseInfoActivity extends Activity {
 
     private String getValue() {
         DataManager dataManager = DataManager.getInstance();
+        User user = User.getInstance();
         dataManager.prepareUserStats();
-        int refusePoints = User.getUserStats().getRefuseProductionPoints();
+        int refusePoints = user.getUserStats().getRefuseProductionPoints();
         String value = Integer.toString(refusePoints) + " points";
         return value;
     }
 
     private String getUsageInfo() {
         DataManager dataManager = DataManager.getInstance();
+        User user = User.getInstance();
         dataManager.prepareUserStats();
-        int refusePoints = User.getUserStats().getRefuseProductionPoints();
+        int refusePoints = user.getUserStats().getRefuseProductionPoints();
         String info = "Your way of dealing with waste was graded for " + refusePoints + " points.";
         info = info.concat("\n\n The more points the better for the environment.");
         info = info.concat("\n\nIf you are unsure what to do with some kind of rubbish or waste, " +

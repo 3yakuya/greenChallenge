@@ -15,6 +15,11 @@ import model.WaterActivity;
 public class DataLoader {
 
     private static DataLoader instance = null;
+    private User user;
+
+    private DataLoader() {
+        this.user = User.getInstance();
+    }
 
     public static DataLoader getInstance() {
         if (instance == null)
@@ -53,21 +58,21 @@ public class DataLoader {
                     ElectricDevice electricDevice = readElectricDeviceDataFromFile(br);
                     if (electricDevice == null)
                         return false;
-                    User.insertElectricDevice(electricDevice);
+                    user.insertElectricDevice(electricDevice);
                     break;
 
                 case 'W':
                     WaterActivity waterActivity = readWaterActivityDataFromFile(br);
                     if (waterActivity == null)
                         return false;
-                    User.insertWaterActivity(waterActivity);
+                    user.insertWaterActivity(waterActivity);
                     break;
 
                 case 'R':
                     RefuseProduction refuseProduction = readRefuseProductionDataFromFile(br);
                     if (refuseProduction == null)
                         return false;
-                    User.insertRefuseProduction(refuseProduction);
+                    user.insertRefuseProduction(refuseProduction);
                     break;
 
                 default:

@@ -7,7 +7,7 @@ import model.ElectricDevice;
 public class ElectricDeviceTest extends InstrumentationTestCase {
 
     public void testCloneElectricDevice() {
-        ElectricDevice electricDeviceOne = new ElectricDevice("TestDebice", 0, 100, 10, 10, 20);
+        ElectricDevice electricDeviceOne = new ElectricDevice("TestDevice", 0, 100, 10, 10, 20);
         ElectricDevice electricDeviceTwo = new ElectricDevice();
         electricDeviceTwo.cloneElectricDevice(electricDeviceOne);
         assertEquals(electricDeviceOne.getAmount(), electricDeviceTwo.getAmount());

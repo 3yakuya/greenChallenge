@@ -121,8 +121,9 @@ public class MainActivity extends Activity {
     private int getCurrentUserScore() {
         DataManager dataManager = DataManager.getInstance();
         dataManager.prepareUserStats();
+        User user = User.getInstance();
         int score;
-        int electricPowerScore = User.getUserStats().getPowerUsage();
+        int electricPowerScore = user.getUserStats().getPowerUsage();
         if (electricPowerScore > powerLimits[0]) {
             score = 200;
         } else if (electricPowerScore > powerLimits[1]) {
@@ -131,14 +132,14 @@ public class MainActivity extends Activity {
             score = 0;
         }
 
-        int waterScore = User.getUserStats().getWaterUsage();
+        int waterScore = user.getUserStats().getWaterUsage();
         if (waterScore > waterLimits[0]) {
             score += 20;
         } else if (waterScore > waterLimits[1]) {
             score += 10;
         }
 
-        int refuseScore = User.getUserStats().getRefuseProductionPoints();
+        int refuseScore = user.getUserStats().getRefuseProductionPoints();
         if (refuseScore < refuseLimits[0]) {
             score += 2;
         } else if (refuseScore < refuseLimits[1]) {

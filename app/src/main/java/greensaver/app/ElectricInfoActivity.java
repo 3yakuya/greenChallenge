@@ -11,7 +11,6 @@ import java.text.DecimalFormat;
 import java.util.Random;
 
 import model.User;
-import model.UserStats;
 import services.DataManager;
 
 
@@ -65,11 +64,12 @@ public class ElectricInfoActivity extends Activity {
         this.electricInfo = (TextView) findViewById(R.id.electric_info);
         this.electricHint = (TextView) findViewById(R.id.electric_hint);
         this.electricValue = (TextView) findViewById(R.id.electric_value);
+        User user = User.getInstance();
         this.electricInfo.setText(getUsageInfo());
         int index = new Random().nextInt(tips.length);
         this.electricHint.setText(tips[index]);
         this.electricValue.setText(this.getValue());
-        int powerUsage = User.getUserStats().getPowerUsage();
+        int powerUsage = user.getUserStats().getPowerUsage();
         if (powerUsage > this.powerLimits[0])
             electricValue.setTextColor(Color.parseColor("#FF0000"));
         else if (powerUsage > this.powerLimits[1])
@@ -81,17 +81,19 @@ public class ElectricInfoActivity extends Activity {
 
     private String getValue() {
         DataManager dataManager = DataManager.getInstance();
+        User user = User.getInstance();
         dataManager.prepareUserStats();
-        int powerUsage = User.getUserStats().getPowerUsage();
+        int powerUsage = user.getUserStats().getPowerUsage();
         String value = Integer.toString(powerUsage) + " Wh per day";
         return value;
     }
 
     private String getUsageInfo() {
         DataManager dataManager = DataManager.getInstance();
+        User user = User.getInstance();
         dataManager.prepareUserStats();
-        int powerUsage = User.getUserStats().getPowerUsage();
-        int standbyPowerUsage = User.getUserStats().getStandbyPowerUsage();
+        int powerUsage = user.getUserStats().getPowerUsage();
+        int standbyPowerUsage = user.getUserStats().getStandbyPowerUsage();
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         double approximateCost = (powerUsage/1000.0) * 0.16;
         String info = "Basic devices you selected consume approximately " + powerUsage + " Wh per day.";
