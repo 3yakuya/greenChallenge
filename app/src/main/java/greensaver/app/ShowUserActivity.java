@@ -43,22 +43,6 @@ public class ShowUserActivity extends Activity {
         electricDevicesGrid.setAdapter(new ImageButtonAdapter(this, electricDevices));
         waterActivityGrid.setAdapter(new ImageButtonAdapter(this, waterActivities));
         refuseProductionGrid.setAdapter(new ImageButtonAdapter(this, refuseProductions));
-
-        electricDevicesGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                //TODO call method showing add electric device activity.
-            }
-        });
-        waterActivityGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                //TODO call method showing add water activity activity.
-            }
-        });
-        refuseProductionGrid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                //TODO call method showing add refuse production activity.
-            }
-        });
     }
 
 

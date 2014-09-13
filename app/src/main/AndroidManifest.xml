@@ -31,10 +31,10 @@
         <activity
             android:name="greensaver.app.AddElectricDeviceActivity"
             android:label="@string/title_activity_add_electric_device"
-            android:parentActivityName="greensaver.app.MainActivity" >
+            android:parentActivityName="greensaver.app.ShowUserActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
+                android:value="ShowUserActivity" />
         </activity>
         <activity
             android:name="greensaver.app.ElectricInfoActivity"
@@ -47,18 +47,18 @@
         <activity
             android:name="greensaver.app.AddWaterActivityActivity"
             android:label="@string/title_activity_add_water"
-            android:parentActivityName="greensaver.app.MainActivity" >
+            android:parentActivityName="greensaver.app.ShowUserActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
+                android:value="ShowUserActivity" />
         </activity>
         <activity
             android:name="greensaver.app.AddRefuseProductionActivity"
             android:label="@string/title_activity_add_refuse_production"
-            android:parentActivityName="greensaver.app.MainActivity" >
+            android:parentActivityName="greensaver.app.ShowUserActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
+                android:value="ShowUserActivity" />
         </activity>
         <activity
             android:name="greensaver.app.WaterInfoActivity"

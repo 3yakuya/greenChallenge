@@ -195,8 +195,8 @@ public class AddElectricDeviceActivity extends Activity
         int standbyHoursPerDay = Integer.parseInt(this.standbyHoursBox.getText().toString());
         DataManager.storeElectricDeviceData(name, amount, powerConsumption, hoursPerDay,
                 standbyPowerConsumption, standbyHoursPerDay);
-        Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
         DataSaver.saveDataToFile(this);
+        Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
         startActivity(intent);
     }
 

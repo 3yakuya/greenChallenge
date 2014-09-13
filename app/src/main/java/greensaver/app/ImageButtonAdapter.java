@@ -22,9 +22,10 @@ public class ImageButtonAdapter extends BaseAdapter{
 
         if (convertView == null) {
             imageButton = new ImageButton(this.context);
-            String name = this.recognizeName(elements[position].getName());
-            int drawableResourceId = context.getResources().getIdentifier(name, "drawable", context.getPackageName());
+            NameAndType selection = this.recognizeName(elements[position].getName());
+            int drawableResourceId = context.getResources().getIdentifier(selection.name, "drawable", context.getPackageName());
             imageButton.setImageResource(drawableResourceId);
+            this.assignOnClickListener(imageButton, selection.type);
         } else {
             imageButton = (ImageButton) convertView;
         }
@@ -48,66 +49,86 @@ public class ImageButtonAdapter extends BaseAdapter{
         return position;
     }
 
-    private String recognizeName(String name) {
+    private class NameAndType {
+        String name;
+        int type;
+
+        private NameAndType(String name, int type) {
+            this.name = name;
+            this.type = type;
+        }
+    }
+
+    private NameAndType recognizeName(String name) {
         char first = name.charAt(0);
         switch (first) {
             case 'T':
-                return "tv";
+                return new NameAndType("tv", 0);
             case 'R':
                 if (name.charAt(1) == 'a')
-                    return "radio";
+                    return new NameAndType("radio", 0);
                 else
-                    return "router";
+                    return new NameAndType("router", 0);
             case 'B':
                 if (name.charAt(3) == 'h')
-                    return "bath";
+                    return new NameAndType("bath", 1);
                 else if (name.charAt(3) == 't')
-                    return "batteries_and_bulbs";
+                    return new NameAndType("batteries_and_bulbs", 2);
                 else if (name.charAt(1) == 'i')
-                    return "big_size_waste";
+                    return new NameAndType("big_size_waste", 2);
                 else
-                    return "brushing_shaving";
+                    return new NameAndType("brushing_shaving", 1);
             case 'C':
                 if (name.charAt(1) == 'o')
-                    return "computer";
+                    return new NameAndType("computer", 0);
                 else
-                    return "cleaning_hands";
+                    return new NameAndType("cleaning_hands", 1);
             case 'H':
-                return "household";
+                return new NameAndType("household", 2);
             case 'P':
                 if (name.charAt(2) == 'i')
-                    return "printer";
+                    return new NameAndType("printer", 0);
                 else if (name.charAt(2) == 'e')
-                    return "pressing_bottles";
+                    return new NameAndType("pressing_bottles", 2);
                 else
-                    return "plastic_bags";
+                    return new NameAndType("plastic_bags", 2);
             case 'S':
                 if (name.charAt(2) == 't')
-                    return "set_top_box";
+                    return new NameAndType("set_top_box", 0);
                 else if (name.charAt(2) == 'g')
-                    return "segregation";
+                    return new NameAndType("segregation", 2);
                 else
-                    return "shower";
+                    return new NameAndType("shower", 1);
             case 'D':
                 if (name.charAt(1) == 'v')
-                    return "dvd_set";
+                    return new NameAndType("dvd_set", 0);
                 else
-                    return "dishwasher";
+                    return new NameAndType("dishwasher", 1);
             case 'M':
                 if (name.charAt(1) == 'i')
-                    return "microwave";
+                    return new NameAndType("microwave", 0);
                 else
-                    return "medicine";
+                    return new NameAndType("medicine", 2);
             case 'W':
                 if (name.charAt(8) == 'm')
-                    return "washing_machine";
+                    return new NameAndType("washing_machine", 1);
                 else if (name.charAt(8) == 'u')
-                    return "washing_up";
+                    return new NameAndType("washing_up", 1);
                 else
-                    return "washing_car";
+                    return new NameAndType("washing_car", 1);
             default:
-                return "ic_launcher";
+                return new NameAndType("ic_launcher", 0);
         }
+    }
+
+    private void assignOnClickListener(ImageButton button, int type) {
+        if (type == 0)
+            button.setOnClickListener(new ElectricDeviceDetailsClickListener());
+        else if (type == 1)
+            button.setOnClickListener(new WaterActivityDetailsClickListener());
+        else
+            button.setOnClickListener(new RefuseProductionDetailsClickListener());
+
     }
 
 }
