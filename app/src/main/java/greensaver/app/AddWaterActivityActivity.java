@@ -139,11 +139,10 @@ public class AddWaterActivityActivity extends Activity
     }
 
     public void addWaterActivity(View v) {
-        DataManager dataManager = DataManager.getInstance();
         String name = this.waterActivitySpinner.getSelectedItem().toString();
         int litersUsed = Integer.parseInt(this.litersUsedBox.getText().toString());
         int timesPerDay = Integer.parseInt(this.timesPerDayBox.getText().toString());
-        dataManager.storeWaterActivityData(name, litersUsed, timesPerDay);
+        DataManager.storeWaterActivityData(name, litersUsed, timesPerDay);
         Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
         DataSaver.saveDataToFile(this);
         startActivity(intent);

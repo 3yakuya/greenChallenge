@@ -25,19 +25,18 @@ public class ShowUserActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_user);
-        DataManager dataManager = DataManager.getInstance();
 
         GridView electricDevicesGrid = (GridView) findViewById(R.id.electric_devices_grid);
         GridView waterActivityGrid = (GridView) findViewById(R.id.water_activity_grid);
         GridView refuseProductionGrid = (GridView) findViewById(R.id.refuse_production_grid);
 
-        ArrayList<ElectricDevice> fetchedElectricDeviceData = dataManager.fetchElectricDeviceData();
+        ArrayList<ElectricDevice> fetchedElectricDeviceData = DataManager.fetchElectricDeviceData();
         ElectricDevice[] electricDevices =
                 fetchedElectricDeviceData.toArray(new ElectricDevice[fetchedElectricDeviceData.size()]);
-        ArrayList<WaterActivity> fetchedWaterActivityData = dataManager.fetchWaterActivityData();
+        ArrayList<WaterActivity> fetchedWaterActivityData = DataManager.fetchWaterActivityData();
         WaterActivity[] waterActivities =
                 fetchedWaterActivityData.toArray(new WaterActivity[fetchedWaterActivityData.size()]);
-        ArrayList<RefuseProduction> fetchedRefuseProductionData = dataManager.fetchRefuseProductionData();
+        ArrayList<RefuseProduction> fetchedRefuseProductionData = DataManager.fetchRefuseProductionData();
         RefuseProduction[] refuseProductions =
                 fetchedRefuseProductionData.toArray(new RefuseProduction[fetchedRefuseProductionData.size()]);
 
@@ -91,8 +90,7 @@ public class ShowUserActivity extends Activity {
                 return true;
 
             case R.id.reset_all_user_elements:
-                DataManager dataManager = DataManager.getInstance();
-                dataManager.resetAllUserElements();
+                DataManager.resetAllUserElements();
                 DataSaver.saveDataToFile(this);
                 intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);

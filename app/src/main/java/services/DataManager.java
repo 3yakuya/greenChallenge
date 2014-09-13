@@ -9,48 +9,40 @@ import model.WaterActivity;
 
 public class DataManager {
 
-    private static DataManager instance = null;
-    private User user = User.getInstance();
-
-    public static DataManager getInstance() {
-        if (instance == null)
-            instance = new DataManager();
-        return instance;
-    }
-
-    public void storeElectricDeviceData(String name, int amount,
+    public static void storeElectricDeviceData(String name, int amount,
                                         int powerConsumption,
                                         int hoursPerDay,
                                         int standbyPowerConsumption,
                                         int standbyHoursPerDay) {
         ElectricDevice electricDevice = new ElectricDevice(name, amount, powerConsumption,
                 hoursPerDay, standbyPowerConsumption, standbyHoursPerDay);
-        user.insertElectricDevice(electricDevice);
+        User.getInstance().insertElectricDevice(electricDevice);
     }
 
-    public void storeWaterActivityData(String name, int litersUsed, int timesPerDay) {
+    public static void storeWaterActivityData(String name, int litersUsed, int timesPerDay) {
         WaterActivity waterActivity = new WaterActivity(name, litersUsed, timesPerDay);
-        user.insertWaterActivity(waterActivity);
+        User.getInstance().insertWaterActivity(waterActivity);
     }
 
-    public void storeRefuseProductionData(String name, int pointValue) {
+    public static void storeRefuseProductionData(String name, int pointValue) {
         RefuseProduction refuseProduction = new RefuseProduction(name, pointValue);
-        user.insertRefuseProduction(refuseProduction);
+        User.getInstance().insertRefuseProduction(refuseProduction);
     }
 
-    public ArrayList<ElectricDevice> fetchElectricDeviceData() {
-        return user.getElectricDevices();
+    public static ArrayList<ElectricDevice> fetchElectricDeviceData() {
+        return User.getInstance().getElectricDevices();
     }
 
-    public ArrayList<WaterActivity> fetchWaterActivityData() {
-        return user.getWaterActivities();
+    public static ArrayList<WaterActivity> fetchWaterActivityData() {
+        return User.getInstance().getWaterActivities();
     }
 
-    public ArrayList<RefuseProduction> fetchRefuseProductionData() {
-        return user.getRefuseProductions();
+    public static ArrayList<RefuseProduction> fetchRefuseProductionData() {
+        return User.getInstance().getRefuseProductions();
     }
 
-    public void prepareUserStats() {
+    public static void prepareUserStats() {
+        User user = User.getInstance();
         int powerUsage = UsageCalculator.calculateDailyPowerUsage(user.getElectricDevices());
         int standbyPowerUsage = UsageCalculator.calculateDailyStandbyPowerUsage(user.getElectricDevices());
         int waterUsage = UsageCalculator.calculateDailyWaterUsage(user.getWaterActivities());
@@ -61,8 +53,8 @@ public class DataManager {
         user.getUserStats().setRefuseProductionPoints(refuseProductionPoints);
     }
 
-    public void resetAllUserElements() {
-        user.reset();
+    public static void resetAllUserElements() {
+        User.getInstance().reset();
     }
 
 }

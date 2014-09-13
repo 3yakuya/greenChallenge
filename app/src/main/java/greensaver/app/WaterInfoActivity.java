@@ -78,18 +78,16 @@ public class WaterInfoActivity extends Activity {
     }
 
     private String getValue() {
-        DataManager dataManager = DataManager.getInstance();
         User user = User.getInstance();
-        dataManager.prepareUserStats();
+        DataManager.prepareUserStats();
         int waterUsage = user.getUserStats().getWaterUsage();
         String value = Integer.toString(waterUsage) + " liters per day";
         return value;
     }
 
     private String getUsageInfo() {
-        DataManager dataManager = DataManager.getInstance();
         User user = User.getInstance();
-        dataManager.prepareUserStats();
+        DataManager.prepareUserStats();
         int waterUsage = user.getUserStats().getWaterUsage();
         DecimalFormat decimalFormat = new DecimalFormat("0.00");
         double approximateCost = (waterUsage/1000.0) * 1.28;

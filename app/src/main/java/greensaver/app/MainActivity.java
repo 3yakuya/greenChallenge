@@ -119,8 +119,7 @@ public class MainActivity extends Activity {
     }
 
     private int getCurrentUserScore() {
-        DataManager dataManager = DataManager.getInstance();
-        dataManager.prepareUserStats();
+        DataManager.prepareUserStats();
         User user = User.getInstance();
         int score;
         int electricPowerScore = user.getUserStats().getPowerUsage();

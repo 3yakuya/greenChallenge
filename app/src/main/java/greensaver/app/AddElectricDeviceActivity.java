@@ -187,14 +187,13 @@ public class AddElectricDeviceActivity extends Activity
     }
 
     public void addElectricDevice(View v) {
-        DataManager dataManager = DataManager.getInstance();
         String name = this.electricDeviceSpinner.getSelectedItem().toString();
         int amount = Integer.parseInt(this.amountBox.getText().toString());
         int powerConsumption = Integer.parseInt(this.powerConsumptionBox.getText().toString());
         int hoursPerDay = Integer.parseInt(this.hoursPerDayBox.getText().toString());
         int standbyPowerConsumption = Integer.parseInt(this.standbyPowerBox.getText().toString());
         int standbyHoursPerDay = Integer.parseInt(this.standbyHoursBox.getText().toString());
-        dataManager.storeElectricDeviceData(name, amount, powerConsumption, hoursPerDay,
+        DataManager.storeElectricDeviceData(name, amount, powerConsumption, hoursPerDay,
                 standbyPowerConsumption, standbyHoursPerDay);
         Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
         DataSaver.saveDataToFile(this);

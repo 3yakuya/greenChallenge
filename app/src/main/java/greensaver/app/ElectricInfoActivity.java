@@ -80,18 +80,16 @@ public class ElectricInfoActivity extends Activity {
     }
 
     private String getValue() {
-        DataManager dataManager = DataManager.getInstance();
         User user = User.getInstance();
-        dataManager.prepareUserStats();
+        DataManager.prepareUserStats();
         int powerUsage = user.getUserStats().getPowerUsage();
         String value = Integer.toString(powerUsage) + " Wh per day";
         return value;
     }
 
     private String getUsageInfo() {
-        DataManager dataManager = DataManager.getInstance();
         User user = User.getInstance();
-        dataManager.prepareUserStats();
+        DataManager.prepareUserStats();
         int powerUsage = user.getUserStats().getPowerUsage();
         int standbyPowerUsage = user.getUserStats().getStandbyPowerUsage();
         DecimalFormat decimalFormat = new DecimalFormat("0.00");

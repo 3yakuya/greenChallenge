@@ -78,18 +78,16 @@ public class RefuseInfoActivity extends Activity {
     }
 
     private String getValue() {
-        DataManager dataManager = DataManager.getInstance();
         User user = User.getInstance();
-        dataManager.prepareUserStats();
+        DataManager.prepareUserStats();
         int refusePoints = user.getUserStats().getRefuseProductionPoints();
         String value = Integer.toString(refusePoints) + " points";
         return value;
     }
 
     private String getUsageInfo() {
-        DataManager dataManager = DataManager.getInstance();
         User user = User.getInstance();
-        dataManager.prepareUserStats();
+        DataManager.prepareUserStats();
         int refusePoints = user.getUserStats().getRefuseProductionPoints();
         String info = "Your way of dealing with waste was graded for " + refusePoints + " points.";
         info = info.concat("\n\n The more points the better for the environment.");
