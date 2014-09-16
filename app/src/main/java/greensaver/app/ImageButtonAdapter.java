@@ -101,7 +101,7 @@ public class ImageButtonAdapter extends BaseAdapter{
                 else
                     return new NameAndType("shower", 1);
             case 'D':
-                if (name.charAt(1) == 'v')
+                if (name.charAt(1) == 'V')
                     return new NameAndType("dvd_set", 0);
                 else
                     return new NameAndType("dishwasher", 1);

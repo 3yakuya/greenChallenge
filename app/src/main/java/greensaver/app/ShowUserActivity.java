@@ -13,6 +13,7 @@ import android.widget.GridView;
 import java.util.ArrayList;
 
 import model.ElectricDevice;
+import model.FullSelection;
 import model.RefuseProduction;
 import model.WaterActivity;
 import services.DataManager;
@@ -23,12 +24,6 @@ public class ShowUserActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        DataManager.storeWaterActivityData("Cleaning Hands", 1, 5);/////////////////////////
-        DataManager.storeWaterActivityData("Dishwasher", 30, 1);/////////////////////////
-        DataManager.storeRefuseProductionData("Segregation", 8);//////////////////////////
-        DataManager.storeRefuseProductionData("Medicine", 5);
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_user);
 
@@ -36,13 +31,15 @@ public class ShowUserActivity extends Activity {
         GridView waterActivityGrid = (GridView) findViewById(R.id.water_activity_grid);
         GridView refuseProductionGrid = (GridView) findViewById(R.id.refuse_production_grid);
 
-        ArrayList<ElectricDevice> fetchedElectricDeviceData = DataManager.fetchElectricDeviceData();
+        FullSelection fullSelection = FullSelection.getInstance();
+
+        ArrayList<ElectricDevice> fetchedElectricDeviceData = fullSelection.getAllElectricDevices();
         ElectricDevice[] electricDevices =
                 fetchedElectricDeviceData.toArray(new ElectricDevice[fetchedElectricDeviceData.size()]);
-        ArrayList<WaterActivity> fetchedWaterActivityData = DataManager.fetchWaterActivityData();
+        ArrayList<WaterActivity> fetchedWaterActivityData = fullSelection.getAllWaterActivities();
         WaterActivity[] waterActivities =
                 fetchedWaterActivityData.toArray(new WaterActivity[fetchedWaterActivityData.size()]);
-        ArrayList<RefuseProduction> fetchedRefuseProductionData = DataManager.fetchRefuseProductionData();
+        ArrayList<RefuseProduction> fetchedRefuseProductionData = fullSelection.getAllRefuseProductions();
         RefuseProduction[] refuseProductions =
                 fetchedRefuseProductionData.toArray(new RefuseProduction[fetchedRefuseProductionData.size()]);
 
