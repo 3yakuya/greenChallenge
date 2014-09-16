@@ -22,13 +22,13 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
-            <Spinner
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/electric_device_spinner"
-                android:entries="@array/electric_device_spinner_list"
-                android:prompt="@string/electric_device_spinner"
-                android:layout_marginTop="00dp" />
+                android:id="@+id/electric_device_name_box"
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
 
             <TextView
                 android:layout_width="wrap_content"

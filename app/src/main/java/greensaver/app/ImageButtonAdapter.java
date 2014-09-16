@@ -25,6 +25,7 @@ public class ImageButtonAdapter extends BaseAdapter{
             NameAndType selection = this.recognizeName(elements[position].getName());
             int drawableResourceId = context.getResources().getIdentifier(selection.name, "drawable", context.getPackageName());
             imageButton.setImageResource(drawableResourceId);
+            imageButton.setTag(selection.name);
             this.assignOnClickListener(imageButton, selection.type);
         } else {
             imageButton = (ImageButton) convertView;

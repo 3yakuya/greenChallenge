@@ -19,7 +19,7 @@ import services.DataSaver;
 
 
 public class AddElectricDeviceActivity extends Activity
-        implements AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener {
+        implements SeekBar.OnSeekBarChangeListener {
 
     private final int[] minPowerConsumptions = {50, 5, 30, 5, 3, 5, 10, 650};
     private final int[] maxPowerConsumptions = {100, 50, 300, 170, 10, 45, 40, 1750};
@@ -31,20 +31,27 @@ public class AddElectricDeviceActivity extends Activity
     private TextView powerConsumptionBox;
     private TextView hoursPerDayBox;
     private TextView standbyPowerBox;
+    private TextView electricDeviceNameBox;
 
     private SeekBar powerConsumptionBar;
     private SeekBar hoursPerDayBar;
     private SeekBar standbyPowerBar;
 
-    private Spinner electricDeviceSpinner;
-
+    private String selectedDeviceName;
+    private String selectedDeviceFullName;
     private int selectedDeviceNumber = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_electric_device);
-        this.initializeElectricDeviceSpinner();
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null)
+            this.selectedDeviceName = bundle.getString("deviceName");
+        else
+            this.selectedDeviceName = "tv"; //default.
+        this.selectedDeviceNumber = this.getDeviceNumberFromName(selectedDeviceName);
+        this.selectedDeviceFullName = getResources().getStringArray(R.array.electric_device_spinner_list)[this.selectedDeviceNumber];
         this.initializeAllSeekBars();
         this.initializeAllTextBoxes();
         this.prepareAverageValuesForDevice();
@@ -66,16 +73,6 @@ public class AddElectricDeviceActivity extends Activity
         return super.onOptionsItemSelected(item);
     }
 
-    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        // An item was selected. You can retrieve the selected item using
-        // parent.getItemAtPosition(pos)
-        this.selectedDeviceNumber = pos;
-        this.prepareAverageValuesForDevice();
-    }
-
-    public void onNothingSelected(AdapterView<?> parent) {
-    }
-
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         this.setTextBoxHavingSeekBar(seekBar);
     }
@@ -86,19 +83,12 @@ public class AddElectricDeviceActivity extends Activity
     public void onStopTrackingTouch(SeekBar seekBar) {
     }
 
-    private void initializeElectricDeviceSpinner() {
-        this.electricDeviceSpinner = (Spinner)findViewById(R.id.electric_device_spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.electric_device_spinner_list, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        this.electricDeviceSpinner.setAdapter(adapter);
-        this.electricDeviceSpinner.setOnItemSelectedListener(this);
-    }
-
     private void initializeAllTextBoxes() {
         powerConsumptionBox = (TextView) findViewById(R.id.electric_device_power_consumption_box);
         hoursPerDayBox = (TextView) findViewById(R.id.electric_device_hours_per_day_box);
         standbyPowerBox = (TextView) findViewById(R.id.electric_device_standby_power_box);
+        electricDeviceNameBox = (TextView) findViewById(R.id.electric_device_name_box);
+        electricDeviceNameBox.setText(this.selectedDeviceFullName);
     }
 
     private void initializeAllSeekBars() {
@@ -165,12 +155,11 @@ public class AddElectricDeviceActivity extends Activity
     }
 
     public void addElectricDevice(View v) {
-        String name = this.electricDeviceSpinner.getSelectedItem().toString();
         int powerConsumption = Integer.parseInt(this.powerConsumptionBox.getText().toString());
         int hoursPerDay = Integer.parseInt(this.hoursPerDayBox.getText().toString());
         int standbyPowerConsumption = Integer.parseInt(this.standbyPowerBox.getText().toString());
         int standbyHoursPerDay = this.getStandbyHoursPerDay(hoursPerDay);
-        DataManager.storeElectricDeviceData(name, powerConsumption, hoursPerDay,
+        DataManager.storeElectricDeviceData(this.selectedDeviceFullName, powerConsumption, hoursPerDay,
                 standbyPowerConsumption, standbyHoursPerDay);
         DataSaver.saveDataToFile(this);
         Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
@@ -181,7 +170,7 @@ public class AddElectricDeviceActivity extends Activity
         this.isRunningStandby = !this.isRunningStandby;
         ImageButton setStandbyButton = (ImageButton) findViewById(R.id.set_standby_button);
         TextView setStandbyBox = (TextView) findViewById(R.id.set_standby_box);
-        if (this.isRunningStandby) {  //TODO Change button images to proper ones standby on/off.
+        if (this.isRunningStandby) {        //TODO Change button images to proper ones standby on/off.
             setStandbyButton.setImageResource(R.drawable.prad);
             setStandbyBox.setText(R.string.standby_on);
         } else {
@@ -196,6 +185,27 @@ public class AddElectricDeviceActivity extends Activity
             return day - hoursPerDay;
         else
             return 0;
+    }
+
+    private int getDeviceNumberFromName(String name) {
+        if (name.equals("tv"))
+                return 0;
+        else if (name.equals("radio"))
+                return 1;
+        else if (name.equals("computer"))
+                return 2;
+        else if (name.equals("printer"))
+                return 3;
+        else if (name.equals("router"))
+                return 4;
+        else if (name.equals("set_top_box"))
+                return 5;
+        else if (name.equals("dvd_set"))
+                return 6;
+        else if (name.equals("microwave"))
+                return 7;
+        else
+                return 0;
     }
 
 }

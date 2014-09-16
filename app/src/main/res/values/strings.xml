@@ -15,7 +15,6 @@
     <string name="refuse_production_list">Litter</string>
     <string name="title_activity_add_electric_device">Add an electric device</string>
     <string name="zero_value">0</string>
-    <string name="electric_device_spinner">Select a device</string>
     <string name="reset_button">Reset all elements</string>
 
     <string-array name="electric_device_spinner_list">
