@@ -9,12 +9,12 @@ import model.WaterActivity;
 
 public class DataManager {
 
-    public static void storeElectricDeviceData(String name, int amount,
+    public static void storeElectricDeviceData(String name,
                                         int powerConsumption,
                                         int hoursPerDay,
                                         int standbyPowerConsumption,
                                         int standbyHoursPerDay) {
-        ElectricDevice electricDevice = new ElectricDevice(name, amount, powerConsumption,
+        ElectricDevice electricDevice = new ElectricDevice(name, powerConsumption,
                 hoursPerDay, standbyPowerConsumption, standbyHoursPerDay);
         User.getInstance().insertElectricDevice(electricDevice);
     }

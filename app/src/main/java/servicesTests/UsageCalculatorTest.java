@@ -17,7 +17,6 @@ public class UsageCalculatorTest extends InstrumentationTestCase {
         for (ElectricDevice device : user.getElectricDevices()) {
             int deviceUsage = device.getPowerConsumption() * device.getHoursPerDay();
             deviceUsage += device.getStandbyPowerConsumption() * device.getStandbyHoursPerDay();
-            deviceUsage *= device.getAmount();
             powerUsage += deviceUsage;
         }
         assertEquals(UsageCalculator.calculateDailyPowerUsage(user.getElectricDevices()), powerUsage);
@@ -44,8 +43,8 @@ public class UsageCalculatorTest extends InstrumentationTestCase {
     }
 
     private void prepareUser(User user) {
-        ElectricDevice electricDeviceOne = new ElectricDevice("DeviceOne", 1, 100, 2, 5, 22);
-        ElectricDevice electricDeviceTwo = new ElectricDevice("DeviceTwo", 1, 100, 2, 5, 22);
+        ElectricDevice electricDeviceOne = new ElectricDevice("DeviceOne", 100, 2, 5, 22);
+        ElectricDevice electricDeviceTwo = new ElectricDevice("DeviceTwo", 100, 2, 5, 22);
         user.insertElectricDevice(electricDeviceOne);
         user.insertElectricDevice(electricDeviceTwo);
         WaterActivity waterActivityOne = new WaterActivity("ActivityOne", 10, 10);

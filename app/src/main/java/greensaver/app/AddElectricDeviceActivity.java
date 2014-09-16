@@ -24,17 +24,15 @@ public class AddElectricDeviceActivity extends Activity
     private final int[] minStandbyPowerConsumptions = {1, 1, 1, 0, 3, 3, 5, 1};
     private final int[] maxStandbyPowerConsumptions = {6, 25, 98, 5, 8, 40, 15, 40};
 
-    private TextView amountBox;
+    private boolean isRunningStandby = true;
+
     private TextView powerConsumptionBox;
     private TextView hoursPerDayBox;
     private TextView standbyPowerBox;
-    private TextView standbyHoursBox;
 
-    private SeekBar amountBar;
     private SeekBar powerConsumptionBar;
     private SeekBar hoursPerDayBar;
     private SeekBar standbyPowerBar;
-    private SeekBar standbyHoursBar;
 
     private Spinner electricDeviceSpinner;
 
@@ -96,24 +94,18 @@ public class AddElectricDeviceActivity extends Activity
     }
 
     private void initializeAllTextBoxes() {
-        amountBox = (TextView) findViewById(R.id.electric_device_amount_box);
         powerConsumptionBox = (TextView) findViewById(R.id.electric_device_power_consumption_box);
         hoursPerDayBox = (TextView) findViewById(R.id.electric_device_hours_per_day_box);
         standbyPowerBox = (TextView) findViewById(R.id.electric_device_standby_power_box);
-        standbyHoursBox = (TextView) findViewById(R.id.electric_device_standby_hours_box);
     }
 
     private void initializeAllSeekBars() {
-        this.amountBar = (SeekBar) findViewById(R.id.electric_device_amount_bar);
-        this.amountBar.setOnSeekBarChangeListener(this);
         this.powerConsumptionBar = (SeekBar) findViewById(R.id.electric_device_power_consumption_bar);
         this.powerConsumptionBar.setOnSeekBarChangeListener(this);
         this.hoursPerDayBar = (SeekBar) findViewById(R.id.electric_device_hours_per_day_bar);
         this.hoursPerDayBar.setOnSeekBarChangeListener(this);
         this.standbyPowerBar = (SeekBar) findViewById(R.id.electric_device_standby_power_bar);
         this.standbyPowerBar.setOnSeekBarChangeListener(this);
-        this.standbyHoursBar = (SeekBar) findViewById(R.id.electric_device_standby_hours_bar);
-        this.standbyHoursBar.setOnSeekBarChangeListener(this);
     }
 
     private void setTextBoxHavingSeekBar(SeekBar seekBar) {
@@ -121,10 +113,6 @@ public class AddElectricDeviceActivity extends Activity
         int percentage = seekBar.getProgress();
         int actualValue;
         switch (id) {
-            case R.id.electric_device_amount_bar:
-                actualValue = calculateAmountForDevice(percentage);
-                amountBox.setText(Integer.toString(actualValue));
-                break;
             case R.id.electric_device_power_consumption_bar:
                 actualValue = this.calculatePowerForDevice(percentage, this.selectedDeviceNumber);
                 powerConsumptionBox.setText(Integer.toString(actualValue));
@@ -136,10 +124,6 @@ public class AddElectricDeviceActivity extends Activity
             case R.id.electric_device_standby_power_bar:
                 actualValue = calculateStandbyPowerForDevice(percentage, this.selectedDeviceNumber);
                 standbyPowerBox.setText(Integer.toString(actualValue));
-                break;
-            case R.id.electric_device_standby_hours_bar:
-                actualValue = calculateHoursForDevice(percentage);
-                standbyHoursBox.setText(Integer.toString(actualValue));
                 break;
             default:
                 break;
@@ -164,12 +148,6 @@ public class AddElectricDeviceActivity extends Activity
         return (int) Math.round(preciseResult);
     }
 
-    private int calculateAmountForDevice(int percentage) {
-        double preciseResult = percentage * 5;
-        preciseResult /= 100;
-        return (int) Math.round(preciseResult);
-    }
-
     private int calculateHoursForDevice(int percentage) {
         double preciseResult = percentage * 24;
         preciseResult /= 100;
@@ -179,25 +157,34 @@ public class AddElectricDeviceActivity extends Activity
     }
 
     private void prepareAverageValuesForDevice() {
-        this.setTextBoxHavingSeekBar(this.amountBar);
         this.setTextBoxHavingSeekBar(this.powerConsumptionBar);
         this.setTextBoxHavingSeekBar(this.hoursPerDayBar);
         this.setTextBoxHavingSeekBar(this.standbyPowerBar);
-        this.setTextBoxHavingSeekBar(this.standbyHoursBar);
     }
 
     public void addElectricDevice(View v) {
         String name = this.electricDeviceSpinner.getSelectedItem().toString();
-        int amount = Integer.parseInt(this.amountBox.getText().toString());
         int powerConsumption = Integer.parseInt(this.powerConsumptionBox.getText().toString());
         int hoursPerDay = Integer.parseInt(this.hoursPerDayBox.getText().toString());
         int standbyPowerConsumption = Integer.parseInt(this.standbyPowerBox.getText().toString());
-        int standbyHoursPerDay = Integer.parseInt(this.standbyHoursBox.getText().toString());
-        DataManager.storeElectricDeviceData(name, amount, powerConsumption, hoursPerDay,
+        int standbyHoursPerDay = this.getStandbyHoursPerDay(hoursPerDay);
+        DataManager.storeElectricDeviceData(name, powerConsumption, hoursPerDay,
                 standbyPowerConsumption, standbyHoursPerDay);
         DataSaver.saveDataToFile(this);
         Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
         startActivity(intent);
+    }
+
+    public void setStandby(View v) {
+        this.isRunningStandby = !this.isRunningStandby;
+    }
+
+    private int getStandbyHoursPerDay(int hoursPerDay) {
+        int day = 24;
+        if (this.isRunningStandby)
+            return day - hoursPerDay;
+        else
+            return 0;
     }
 
 }

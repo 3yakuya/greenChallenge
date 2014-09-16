@@ -13,9 +13,8 @@ public class DataManagerTest extends InstrumentationTestCase {
 
     public void testStoreElectricDeviceData() {
         User.getInstance().reset();
-        DataManager.storeElectricDeviceData("DeviceOne", 10, 20, 20, 40, 4);
+        DataManager.storeElectricDeviceData("DeviceOne", 20, 20, 40, 4);
         assertEquals(User.getInstance().getElectricDevices().get(0).getName(), "DeviceOne");
-        assertEquals(User.getInstance().getElectricDevices().get(0).getAmount(), 10);
         assertEquals(User.getInstance().getElectricDevices().get(0).getPowerConsumption(), 20);
         assertEquals(User.getInstance().getElectricDevices().get(0).getHoursPerDay(), 20);
         assertEquals(User.getInstance().getElectricDevices().get(0).getStandbyPowerConsumption(), 40);
@@ -53,8 +52,8 @@ public class DataManagerTest extends InstrumentationTestCase {
     }
 
     private void prepareUser(User user) {
-        ElectricDevice electricDeviceOne = new ElectricDevice("DeviceOne", 1, 100, 2, 5, 22);
-        ElectricDevice electricDeviceTwo = new ElectricDevice("DeviceTwo", 1, 100, 2, 5, 22);
+        ElectricDevice electricDeviceOne = new ElectricDevice("DeviceOne", 100, 2, 5, 22);
+        ElectricDevice electricDeviceTwo = new ElectricDevice("DeviceTwo", 100, 2, 5, 22);
         user.insertElectricDevice(electricDeviceOne);
         user.insertElectricDevice(electricDeviceTwo);
         WaterActivity waterActivityOne = new WaterActivity("ActivityOne", 10, 10);

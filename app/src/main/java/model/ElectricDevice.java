@@ -4,20 +4,18 @@ package model;
 public class ElectricDevice implements INamable {
 
     private String name;
-    private int amount;
     private int powerConsumption;           /** Watts */
     private int hoursPerDay;
     private int standbyPowerConsumption;    /** Watts */
     private int standbyHoursPerDay;
 
 
-    public ElectricDevice(String name, int amount,
+    public ElectricDevice(String name,
                           int powerConsumption,
                           int hoursPerDay,
                           int standbyPowerConsumption,
                           int standbyHoursPerDay) {
         this.name = name;
-        this.amount = amount;
         this.powerConsumption = powerConsumption;
         this.hoursPerDay = hoursPerDay;
         this.standbyPowerConsumption = standbyPowerConsumption;
@@ -26,19 +24,13 @@ public class ElectricDevice implements INamable {
 
 
     public ElectricDevice() {
-        this("DefaultElectricDevice", 0, 0, 0, 0, 0);
+        this("DefaultElectricDevice", 0, 0, 0, 0);
     }
 
 
     public String getName() {
         return this.name;
     }
-
-
-    public int getAmount() {
-        return this.amount;
-    }
-
 
     public int getPowerConsumption() {
         return this.powerConsumption;
@@ -58,12 +50,6 @@ public class ElectricDevice implements INamable {
     public int getStandbyHoursPerDay() {
         return this.standbyHoursPerDay;
     }
-
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
 
     public void setPowerConsumption(int powerConsumption) {
         this.powerConsumption = powerConsumption;
@@ -93,7 +79,6 @@ public class ElectricDevice implements INamable {
     }
 
     public void cloneElectricDevice(ElectricDevice source) {
-        this.setAmount(source.getAmount());
         this.setPowerConsumption(source.getPowerConsumption());
         this.setHoursPerDay(source.getHoursPerDay());
         this.setStandbyPowerConsumption(source.getStandbyPowerConsumption());

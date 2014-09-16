@@ -38,6 +38,7 @@
     <string name="title_activity_electric_info">Electric devices info</string>
     <string name="title_activity_add_water">Add water activity</string>
     <string name="water_activity_spinner">Select water activity</string>
+    <string name="is_standby_on">Does this device run standby?</string>
 
     <string-array name="water_activity_spinner_list">
         <item>Washing machine</item>

@@ -38,19 +38,17 @@ public class UsageCalculator {
 
     private static int calculateElectricDeviceDailyStandbyPowerUsage(ElectricDevice electricDevice) {
         /** Result in Wh */
-        int amount = electricDevice.getAmount();
         int standbyPowerConsumption = electricDevice.getStandbyPowerConsumption();
         int standbyHoursPerDay = electricDevice.getStandbyHoursPerDay();
-        return amount*standbyPowerConsumption*standbyHoursPerDay;
+        return standbyPowerConsumption*standbyHoursPerDay;
     }
 
     private static int calculateElectricDeviceDailyTotalPowerUsage(ElectricDevice electricDevice) {
         /** Result in Wh */
-        int amount = electricDevice.getAmount();
         int powerConsumption = electricDevice.getPowerConsumption();
         int hoursPerDay = electricDevice.getHoursPerDay();
         int standbyPowerUsage = calculateElectricDeviceDailyStandbyPowerUsage(electricDevice);
-        return standbyPowerUsage + amount*powerConsumption*hoursPerDay;
+        return standbyPowerUsage + powerConsumption*hoursPerDay;
     }
 
     private static int calculateWaterActivityDailyWaterUsage(WaterActivity waterActivity) {

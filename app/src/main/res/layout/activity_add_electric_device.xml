@@ -35,32 +35,6 @@
                 android:layout_height="wrap_content"
                 android:textSize="15dp"
                 android:textStyle="bold"
-                android:text="@string/add_electric_device_amount"/>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
-                <SeekBar
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:progress="10"
-                    android:id="@+id/electric_device_amount_bar" />
-                <TextView
-                    android:id="@+id/electric_device_amount_box"
-                    android:layout_weight="0"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:textSize="15dp"
-                    android:text="@string/zero_value"
-                    android:textStyle="bold"/>
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textStyle="bold"
                 android:text="@string/add_electric_device_power_consumption"/>
 
             <LinearLayout
@@ -136,31 +110,31 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:text="@string/add_electric_device_standby_hours"/>
-
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
-                <SeekBar
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/electric_device_standby_hours_bar"
-                    android:layout_weight="1"
-                    android:progress="90"
-                    android:layout_gravity="center_horizontal" />
+
                 <TextView
-                    android:id="@+id/electric_device_standby_hours_box"
+                    android:id="@+id/standby_hours_per_day_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_weight="0"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/is_standby_on"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <Button
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:textSize="15dp"
-                    android:text="@string/zero_value"
-                    android:textStyle="bold" />
+                    android:layout_gravity="top"
+                    android:background="@drawable/prad"
+                    android:layout_marginLeft="50dp"
+                    android:id="@+id/is_standby_on_button"
+                    android:onClick="setStandby"
+                    android:layout_marginTop="20dp" />
             </LinearLayout>
 
             <Button

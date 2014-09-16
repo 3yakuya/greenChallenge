@@ -74,12 +74,11 @@ public class DataLoader {
         ElectricDevice electricDevice = null;
         try {
             String name = br.readLine();
-            int amount = Integer.parseInt(br.readLine());
             int powerConsumption = Integer.parseInt(br.readLine());
             int hoursPerDay = Integer.parseInt(br.readLine());
             int standbyPowerConsumption = Integer.parseInt(br.readLine());
             int standbyHoursPerDay = Integer.parseInt(br.readLine());
-            electricDevice = new ElectricDevice(name, amount, powerConsumption,
+            electricDevice = new ElectricDevice(name, powerConsumption,
                     hoursPerDay, standbyPowerConsumption, standbyHoursPerDay);
         } catch (IOException e) {
             e.printStackTrace();

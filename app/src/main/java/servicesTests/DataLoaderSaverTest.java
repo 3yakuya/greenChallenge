@@ -25,7 +25,6 @@ public class DataLoaderSaverTest extends InstrumentationTestCase {
         DataLoader.loadDataFromFile(this.getInstrumentation().getContext());
         assertEquals(electricDevices.size(), user.getElectricDevices().size());
         for (int i = 0; i < electricDevices.size(); i++) {
-            assertFalse(electricDevices.get(i).getAmount() == user.getElectricDevices().get(i).getAmount());
             assertTrue(electricDevices.get(i).getHoursPerDay() == user.getElectricDevices().get(i).getHoursPerDay());
             assertTrue(electricDevices.get(i).getPowerConsumption() == user.getElectricDevices().get(i).getPowerConsumption());
             assertTrue(electricDevices.get(i).getStandbyHoursPerDay() == user.getElectricDevices().get(i).getStandbyHoursPerDay());
@@ -70,8 +69,8 @@ public class DataLoaderSaverTest extends InstrumentationTestCase {
     }
 
     private void prepareUser(User user) {
-        ElectricDevice electricDeviceOne = new ElectricDevice("DeviceOne", 1, 100, 2, 5, 22);
-        ElectricDevice electricDeviceTwo = new ElectricDevice("DeviceTwo", 1, 100, 2, 5, 22);
+        ElectricDevice electricDeviceOne = new ElectricDevice("DeviceOne", 100, 2, 5, 22);
+        ElectricDevice electricDeviceTwo = new ElectricDevice("DeviceTwo", 100, 2, 5, 22);
         user.insertElectricDevice(electricDeviceOne);
         user.insertElectricDevice(electricDeviceTwo);
         WaterActivity waterActivityOne = new WaterActivity("ActivityOne", 10, 10);

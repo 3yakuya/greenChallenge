@@ -11,19 +11,17 @@ public class UserTest extends InstrumentationTestCase {
 
     public void testInsertElectricDevice() {
         User user = User.getInstance();
-        ElectricDevice electricDeviceOne = new ElectricDevice("DeviceOne", 1, 100, 2, 5, 22);
-        ElectricDevice electricDeviceTwo = new ElectricDevice("DeviceTwo", 1, 100, 2, 5, 22);
+        ElectricDevice electricDeviceOne = new ElectricDevice("DeviceOne", 100, 2, 5, 22);
+        ElectricDevice electricDeviceTwo = new ElectricDevice("DeviceTwo", 100, 2, 5, 22);
         user.insertElectricDevice(electricDeviceOne);
         user.insertElectricDevice(electricDeviceTwo);
         assertEquals(user.getElectricDevices().get(0), electricDeviceOne);
-        assertTrue(user.getElectricDevices().get(0).getAmount() == 1);
         assertTrue(user.getElectricDevices().get(0).getPowerConsumption() == 100);
         assertTrue(user.getElectricDevices().get(0).getHoursPerDay() == 2);
         assertEquals(user.getElectricDevices().get(1), electricDeviceTwo);
 
-        ElectricDevice electricDeviceOneRenewed = new ElectricDevice("DeviceOne", 2, 500, 5, 0, 0);
+        ElectricDevice electricDeviceOneRenewed = new ElectricDevice("DeviceOne", 500, 5, 0, 0);
         user.insertElectricDevice(electricDeviceOneRenewed);
-        assertTrue(user.getElectricDevices().get(0).getAmount() == 2);
         assertTrue(user.getElectricDevices().get(0).getHoursPerDay() == 5);
         assertTrue(user.getElectricDevices().get(0).getPowerConsumption() == 500);
     }
@@ -95,8 +93,8 @@ public class UserTest extends InstrumentationTestCase {
     }
 
     private void prepareUser(User user) {
-        ElectricDevice electricDeviceOne = new ElectricDevice("DeviceOne", 1, 100, 2, 5, 22);
-        ElectricDevice electricDeviceTwo = new ElectricDevice("DeviceTwo", 1, 100, 2, 5, 22);
+        ElectricDevice electricDeviceOne = new ElectricDevice("DeviceOne", 100, 2, 5, 22);
+        ElectricDevice electricDeviceTwo = new ElectricDevice("DeviceTwo", 100, 2, 5, 22);
         user.insertElectricDevice(electricDeviceOne);
         user.insertElectricDevice(electricDeviceTwo);
         WaterActivity waterActivityOne = new WaterActivity("ActivityOne", 10, 10);

@@ -47,8 +47,6 @@ public class DataSaver {
             bw.newLine();
             bw.write(electricDevice.getName());
             bw.newLine();
-            bw.write(String.valueOf(electricDevice.getAmount()));
-            bw.newLine();
             bw.write(String.valueOf(electricDevice.getPowerConsumption()));
             bw.newLine();
             bw.write(String.valueOf(electricDevice.getHoursPerDay()));
