@@ -115,24 +115,24 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/standby_hours_per_day_box"
+                    android:id="@+id/set_standby_box"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:layout_marginLeft="30dp"
                     android:layout_weight="0"
                     android:layout_gravity="center_vertical"
-                    android:text="@string/is_standby_on"
+                    android:text="@string/standby_on"
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
-                <Button
+                <ImageButton
                     android:layout_width="50dp"
                     android:layout_height="50dp"
+                    android:id="@+id/set_standby_button"
                     android:layout_gravity="top"
                     android:background="@drawable/prad"
                     android:layout_marginLeft="50dp"
-                    android:id="@+id/is_standby_on_button"
                     android:onClick="setStandby"
                     android:layout_marginTop="20dp" />
             </LinearLayout>

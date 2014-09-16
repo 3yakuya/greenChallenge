@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -177,6 +179,15 @@ public class AddElectricDeviceActivity extends Activity
 
     public void setStandby(View v) {
         this.isRunningStandby = !this.isRunningStandby;
+        ImageButton setStandbyButton = (ImageButton) findViewById(R.id.set_standby_button);
+        TextView setStandbyBox = (TextView) findViewById(R.id.set_standby_box);
+        if (this.isRunningStandby) {  //TODO Change button images to proper ones standby on/off.
+            setStandbyButton.setImageResource(R.drawable.prad);
+            setStandbyBox.setText(R.string.standby_on);
+        } else {
+            setStandbyButton.setImageResource(R.drawable.woda);
+            setStandbyBox.setText(R.string.standby_off);
+        }
     }
 
     private int getStandbyHoursPerDay(int hoursPerDay) {
