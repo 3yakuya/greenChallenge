@@ -17,26 +17,33 @@ import services.DataSaver;
 
 
 public class AddWaterActivityActivity extends Activity
-        implements AdapterView.OnItemSelectedListener, SeekBar.OnSeekBarChangeListener {
+        implements SeekBar.OnSeekBarChangeListener {
 
     private final int[] minWaterUsage = {45, 9, 30, 120, 30, 1, 10, 50};
     private final int[] maxWaterUsage = {60, 25, 80, 150, 40, 2, 15, 150};
 
     private TextView litersUsedBox;
     private TextView timesPerDayBox;
+    private TextView waterActivityNameBox;
 
     private SeekBar litersUsedBar;
     private SeekBar timesPerDayBar;
 
-    private Spinner waterActivitySpinner;
-
+    private String selectedActivityName;
+    private String selectedActivityFullName;
     private int selectedActivityNumber = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_water);
-        this.initializeWaterActivitySpinner();
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null)
+            this.selectedActivityName = bundle.getString("selectionName");
+        else
+            this.selectedActivityName = "washing_machine"; //default.
+        this.selectedActivityNumber = this.getActivityNumberFromName(selectedActivityName);
+        this.selectedActivityFullName = getResources().getStringArray(R.array.water_activity_spinner_list)[this.selectedActivityNumber];
         this.initializeAllSeekBars();
         this.initializeAllTextBoxes();
         this.prepareAverageValuesForDevice();
@@ -59,16 +66,6 @@ public class AddWaterActivityActivity extends Activity
         return super.onOptionsItemSelected(item);
     }
 
-    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        // An item was selected. You can retrieve the selected item using
-        // parent.getItemAtPosition(pos)
-        this.selectedActivityNumber = pos;
-        this.prepareAverageValuesForDevice();
-    }
-
-    public void onNothingSelected(AdapterView<?> parent) {
-    }
-
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
         this.setTextBoxHavingSeekBar(seekBar);
     }
@@ -79,18 +76,11 @@ public class AddWaterActivityActivity extends Activity
     public void onStopTrackingTouch(SeekBar seekBar) {
     }
 
-    private void initializeWaterActivitySpinner() {
-        this.waterActivitySpinner = (Spinner)findViewById(R.id.water_activity_spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.water_activity_spinner_list, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        this.waterActivitySpinner.setAdapter(adapter);
-        this.waterActivitySpinner.setOnItemSelectedListener(this);
-    }
-
     private void initializeAllTextBoxes() {
         this.litersUsedBox = (TextView) findViewById(R.id.water_activity_liters_used_box);
         this.timesPerDayBox = (TextView) findViewById(R.id.water_activity_times_per_day_box);
+        this.waterActivityNameBox = (TextView) findViewById(R.id.water_activity_name_box);
+        this.waterActivityNameBox.setText(this.selectedActivityFullName);
     }
 
     private void initializeAllSeekBars() {
@@ -139,12 +129,33 @@ public class AddWaterActivityActivity extends Activity
     }
 
     public void addWaterActivity(View v) {
-        String name = this.waterActivitySpinner.getSelectedItem().toString();
+
         int litersUsed = Integer.parseInt(this.litersUsedBox.getText().toString());
         int timesPerDay = Integer.parseInt(this.timesPerDayBox.getText().toString());
-        DataManager.storeWaterActivityData(name, litersUsed, timesPerDay);
+        DataManager.storeWaterActivityData(this.selectedActivityFullName, litersUsed, timesPerDay);
         Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
         DataSaver.saveDataToFile(this);
         startActivity(intent);
+    }
+
+    private int getActivityNumberFromName(String name) {
+        if (name.equals("washing_machine"))
+            return 0;
+        else if (name.equals("dishwasher"))
+            return 1;
+        else if (name.equals("washing_up"))
+            return 2;
+        else if (name.equals("bath"))
+            return 3;
+        else if (name.equals("shower"))
+            return 4;
+        else if (name.equals("cleaning_hands"))
+            return 5;
+        else if (name.equals("brushing_shaving"))
+            return 6;
+        else if (name.equals("washing_car"))
+            return 7;
+        else
+            return 0;
     }
 }

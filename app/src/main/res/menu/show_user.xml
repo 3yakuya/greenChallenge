@@ -3,18 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="greensaver.app.ShowUserActivity" >
 
-    <item android:id="@+id/action_add_electric_device"
-        android:icon="@drawable/ic_launcher"
-        android:title="@string/add_electric_device"
-        app:showAsAction="never"/>
-    <item android:id="@+id/action_add_water_activity"
-        android:icon="@drawable/ic_launcher"
-        android:title="@string/add_water_activity"
-        app:showAsAction="never"/>
-    <item android:id="@+id/action_add_refuse_production"
-        android:icon="@drawable/ic_launcher"
-        android:title="@string/add_refuse_production"
-        app:showAsAction="never"/>
     <item android:id="@+id/reset_all_user_elements"
         android:title="@string/reset_button"
         app:showAsAction="never"/>

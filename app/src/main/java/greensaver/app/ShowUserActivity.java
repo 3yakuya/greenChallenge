@@ -23,6 +23,12 @@ public class ShowUserActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        DataManager.storeWaterActivityData("Cleaning Hands", 1, 5);/////////////////////////
+        DataManager.storeWaterActivityData("Dishwasher", 30, 1);/////////////////////////
+        DataManager.storeRefuseProductionData("Segregation", 8);//////////////////////////
+        DataManager.storeRefuseProductionData("Medicine", 5);
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_user);
 
@@ -58,20 +64,6 @@ public class ShowUserActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
         switch (item.getItemId()) {
-            case R.id.action_add_electric_device:
-                intent = new Intent(getApplicationContext(), AddElectricDeviceActivity.class);
-                startActivity(intent);
-                return true;
-
-            case R.id.action_add_water_activity:
-                intent = new Intent(getApplicationContext(), AddWaterActivityActivity.class);
-                startActivity(intent);
-                return true;
-
-            case R.id.action_add_refuse_production:
-                intent = new Intent(getApplicationContext(), AddRefuseProductionActivity.class);
-                startActivity(intent);
-                return true;
 
             case R.id.reset_all_user_elements:
                 DataManager.resetAllUserElements();

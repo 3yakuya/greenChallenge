@@ -47,7 +47,7 @@ public class AddElectricDeviceActivity extends Activity
         setContentView(R.layout.activity_add_electric_device);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null)
-            this.selectedDeviceName = bundle.getString("deviceName");
+            this.selectedDeviceName = bundle.getString("selectionName");
         else
             this.selectedDeviceName = "tv"; //default.
         this.selectedDeviceNumber = this.getDeviceNumberFromName(selectedDeviceName);

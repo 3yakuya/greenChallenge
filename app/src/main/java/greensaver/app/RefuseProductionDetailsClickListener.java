@@ -8,6 +8,7 @@ public class RefuseProductionDetailsClickListener implements View.OnClickListene
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(view.getContext(), AddRefuseProductionActivity.class);
+        intent.putExtra("selectionName", (String) view.getTag());
         view.getContext().startActivity(intent);
     }
 }

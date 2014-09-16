@@ -23,12 +23,13 @@
             android:gravity="center_horizontal">
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/electric_device_name_box"
                 android:layout_gravity="center"
                 android:textStyle="bold"
-                android:textSize="20dp"/>
+                android:textSize="20dp"
+                android:textAlignment="center"/>
 
             <TextView
                 android:layout_width="wrap_content"

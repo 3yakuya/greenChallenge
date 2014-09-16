@@ -15,20 +15,29 @@ import services.DataManager;
 import services.DataSaver;
 
 
-public class AddRefuseProductionActivity extends Activity
-        implements AdapterView.OnItemSelectedListener {
+public class AddRefuseProductionActivity extends Activity {
 
     private final int[] pointValues = {10, 8, 4, 5, 5, 5, 5};
 
     private TextView pointValueBox;
+    private TextView refuseProductionNameBox;
 
-    private Spinner refuseProductionSpinner;
+    private String selectedProductionName;
+    private String selectedProductionFullName;
+    private int selectedProductionNumber = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_refuse_production);
-        this.initializeRefuseProductionSpinner();
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null)
+            this.selectedProductionName = bundle.getString("selectionName");
+        else
+            this.selectedProductionName = "segregation"; //default.
+        this.selectedProductionNumber = this.getProductionNumberFromName(selectedProductionName);
+        this.selectedProductionFullName = getResources().getStringArray(R.array.refuse_production_spinner_list)[this.selectedProductionNumber];
         this.initializeAllTextBoxes();
     }
 
@@ -48,32 +57,37 @@ public class AddRefuseProductionActivity extends Activity
         return super.onOptionsItemSelected(item);
     }
 
-    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        pointValueBox.setText(Integer.toString(pointValues[pos]));
-    }
-
-    public void onNothingSelected(AdapterView<?> parent) {
-    }
-
-    private void initializeRefuseProductionSpinner() {
-        this.refuseProductionSpinner = (Spinner)findViewById(R.id.refuse_production_spinner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.refuse_production_spinner_list, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        this.refuseProductionSpinner.setAdapter(adapter);
-        this.refuseProductionSpinner.setOnItemSelectedListener(this);
-    }
-
     private void initializeAllTextBoxes() {
         this.pointValueBox = (TextView) findViewById(R.id.refuse_production_point_value_box);
+        this.pointValueBox.setText(Integer.toString(pointValues[this.selectedProductionNumber]));
+        this.refuseProductionNameBox = (TextView) findViewById(R.id.refuse_production_name_box);
+        this.refuseProductionNameBox.setText(this.selectedProductionFullName);
     }
 
     public void addRefuseProduction(View v) {
-        String name = this.refuseProductionSpinner.getSelectedItem().toString();
         int pointValue = Integer.parseInt(this.pointValueBox.getText().toString());
-        DataManager.storeRefuseProductionData(name, pointValue);
+        DataManager.storeRefuseProductionData(this.selectedProductionFullName, pointValue);
         Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
         DataSaver.saveDataToFile(this);
         startActivity(intent);
+    }
+
+    private int getProductionNumberFromName(String name) {
+        if (name.equals("segregation"))
+            return 0;
+        else if (name.equals("plastic_bags"))
+            return 1;
+        else if (name.equals("pressing_bottles"))
+            return 2;
+        else if (name.equals("medicine"))
+            return 3;
+        else if (name.equals("batteries_and_bulbs"))
+            return 4;
+        else if (name.equals("household"))
+            return 5;
+        else if (name.equals("big_size_waste"))
+            return 6;
+        else
+            return 0;
     }
 }
