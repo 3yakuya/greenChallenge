@@ -29,6 +29,21 @@ public class DataManager {
         User.getInstance().insertRefuseProduction(refuseProduction);
     }
 
+    public static void removeElectricDevice(String name) {
+        ElectricDevice electricDevice = new ElectricDevice(name);
+        User.getInstance().removeElectricDevice(electricDevice);
+    }
+
+    public static void removeWaterActivity(String name) {
+        WaterActivity waterActivity = new WaterActivity(name);
+        User.getInstance().removeWaterActivity(waterActivity);
+    }
+
+    public static void removeRefuseProduction(String name) {
+        RefuseProduction refuseProduction = new RefuseProduction(name);
+        User.getInstance().removeRefuseProduction(refuseProduction);
+    }
+
     public static ArrayList<ElectricDevice> fetchElectricDeviceData() {
         return User.getInstance().getElectricDevices();
     }

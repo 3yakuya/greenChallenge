@@ -36,6 +36,42 @@ public class DataManagerTest extends InstrumentationTestCase {
         assertEquals(User.getInstance().getRefuseProductions().get(0).getPointValue(), 10);
     }
 
+    public void testRemoveElectricDevice() {
+        User user =  User.getInstance();
+        this.prepareUser(user);
+        int numberOfElectricDevices = user.getElectricDevices().size();
+        String deviceToRemoveName = user.getElectricDevices().get(0).getName();
+        String deviceToStayName = user.getElectricDevices().get(1).getName();
+        DataManager.removeElectricDevice(deviceToRemoveName);
+        assertTrue(user.getElectricDevices().size() == numberOfElectricDevices - 1);
+        assertFalse(user.getElectricDevices().get(0).getName().equals(deviceToRemoveName));
+        assertTrue(user.getElectricDevices().get(0).getName().equals(deviceToStayName));
+    }
+
+    public void testRemoveWaterActivity() {
+        User user = User.getInstance();
+        this.prepareUser(user);
+        int numberOfWaterActivities = user.getWaterActivities().size();
+        String activityToRemoveName = user.getWaterActivities().get(0).getName();
+        String activityToStayName = user.getWaterActivities().get(1).getName();
+        DataManager.removeWaterActivity(activityToRemoveName);
+        assertTrue(user.getWaterActivities().size() == numberOfWaterActivities - 1);
+        assertFalse(user.getWaterActivities().get(0).getName().equals(activityToRemoveName));
+        assertTrue(user.getWaterActivities().get(0).getName().equals(activityToStayName));
+    }
+
+    public void testRemoveRefuseProduction() {
+        User user = User.getInstance();
+        this.prepareUser(user);
+        int numberOfRefuseProductions = user.getRefuseProductions().size();
+        String productionToRemoveName = user.getRefuseProductions().get(0).getName();
+        String productionToStayName = user.getRefuseProductions().get(1).getName();
+        DataManager.removeRefuseProduction(productionToRemoveName);
+        assertTrue(user.getRefuseProductions().size() == numberOfRefuseProductions - 1);
+        assertFalse(user.getRefuseProductions().get(0).getName().equals(productionToRemoveName));
+        assertTrue(user.getRefuseProductions().get(0).getName().equals(productionToStayName));
+    }
+
     public void testPrepareUserStats() {
         User user = User.getInstance();
         this.prepareUser(user);
