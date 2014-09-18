@@ -67,6 +67,18 @@ public class User {
         }
     }
 
+    public void removeElectricDevice(ElectricDevice electricDevice) {
+        electricDevices.remove(electricDevice);
+    }
+
+    public void removeWaterActivity(WaterActivity waterActivity) {
+        waterActivities.remove(waterActivity);
+    }
+
+    public void removeRefuseProduction(RefuseProduction refuseProduction) {
+        refuseProductions.remove(refuseProduction);
+    }
+
     public void reset() {
         electricDevices.clear();
         waterActivities.clear();

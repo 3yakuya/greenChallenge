@@ -10,6 +10,11 @@ public class RefuseProduction implements INamable {
         this.pointValue = pointValue;
     }
 
+    public RefuseProduction(String name) {
+        this.name = name;
+        this.pointValue = 0;
+    }
+
     public RefuseProduction() {
         this("DefaultRefuseProduction", 0);
     }

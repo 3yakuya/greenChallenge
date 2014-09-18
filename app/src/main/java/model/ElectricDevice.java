@@ -22,6 +22,14 @@ public class ElectricDevice implements INamable {
         this.standbyHoursPerDay = standbyHoursPerDay;
     }
 
+    public ElectricDevice(String name) {
+        this.name = name;
+        this.powerConsumption = 0;
+        this.hoursPerDay = 0;
+        this.standbyPowerConsumption = 0;
+        this.standbyHoursPerDay = 0;
+    }
+
 
     public ElectricDevice() {
         this("DefaultElectricDevice", 0, 0, 0, 0);

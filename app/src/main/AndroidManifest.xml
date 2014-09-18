@@ -12,7 +12,7 @@
         android:label="@string/app_name"
         android:theme="@style/GreenSaverTheme" >
         <activity
-            android:name="greensaver.app.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,68 +21,76 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="greensaver.app.ShowUserActivity"
+            android:name=".ShowUserActivity"
             android:label="@string/title_activity_show_user"
-            android:parentActivityName="greensaver.app.MainActivity" >
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
         <activity
-            android:name="greensaver.app.AddElectricDeviceActivity"
+            android:name=".AddElectricDeviceActivity"
             android:label="@string/title_activity_add_electric_device"
-            android:parentActivityName="greensaver.app.ShowUserActivity" >
+            android:parentActivityName=".ShowUserActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ShowUserActivity" />
         </activity>
         <activity
-            android:name="greensaver.app.ElectricInfoActivity"
+            android:name=".ElectricInfoActivity"
             android:label="@string/title_activity_electric_info"
-            android:parentActivityName="greensaver.app.MainActivity" >
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
         <activity
-            android:name="greensaver.app.AddWaterActivityActivity"
+            android:name=".AddWaterActivityActivity"
             android:label="@string/title_activity_add_water"
-            android:parentActivityName="greensaver.app.ShowUserActivity" >
+            android:parentActivityName=".ShowUserActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ShowUserActivity" />
         </activity>
         <activity
-            android:name="greensaver.app.AddRefuseProductionActivity"
+            android:name=".AddRefuseProductionActivity"
             android:label="@string/title_activity_add_refuse_production"
-            android:parentActivityName="greensaver.app.ShowUserActivity" >
+            android:parentActivityName=".ShowUserActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ShowUserActivity" />
         </activity>
         <activity
-            android:name="greensaver.app.WaterInfoActivity"
+            android:name=".WaterInfoActivity"
             android:label="@string/title_activity_water_info"
-            android:parentActivityName="greensaver.app.MainActivity" >
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
         <activity
-            android:name="greensaver.app.RefuseInfoActivity"
+            android:name=".RefuseInfoActivity"
             android:label="@string/title_activity_refuse_info"
-            android:parentActivityName="greensaver.app.MainActivity" >
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
         </activity>
         <activity
-            android:name="greensaver.app.AboutActivity"
+            android:name=".AboutActivity"
             android:label="@string/title_activity_about"
-            android:parentActivityName="greensaver.app.MainActivity" >
+            android:parentActivityName=".MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
+        </activity>
+        <activity
+            android:name=".AddElementBasicActivity"
+            android:label="@string/title_activity_add_electric_device_basic"
+            android:parentActivityName=".ShowUserActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="greensaver.app.ShowUserActivity" />
         </activity>
     </application>
 

@@ -12,6 +12,12 @@ public class WaterActivity implements INamable {
         this.timesPerDay = timesPerDay;
     }
 
+    public WaterActivity(String name) {
+        this.name = name;
+        this.litersUsed = 0;
+        this.timesPerDay = 0;
+    }
+
     public WaterActivity() {
         this("DefaultWaterActivity", 0, 0);
     }

@@ -74,5 +74,6 @@
     <string name="title_activity_water_info">Water usage info</string>
     <string name="title_activity_refuse_info">Rubbish segregation info</string>
     <string name="title_activity_about">About</string>
+    <string name="title_activity_add_electric_device_basic">AddElectricDeviceBasicActivity</string>
 
 </resources>
