@@ -26,7 +26,7 @@
                 android:gravity="center">
 
                 <ImageButton
-                    android:id="@+id/anvanced_settings_button"
+                    android:id="@+id/advanced_settings_button"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:background="@drawable/ic_launcher"/>

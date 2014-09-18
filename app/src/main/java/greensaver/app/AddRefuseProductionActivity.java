@@ -36,7 +36,7 @@ public class AddRefuseProductionActivity extends Activity {
             this.selectedProductionName = bundle.getString("selectionName");
         else
             this.selectedProductionName = "segregation"; //default.
-        this.selectedProductionNumber = this.getProductionNumberFromName(selectedProductionName);
+        this.selectedProductionNumber = NameAndType.getRefuseProductionNumberFromName(selectedProductionName);
         this.selectedProductionFullName = getResources().getStringArray(R.array.refuse_production_spinner_list)[this.selectedProductionNumber];
         this.initializeAllTextBoxes();
     }
@@ -70,24 +70,5 @@ public class AddRefuseProductionActivity extends Activity {
         Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
         DataSaver.saveDataToFile(this);
         startActivity(intent);
-    }
-
-    private int getProductionNumberFromName(String name) {
-        if (name.equals("segregation"))
-            return 0;
-        else if (name.equals("plastic_bags"))
-            return 1;
-        else if (name.equals("pressing_bottles"))
-            return 2;
-        else if (name.equals("medicine"))
-            return 3;
-        else if (name.equals("batteries_and_bulbs"))
-            return 4;
-        else if (name.equals("household"))
-            return 5;
-        else if (name.equals("big_size_waste"))
-            return 6;
-        else
-            return 0;
     }
 }

@@ -50,7 +50,7 @@ public class AddElectricDeviceActivity extends Activity
             this.selectedDeviceName = bundle.getString("selectionName");
         else
             this.selectedDeviceName = "tv"; //default.
-        this.selectedDeviceNumber = this.getDeviceNumberFromName(selectedDeviceName);
+        this.selectedDeviceNumber = NameAndType.getElectricDeviceNumberFromName(selectedDeviceName);
         this.selectedDeviceFullName = getResources().getStringArray(R.array.electric_device_spinner_list)[this.selectedDeviceNumber];
         this.initializeAllSeekBars();
         this.initializeAllTextBoxes();
@@ -185,27 +185,6 @@ public class AddElectricDeviceActivity extends Activity
             return day - hoursPerDay;
         else
             return 0;
-    }
-
-    private int getDeviceNumberFromName(String name) {
-        if (name.equals("tv"))
-                return 0;
-        else if (name.equals("radio"))
-                return 1;
-        else if (name.equals("computer"))
-                return 2;
-        else if (name.equals("printer"))
-                return 3;
-        else if (name.equals("router"))
-                return 4;
-        else if (name.equals("set_top_box"))
-                return 5;
-        else if (name.equals("dvd_set"))
-                return 6;
-        else if (name.equals("microwave"))
-                return 7;
-        else
-                return 0;
     }
 
 }

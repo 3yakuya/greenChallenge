@@ -42,7 +42,7 @@ public class AddWaterActivityActivity extends Activity
             this.selectedActivityName = bundle.getString("selectionName");
         else
             this.selectedActivityName = "washing_machine"; //default.
-        this.selectedActivityNumber = this.getActivityNumberFromName(selectedActivityName);
+        this.selectedActivityNumber = NameAndType.getWaterActivityNumberFromName(selectedActivityName);
         this.selectedActivityFullName = getResources().getStringArray(R.array.water_activity_spinner_list)[this.selectedActivityNumber];
         this.initializeAllSeekBars();
         this.initializeAllTextBoxes();
@@ -138,24 +138,4 @@ public class AddWaterActivityActivity extends Activity
         startActivity(intent);
     }
 
-    private int getActivityNumberFromName(String name) {
-        if (name.equals("washing_machine"))
-            return 0;
-        else if (name.equals("dishwasher"))
-            return 1;
-        else if (name.equals("washing_up"))
-            return 2;
-        else if (name.equals("bath"))
-            return 3;
-        else if (name.equals("shower"))
-            return 4;
-        else if (name.equals("cleaning_hands"))
-            return 5;
-        else if (name.equals("brushing_shaving"))
-            return 6;
-        else if (name.equals("washing_car"))
-            return 7;
-        else
-            return 0;
-    }
 }

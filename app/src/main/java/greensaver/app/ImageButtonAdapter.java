@@ -1,6 +1,7 @@
 package greensaver.app;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -27,12 +28,12 @@ public class ImageButtonAdapter extends BaseAdapter{
         if (convertView == null) {
             imageButton = new ImageButton(this.context);
             String name = elements[position].getName();
-            NameAndType selection = this.recognizeName(name);
-            int drawableResourceId = context.getResources().getIdentifier(selection.name, "drawable", context.getPackageName());
+            NameAndType selection = NameAndType.recognizeNameAndType(name);
+            int drawableResourceId = context.getResources().getIdentifier(selection.getName(), "drawable", context.getPackageName());
             imageButton.setImageResource(drawableResourceId);
-            imageButton.setTag(selection.name);
-            this.assignOnClickListener(imageButton, selection.type);
-            this.setButtonSelection(imageButton, selection.type, name);
+            imageButton.setTag(name);
+            this.assignOnClickListener(imageButton);
+            this.setButtonSelectionBackground(imageButton, selection.getType(), name);
         } else {
             imageButton = (ImageButton) convertView;
         }
@@ -56,89 +57,18 @@ public class ImageButtonAdapter extends BaseAdapter{
         return position;
     }
 
-    private class NameAndType {
-        String name;
-        int type;
-
-        private NameAndType(String name, int type) {
-            this.name = name;
-            this.type = type;
-        }
+    private void assignOnClickListener(ImageButton button) {
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), AddElementBasicActivity.class);
+                intent.putExtra("selectionName", (String) view.getTag());
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
-    private NameAndType recognizeName(String name) {
-        char first = name.charAt(0);
-        switch (first) {
-            case 'T':
-                return new NameAndType("tv", 0);
-            case 'R':
-                if (name.charAt(1) == 'a')
-                    return new NameAndType("radio", 0);
-                else
-                    return new NameAndType("router", 0);
-            case 'B':
-                if (name.charAt(3) == 'h')
-                    return new NameAndType("bath", 1);
-                else if (name.charAt(3) == 't')
-                    return new NameAndType("batteries_and_bulbs", 2);
-                else if (name.charAt(1) == 'i')
-                    return new NameAndType("big_size_waste", 2);
-                else
-                    return new NameAndType("brushing_shaving", 1);
-            case 'C':
-                if (name.charAt(1) == 'o')
-                    return new NameAndType("computer", 0);
-                else
-                    return new NameAndType("cleaning_hands", 1);
-            case 'H':
-                return new NameAndType("household", 2);
-            case 'P':
-                if (name.charAt(2) == 'i')
-                    return new NameAndType("printer", 0);
-                else if (name.charAt(2) == 'e')
-                    return new NameAndType("pressing_bottles", 2);
-                else
-                    return new NameAndType("plastic_bags", 2);
-            case 'S':
-                if (name.charAt(2) == 't')
-                    return new NameAndType("set_top_box", 0);
-                else if (name.charAt(2) == 'g')
-                    return new NameAndType("segregation", 2);
-                else
-                    return new NameAndType("shower", 1);
-            case 'D':
-                if (name.charAt(1) == 'V')
-                    return new NameAndType("dvd_set", 0);
-                else
-                    return new NameAndType("dishwasher", 1);
-            case 'M':
-                if (name.charAt(1) == 'i')
-                    return new NameAndType("microwave", 0);
-                else
-                    return new NameAndType("medicine", 2);
-            case 'W':
-                if (name.charAt(8) == 'm')
-                    return new NameAndType("washing_machine", 1);
-                else if (name.charAt(8) == 'u')
-                    return new NameAndType("washing_up", 1);
-                else
-                    return new NameAndType("washing_car", 1);
-            default:
-                return new NameAndType("ic_launcher", 0);
-        }
-    }
-
-    private void assignOnClickListener(ImageButton button, int type) {
-        if (type == 0)
-            button.setOnClickListener(new ElectricDeviceDetailsClickListener());
-        else if (type == 1)
-            button.setOnClickListener(new WaterActivityDetailsClickListener());
-        else
-            button.setOnClickListener(new RefuseProductionDetailsClickListener());
-
-    }
-
-    private void setButtonSelection(ImageButton imageButton, int type, String name){
+    private void setButtonSelectionBackground(ImageButton imageButton, int type, String name){
         if (isSelected(type, name))
             imageButton.setBackground(this.context.getResources().getDrawable(R.drawable.image_button_selection_border));
     }
@@ -146,17 +76,17 @@ public class ImageButtonAdapter extends BaseAdapter{
     private boolean isSelected(int type, String name) {
         switch (type) {
             case 0:
-                if (DataManager.fetchElectricDeviceData().contains(new ElectricDevice(name, 0, 0, 0, 0)))
+                if (DataManager.fetchElectricDeviceData().contains(new ElectricDevice(name)))
                     return true;
                 else
                     return false;
             case 1:
-                if (DataManager.fetchWaterActivityData().contains(new WaterActivity(name, 0, 0)))
+                if (DataManager.fetchWaterActivityData().contains(new WaterActivity(name)))
                     return true;
                 else
                     return false;
             case 2:
-                if (DataManager.fetchRefuseProductionData().contains(new RefuseProduction(name, 0)))
+                if (DataManager.fetchRefuseProductionData().contains(new RefuseProduction(name)))
                     return true;
                 else
                     return false;
