@@ -18,7 +18,7 @@ public class AddElementBasicActivity extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.add_electric_device_basic, menu);
+        getMenuInflater().inflate(R.menu.add_element_basic, menu);
         return true;
     }
 
