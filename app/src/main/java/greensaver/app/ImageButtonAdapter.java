@@ -6,7 +6,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 
+import model.ElectricDevice;
 import model.INamable;
+import model.RefuseProduction;
+import model.WaterActivity;
+import services.DataManager;
 
 public class ImageButtonAdapter extends BaseAdapter{
     private Context context;
@@ -22,11 +26,13 @@ public class ImageButtonAdapter extends BaseAdapter{
 
         if (convertView == null) {
             imageButton = new ImageButton(this.context);
-            NameAndType selection = this.recognizeName(elements[position].getName());
+            String name = elements[position].getName();
+            NameAndType selection = this.recognizeName(name);
             int drawableResourceId = context.getResources().getIdentifier(selection.name, "drawable", context.getPackageName());
             imageButton.setImageResource(drawableResourceId);
             imageButton.setTag(selection.name);
             this.assignOnClickListener(imageButton, selection.type);
+            this.setButtonSelection(imageButton, selection.type, name);
         } else {
             imageButton = (ImageButton) convertView;
         }
@@ -130,6 +136,33 @@ public class ImageButtonAdapter extends BaseAdapter{
         else
             button.setOnClickListener(new RefuseProductionDetailsClickListener());
 
+    }
+
+    private void setButtonSelection(ImageButton imageButton, int type, String name){
+        if (isSelected(type, name))
+            imageButton.setBackground(this.context.getResources().getDrawable(R.drawable.image_button_selection_border));
+    }
+
+    private boolean isSelected(int type, String name) {
+        switch (type) {
+            case 0:
+                if (DataManager.fetchElectricDeviceData().contains(new ElectricDevice(name, 0, 0, 0, 0)))
+                    return true;
+                else
+                    return false;
+            case 1:
+                if (DataManager.fetchWaterActivityData().contains(new WaterActivity(name, 0, 0)))
+                    return true;
+                else
+                    return false;
+            case 2:
+                if (DataManager.fetchRefuseProductionData().contains(new RefuseProduction(name, 0)))
+                    return true;
+                else
+                    return false;
+            default:
+                return false;
+        }
     }
 
 }
