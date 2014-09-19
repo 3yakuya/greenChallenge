@@ -6,21 +6,16 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.SeekBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 
+import model.FullSelection;
+import model.NameAndType;
 import services.DataManager;
 import services.DataSaver;
 
 
-public class AddWaterActivityActivity extends Activity
-        implements SeekBar.OnSeekBarChangeListener {
-
-    private final int[] minWaterUsage = {45, 9, 30, 120, 30, 1, 10, 50};
-    private final int[] maxWaterUsage = {60, 25, 80, 150, 40, 2, 15, 150};
+public class AddWaterActivityActivity extends Activity implements SeekBar.OnSeekBarChangeListener {
 
     private TextView litersUsedBox;
     private TextView timesPerDayBox;
@@ -42,13 +37,13 @@ public class AddWaterActivityActivity extends Activity
             this.selectedActivityName = bundle.getString("selectionName");
         else
             this.selectedActivityName = "washing_machine"; //default.
-        this.selectedActivityNumber = NameAndType.getWaterActivityNumberFromName(selectedActivityName);
-        this.selectedActivityFullName = getResources().getStringArray(R.array.water_activity_spinner_list)[this.selectedActivityNumber];
+        NameAndType selection = NameAndType.recognizeNameAndType(selectedActivityName);
+        this.selectedActivityNumber = selection.getIndex();
+        this.selectedActivityFullName = FullSelection.getInstance().waterActivityNames[selectedActivityNumber];
         this.initializeAllSeekBars();
         this.initializeAllTextBoxes();
         this.prepareAverageValuesForDevice();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -109,11 +104,11 @@ public class AddWaterActivityActivity extends Activity
     }
 
     private int calculateLitersUsedForActivity(int percentage, int activityNumber) {
-        int difference = this.maxWaterUsage[activityNumber]
-                - this.minWaterUsage[activityNumber];
+        int difference = FullSelection.getInstance().maxWaterUsage[activityNumber]
+                - FullSelection.getInstance().minWaterUsage[activityNumber];
         double preciseResult = percentage*difference;
         preciseResult /= 100;
-        preciseResult += minWaterUsage[activityNumber];
+        preciseResult += FullSelection.getInstance().minWaterUsage[activityNumber];
         return (int) Math.round(preciseResult);
     }
 
@@ -129,7 +124,6 @@ public class AddWaterActivityActivity extends Activity
     }
 
     public void addWaterActivity(View v) {
-
         int litersUsed = Integer.parseInt(this.litersUsedBox.getText().toString());
         int timesPerDay = Integer.parseInt(this.timesPerDayBox.getText().toString());
         DataManager.storeWaterActivityData(this.selectedActivityFullName, litersUsed, timesPerDay);

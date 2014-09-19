@@ -1,6 +1,7 @@
 package greensaver.app;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -8,15 +9,12 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import model.FullSelection;
+import model.NameAndType;
 import services.DataManager;
 
 
 public class AddElementBasicActivity extends Activity {
-
-    private final int[] averagePowerConsumptions = {75, 27, 100, 70, 6, 25, 25, 1200};
-    private final int[] averageStandbyPowerConsumptions = {3, 10, 7, 2, 4, 10, 8, 10};
-    private final int[] averageWaterUsage = {50, 12, 50, 130, 35, 1, 12, 100};
-    private final int[] pointValues = {10, 8, 4, 5, 5, 5, 5};
 
     private String selectionFullName;
 
@@ -25,7 +23,7 @@ public class AddElementBasicActivity extends Activity {
     private ImageView basicSettingsElementImage;
 
     private ImageButton smallUsageButton;
-    private ImageButton mediumUsageButton;
+    private ImageButton averageUsageButton;
     private ImageButton largeUsageButton;
 
     @Override
@@ -43,21 +41,19 @@ public class AddElementBasicActivity extends Activity {
         this.setRemoveElementButtonOnClick(selection.getType());
         this.setAdvancedSettingsButtonOnClick(selection);
         this.setSmallUsageButtonOnClick(selection);
+        this.setAverageUsageButtonOnClick(selection);
+        this.setLargeUsageButtonOnClick(selection);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.add_element_basic, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
             return true;
@@ -70,7 +66,7 @@ public class AddElementBasicActivity extends Activity {
         this.removeElementButton = (ImageButton) findViewById(R.id.remove_element_button);
         this.basicSettingsElementImage = (ImageView) findViewById(R.id.basic_settings_element_image);
         this.smallUsageButton = (ImageButton) findViewById(R.id.small_usage_button);
-        this.mediumUsageButton = (ImageButton) findViewById(R.id.medium_usage_button);
+        this.averageUsageButton = (ImageButton) findViewById(R.id.medium_usage_button);
         this.largeUsageButton = (ImageButton) findViewById(R.id.large_usage_button);
     }
 
@@ -86,6 +82,7 @@ public class AddElementBasicActivity extends Activity {
                     @Override
                     public void onClick(View v) {
                         DataManager.removeElectricDevice(selectionFullName);
+                        returnToShowUserActivity();
                     }
                 });
                 break;
@@ -95,6 +92,7 @@ public class AddElementBasicActivity extends Activity {
                     @Override
                     public void onClick(View v) {
                         DataManager.removeWaterActivity(selectionFullName);
+                        returnToShowUserActivity();
                     }
                 });
                 break;
@@ -104,6 +102,7 @@ public class AddElementBasicActivity extends Activity {
                     @Override
                     public void onClick(View v) {
                         DataManager.removeRefuseProduction(selectionFullName);
+                        returnToShowUserActivity();
                     }
                 });
                 break;
@@ -114,7 +113,7 @@ public class AddElementBasicActivity extends Activity {
     }
 
     private void setAdvancedSettingsButtonOnClick(NameAndType selection) {
-        this.advancedSettingsButton.setTag(selection.getName());
+        this.advancedSettingsButton.setTag(selectionFullName);
 
         switch (selection.getType()) {
             case 0:
@@ -140,15 +139,16 @@ public class AddElementBasicActivity extends Activity {
                 this.smallUsageButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        int deviceNumber = NameAndType.getElectricDeviceNumberFromName(selection.getName());
-                        int powerConsumpton = averagePowerConsumptions[deviceNumber];
+                        int deviceNumber = selection.getIndex();
+                        int powerConsumption = getSmallPowerConsumption(deviceNumber);
                         int hoursPerDay = 12;
-                        int standbyPowerConsumption = averageStandbyPowerConsumptions[deviceNumber];
+                        int standbyPowerConsumption = getSmallStandbyPowerConsumption(deviceNumber);
                         int standbyHoursPerDay = 12;
-                        DataManager.storeElectricDeviceData(selectionFullName, powerConsumpton,
+                        DataManager.storeElectricDeviceData(selectionFullName, powerConsumption,
                                 hoursPerDay,
                                 standbyPowerConsumption,
                                 standbyHoursPerDay);
+                        returnToShowUserActivity();
                     }
                 });
                 break;
@@ -157,10 +157,11 @@ public class AddElementBasicActivity extends Activity {
                 this.smallUsageButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        int activityNumber = NameAndType.getWaterActivityNumberFromName(selection.getName());
-                        int litersUsed = averageWaterUsage[activityNumber];
+                        int activityNumber = selection.getIndex();
+                        int litersUsed = getSmallWaterUsage(activityNumber);
                         int timesPerDay = 3;
                         DataManager.storeWaterActivityData(selectionFullName, litersUsed, timesPerDay);
+                        returnToShowUserActivity();
                     }
                 });
                 break;
@@ -169,9 +170,10 @@ public class AddElementBasicActivity extends Activity {
                 this.smallUsageButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        int productionNumber = NameAndType.getRefuseProductionNumberFromName(selection.getName());
-                        int pointValue = pointValues[productionNumber];
+                        int productionNumber = selection.getIndex();
+                        int pointValue = getSmallRefusePointValue(productionNumber);
                         DataManager.storeRefuseProductionData(selectionFullName, pointValue);
+                        returnToShowUserActivity();
                     }
                 });
                 break;
@@ -179,5 +181,175 @@ public class AddElementBasicActivity extends Activity {
             default:
                 break;
         }
+    }
+
+    private void setAverageUsageButtonOnClick(final NameAndType selection) {
+        switch (selection.getType()) {
+            case 0:
+                this.averageUsageButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int deviceNumber = selection.getIndex();
+                        int powerConsumpton = getAveragePowerConsumption(deviceNumber);
+                        int hoursPerDay = 12;
+                        int standbyPowerConsumption = getAverageStandbyPowerConsumption(deviceNumber);
+                        int standbyHoursPerDay = 12;
+                        DataManager.storeElectricDeviceData(selectionFullName, powerConsumpton,
+                                hoursPerDay,
+                                standbyPowerConsumption,
+                                standbyHoursPerDay);
+                        returnToShowUserActivity();
+                    }
+                });
+                break;
+
+            case 1:
+                this.averageUsageButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int activityNumber = selection.getIndex();
+                        int litersUsed = getAverageWaterUsage(activityNumber);
+                        int timesPerDay = 3;
+                        DataManager.storeWaterActivityData(selectionFullName, litersUsed, timesPerDay);
+                        returnToShowUserActivity();
+                    }
+                });
+                break;
+
+            case 2:
+                this.averageUsageButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int productionNumber = selection.getIndex();
+                        int pointValue = getAverageRefusePointValue(productionNumber);
+                        DataManager.storeRefuseProductionData(selectionFullName, pointValue);
+                        returnToShowUserActivity();
+                    }
+                });
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private void setLargeUsageButtonOnClick(final NameAndType selection) {
+        switch (selection.getType()) {
+            case 0:
+                this.largeUsageButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int deviceNumber = selection.getIndex();
+                        int powerConsumpton = getLargePowerConsumption(deviceNumber);
+                        int hoursPerDay = 12;
+                        int standbyPowerConsumption = getLargeStandbyPowerConsumption(deviceNumber);
+                        int standbyHoursPerDay = 12;
+                        DataManager.storeElectricDeviceData(selectionFullName, powerConsumpton,
+                                hoursPerDay,
+                                standbyPowerConsumption,
+                                standbyHoursPerDay);
+                        returnToShowUserActivity();
+                    }
+                });
+                break;
+
+            case 1:
+                this.largeUsageButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int activityNumber = selection.getIndex();
+                        int litersUsed = getLargeWaterUsage(activityNumber);
+                        int timesPerDay = 3;
+                        DataManager.storeWaterActivityData(selectionFullName, litersUsed, timesPerDay);
+                        returnToShowUserActivity();
+                    }
+                });
+                break;
+
+            case 2:
+                this.largeUsageButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int productionNumber = selection.getIndex();
+                        int pointValue = getLargeRefusePointValue(productionNumber);
+                        DataManager.storeRefuseProductionData(selectionFullName, pointValue);
+                        returnToShowUserActivity();
+                    }
+                });
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    private int getSmallPowerConsumption(int deviceNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        return fullSelection.minPowerConsumptions[deviceNumber];
+    }
+
+    private int getAveragePowerConsumption(int deviceNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        int sum = fullSelection.minPowerConsumptions[deviceNumber] + fullSelection.maxPowerConsumptions[deviceNumber];
+        return (int)(sum/2);
+    }
+
+    private int getLargePowerConsumption(int deviceNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        return fullSelection.maxPowerConsumptions[deviceNumber];
+    }
+
+    private int getSmallStandbyPowerConsumption(int deviceNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        return fullSelection.minStandbyPowerConsumptions[deviceNumber];
+    }
+
+    private int getAverageStandbyPowerConsumption(int deviceNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        int sum = fullSelection.minStandbyPowerConsumptions[deviceNumber] + fullSelection.maxStandbyPowerConsumptions[deviceNumber];
+        return (int) (sum/2);
+    }
+
+    private int getLargeStandbyPowerConsumption(int deviceNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        return fullSelection.maxPowerConsumptions[deviceNumber];
+    }
+
+    private int getSmallWaterUsage(int activityNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        return fullSelection.minWaterUsage[activityNumber];
+    }
+
+    private int getAverageWaterUsage(int activityNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        int sum = fullSelection.minWaterUsage[activityNumber] + fullSelection.maxWaterUsage[activityNumber];
+        return (int) (sum/2);
+    }
+
+    private int getLargeWaterUsage(int activityNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        return fullSelection.maxWaterUsage[activityNumber];
+    }
+
+    private int getSmallRefusePointValue(int productionNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        int pointValue = fullSelection.refusePointValues[productionNumber];
+        return (int) (pointValue*0.33);
+    }
+
+    private int getAverageRefusePointValue(int productionNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        int pointValue = fullSelection.refusePointValues[productionNumber];
+        return (int) (pointValue*0.66);
+    }
+
+    private int getLargeRefusePointValue(int productionNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        return fullSelection.refusePointValues[productionNumber];
+    }
+
+    private void returnToShowUserActivity() {
+        Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
+        startActivity(intent);
     }
 }

@@ -6,25 +6,17 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 
+import model.FullSelection;
+import model.NameAndType;
 import services.DataManager;
 import services.DataSaver;
 
 
-public class AddElectricDeviceActivity extends Activity
-        implements SeekBar.OnSeekBarChangeListener {
-
-    private final int[] minPowerConsumptions = {50, 5, 30, 5, 3, 5, 10, 650};
-    private final int[] maxPowerConsumptions = {100, 50, 300, 170, 10, 45, 40, 1750};
-    private final int[] minStandbyPowerConsumptions = {1, 1, 1, 0, 3, 3, 5, 1};
-    private final int[] maxStandbyPowerConsumptions = {6, 25, 98, 5, 8, 40, 15, 40};
+public class AddElectricDeviceActivity extends Activity implements SeekBar.OnSeekBarChangeListener {
 
     private boolean isRunningStandby = true;
 
@@ -50,13 +42,13 @@ public class AddElectricDeviceActivity extends Activity
             this.selectedDeviceName = bundle.getString("selectionName");
         else
             this.selectedDeviceName = "tv"; //default.
-        this.selectedDeviceNumber = NameAndType.getElectricDeviceNumberFromName(selectedDeviceName);
-        this.selectedDeviceFullName = getResources().getStringArray(R.array.electric_device_spinner_list)[this.selectedDeviceNumber];
+        NameAndType selection = NameAndType.recognizeNameAndType(selectedDeviceName);
+        this.selectedDeviceNumber = selection.getIndex();
+        this.selectedDeviceFullName = FullSelection.getInstance().electricDeviceNames[selectedDeviceNumber];
         this.initializeAllSeekBars();
         this.initializeAllTextBoxes();
         this.prepareAverageValuesForDevice();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -123,20 +115,22 @@ public class AddElectricDeviceActivity extends Activity
     }
 
     private int calculatePowerForDevice(int percentage, int deviceNumber) {
-        int difference = this.maxPowerConsumptions[deviceNumber]
-                - this.minPowerConsumptions[deviceNumber];
+        FullSelection fullSelection = FullSelection.getInstance();
+        int difference = fullSelection.maxPowerConsumptions[deviceNumber]
+                - fullSelection.minPowerConsumptions[deviceNumber];
         double preciseResult = percentage*difference;
         preciseResult /= 100;
-        preciseResult += minPowerConsumptions[deviceNumber];
+        preciseResult += fullSelection.minPowerConsumptions[deviceNumber];
         return (int) Math.round(preciseResult);
     }
 
     private int calculateStandbyPowerForDevice(int percentage, int deviceNumber) {
-        int difference = this.maxStandbyPowerConsumptions[deviceNumber]
-                - this.minStandbyPowerConsumptions[deviceNumber];
+        FullSelection fullSelection = FullSelection.getInstance();
+        int difference = fullSelection.maxStandbyPowerConsumptions[deviceNumber]
+                - fullSelection.minStandbyPowerConsumptions[deviceNumber];
         double preciseResult = percentage*difference;
         preciseResult /= 100;
-        preciseResult += minStandbyPowerConsumptions[deviceNumber];
+        preciseResult += fullSelection.minStandbyPowerConsumptions[deviceNumber];
         return (int) Math.round(preciseResult);
     }
 
@@ -186,5 +180,4 @@ public class AddElectricDeviceActivity extends Activity
         else
             return 0;
     }
-
 }

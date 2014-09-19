@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 
 import model.ElectricDevice;
 import model.INamable;
+import model.NameAndType;
 import model.RefuseProduction;
 import model.WaterActivity;
 import services.DataManager;
@@ -38,7 +39,6 @@ public class ImageButtonAdapter extends BaseAdapter{
             imageButton = (ImageButton) convertView;
         }
         imageButton.setId(position);
-
         return imageButton;
     }
 

@@ -6,18 +6,15 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
 
+import model.FullSelection;
+import model.NameAndType;
 import services.DataManager;
 import services.DataSaver;
 
 
 public class AddRefuseProductionActivity extends Activity {
-
-    private final int[] pointValues = {10, 8, 4, 5, 5, 5, 5};
 
     private TextView pointValueBox;
     private TextView refuseProductionNameBox;
@@ -36,8 +33,9 @@ public class AddRefuseProductionActivity extends Activity {
             this.selectedProductionName = bundle.getString("selectionName");
         else
             this.selectedProductionName = "segregation"; //default.
-        this.selectedProductionNumber = NameAndType.getRefuseProductionNumberFromName(selectedProductionName);
-        this.selectedProductionFullName = getResources().getStringArray(R.array.refuse_production_spinner_list)[this.selectedProductionNumber];
+        NameAndType selection = NameAndType.recognizeNameAndType(selectedProductionName);
+        this.selectedProductionNumber = selection.getIndex();
+        this.selectedProductionFullName = FullSelection.getInstance().electricDeviceNames[selectedProductionNumber];
         this.initializeAllTextBoxes();
     }
 
@@ -59,7 +57,8 @@ public class AddRefuseProductionActivity extends Activity {
 
     private void initializeAllTextBoxes() {
         this.pointValueBox = (TextView) findViewById(R.id.refuse_production_point_value_box);
-        this.pointValueBox.setText(Integer.toString(pointValues[this.selectedProductionNumber]));
+        int refusePointValue = FullSelection.getInstance().refusePointValues[this.selectedProductionNumber];
+        this.pointValueBox.setText(Integer.toString(refusePointValue));
         this.refuseProductionNameBox = (TextView) findViewById(R.id.refuse_production_name_box);
         this.refuseProductionNameBox.setText(this.selectedProductionFullName);
     }
