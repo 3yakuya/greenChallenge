@@ -41,8 +41,12 @@ public class FullSelection {
     public final int[] maxPowerConsumptions = {100, 50, 300, 170, 10, 45, 40, 1750};
     public final int[] minStandbyPowerConsumptions = {1, 1, 1, 0, 3, 3, 5, 1};
     public final int[] maxStandbyPowerConsumptions = {6, 25, 98, 5, 8, 40, 15, 40};
+    public final int[] maxDeviceTime = {16, 16, 16, 2, 24, 16, 16, 2};
+    public final int[] minDeviceTime = {1, 1, 1, 0, 1, 1, 1, 0};
     public final int[] minWaterUsage = {45, 9, 30, 120, 30, 1, 10, 50};
     public final int[] maxWaterUsage = {60, 25, 80, 150, 40, 2, 15, 150};
+    public final int[] maxWaterTimesPerDay = {2, 2, 5, 3, 3, 10, 5, 2};
+    public final int[] minWaterTimesPerDay = {1, 1, 1, 1, 1, 3, 2, 0};
     public final int[] refusePointValues = {10, 8, 4, 5, 5, 5, 5};
 
 

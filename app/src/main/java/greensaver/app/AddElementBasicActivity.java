@@ -140,10 +140,10 @@ public class AddElementBasicActivity extends Activity {
                     @Override
                     public void onClick(View v) {
                         int deviceNumber = selection.getIndex();
-                        int powerConsumption = getSmallPowerConsumption(deviceNumber);
-                        int hoursPerDay = 12;
-                        int standbyPowerConsumption = getSmallStandbyPowerConsumption(deviceNumber);
-                        int standbyHoursPerDay = 12;
+                        int powerConsumption = getAveragePowerConsumption(deviceNumber);
+                        int hoursPerDay = getSmallDeviceTime(deviceNumber);
+                        int standbyPowerConsumption = getAverageStandbyPowerConsumption(deviceNumber);
+                        int standbyHoursPerDay = 24 - hoursPerDay;
                         DataManager.storeElectricDeviceData(selectionFullName, powerConsumption,
                                 hoursPerDay,
                                 standbyPowerConsumption,
@@ -158,8 +158,8 @@ public class AddElementBasicActivity extends Activity {
                     @Override
                     public void onClick(View v) {
                         int activityNumber = selection.getIndex();
-                        int litersUsed = getSmallWaterUsage(activityNumber);
-                        int timesPerDay = 3;
+                        int litersUsed = getAverageWaterUsage(activityNumber);
+                        int timesPerDay = getSmallWaterTimesPerDay(activityNumber);
                         DataManager.storeWaterActivityData(selectionFullName, litersUsed, timesPerDay);
                         returnToShowUserActivity();
                     }
@@ -190,11 +190,11 @@ public class AddElementBasicActivity extends Activity {
                     @Override
                     public void onClick(View v) {
                         int deviceNumber = selection.getIndex();
-                        int powerConsumpton = getAveragePowerConsumption(deviceNumber);
-                        int hoursPerDay = 12;
+                        int powerConsumption = getAveragePowerConsumption(deviceNumber);
+                        int hoursPerDay = getAverageDeviceTime(deviceNumber);
                         int standbyPowerConsumption = getAverageStandbyPowerConsumption(deviceNumber);
-                        int standbyHoursPerDay = 12;
-                        DataManager.storeElectricDeviceData(selectionFullName, powerConsumpton,
+                        int standbyHoursPerDay = 24 - hoursPerDay;
+                        DataManager.storeElectricDeviceData(selectionFullName, powerConsumption,
                                 hoursPerDay,
                                 standbyPowerConsumption,
                                 standbyHoursPerDay);
@@ -209,7 +209,7 @@ public class AddElementBasicActivity extends Activity {
                     public void onClick(View v) {
                         int activityNumber = selection.getIndex();
                         int litersUsed = getAverageWaterUsage(activityNumber);
-                        int timesPerDay = 3;
+                        int timesPerDay = getAverageWaterTimesPerDay(activityNumber);
                         DataManager.storeWaterActivityData(selectionFullName, litersUsed, timesPerDay);
                         returnToShowUserActivity();
                     }
@@ -240,11 +240,11 @@ public class AddElementBasicActivity extends Activity {
                     @Override
                     public void onClick(View v) {
                         int deviceNumber = selection.getIndex();
-                        int powerConsumpton = getLargePowerConsumption(deviceNumber);
-                        int hoursPerDay = 12;
-                        int standbyPowerConsumption = getLargeStandbyPowerConsumption(deviceNumber);
-                        int standbyHoursPerDay = 12;
-                        DataManager.storeElectricDeviceData(selectionFullName, powerConsumpton,
+                        int powerConsumption = getAveragePowerConsumption(deviceNumber);
+                        int hoursPerDay = getLargeDeviceTime(deviceNumber);
+                        int standbyPowerConsumption = getAverageStandbyPowerConsumption(deviceNumber);
+                        int standbyHoursPerDay = 24 - hoursPerDay;
+                        DataManager.storeElectricDeviceData(selectionFullName, powerConsumption,
                                 hoursPerDay,
                                 standbyPowerConsumption,
                                 standbyHoursPerDay);
@@ -258,8 +258,8 @@ public class AddElementBasicActivity extends Activity {
                     @Override
                     public void onClick(View v) {
                         int activityNumber = selection.getIndex();
-                        int litersUsed = getLargeWaterUsage(activityNumber);
-                        int timesPerDay = 3;
+                        int litersUsed = getAverageWaterUsage(activityNumber);
+                        int timesPerDay = getLargeWaterTimesPerDay(activityNumber);
                         DataManager.storeWaterActivityData(selectionFullName, litersUsed, timesPerDay);
                         returnToShowUserActivity();
                     }
@@ -283,25 +283,10 @@ public class AddElementBasicActivity extends Activity {
         }
     }
 
-    private int getSmallPowerConsumption(int deviceNumber) {
-        FullSelection fullSelection = FullSelection.getInstance();
-        return fullSelection.minPowerConsumptions[deviceNumber];
-    }
-
     private int getAveragePowerConsumption(int deviceNumber) {
         FullSelection fullSelection = FullSelection.getInstance();
         int sum = fullSelection.minPowerConsumptions[deviceNumber] + fullSelection.maxPowerConsumptions[deviceNumber];
         return (int)(sum/2);
-    }
-
-    private int getLargePowerConsumption(int deviceNumber) {
-        FullSelection fullSelection = FullSelection.getInstance();
-        return fullSelection.maxPowerConsumptions[deviceNumber];
-    }
-
-    private int getSmallStandbyPowerConsumption(int deviceNumber) {
-        FullSelection fullSelection = FullSelection.getInstance();
-        return fullSelection.minStandbyPowerConsumptions[deviceNumber];
     }
 
     private int getAverageStandbyPowerConsumption(int deviceNumber) {
@@ -310,25 +295,10 @@ public class AddElementBasicActivity extends Activity {
         return (int) (sum/2);
     }
 
-    private int getLargeStandbyPowerConsumption(int deviceNumber) {
-        FullSelection fullSelection = FullSelection.getInstance();
-        return fullSelection.maxPowerConsumptions[deviceNumber];
-    }
-
-    private int getSmallWaterUsage(int activityNumber) {
-        FullSelection fullSelection = FullSelection.getInstance();
-        return fullSelection.minWaterUsage[activityNumber];
-    }
-
     private int getAverageWaterUsage(int activityNumber) {
         FullSelection fullSelection = FullSelection.getInstance();
         int sum = fullSelection.minWaterUsage[activityNumber] + fullSelection.maxWaterUsage[activityNumber];
         return (int) (sum/2);
-    }
-
-    private int getLargeWaterUsage(int activityNumber) {
-        FullSelection fullSelection = FullSelection.getInstance();
-        return fullSelection.maxWaterUsage[activityNumber];
     }
 
     private int getSmallRefusePointValue(int productionNumber) {
@@ -346,6 +316,38 @@ public class AddElementBasicActivity extends Activity {
     private int getLargeRefusePointValue(int productionNumber) {
         FullSelection fullSelection = FullSelection.getInstance();
         return fullSelection.refusePointValues[productionNumber];
+    }
+
+    private int getSmallDeviceTime(int deviceNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        return fullSelection.minDeviceTime[deviceNumber];
+    }
+
+    private int getAverageDeviceTime(int deviceNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        int sum = fullSelection.minDeviceTime[deviceNumber] + fullSelection.maxDeviceTime[deviceNumber];
+        return (int) (sum/2);
+    }
+
+    private int getLargeDeviceTime(int deviceNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        return fullSelection.maxDeviceTime[deviceNumber];
+    }
+
+    private int getSmallWaterTimesPerDay(int activityNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        return fullSelection.minWaterTimesPerDay[activityNumber];
+    }
+
+    private int getAverageWaterTimesPerDay(int activityNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        int sum = fullSelection.minWaterTimesPerDay[activityNumber] + fullSelection.maxWaterTimesPerDay[activityNumber];
+        return (int) (sum/2);
+    }
+
+    private int getLargeWaterTimesPerDay(int activityNumber) {
+        FullSelection fullSelection = FullSelection.getInstance();
+        return fullSelection.maxWaterTimesPerDay[activityNumber];
     }
 
     private void returnToShowUserActivity() {
