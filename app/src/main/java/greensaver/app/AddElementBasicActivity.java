@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import model.FullSelection;
 import model.NameAndType;
@@ -19,6 +20,7 @@ public class AddElementBasicActivity extends Activity {
 
     private String selectionFullName;
 
+    private TextView basicSettingsNameBox;
     private ImageButton advancedSettingsButton;
     private ImageButton removeElementButton;
     private ImageView basicSettingsElementImage;
@@ -55,14 +57,12 @@ public class AddElementBasicActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 
     private void initializeAllControls() {
+        this.basicSettingsNameBox = (TextView) findViewById(R.id.basic_settings_name_box);
+        this.basicSettingsNameBox.setText(selectionFullName);
         this.advancedSettingsButton = (ImageButton) findViewById(R.id.advanced_settings_button);
         this.removeElementButton = (ImageButton) findViewById(R.id.remove_element_button);
         this.basicSettingsElementImage = (ImageView) findViewById(R.id.basic_settings_element_image);
