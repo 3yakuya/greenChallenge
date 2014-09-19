@@ -37,7 +37,7 @@ public class AddWaterActivityActivity extends Activity implements SeekBar.OnSeek
             this.selectedActivityName = bundle.getString("selectionName");
         else
             this.selectedActivityName = "washing_machine"; //default.
-        NameAndType selection = NameAndType.recognizeNameAndType(selectedActivityName);
+        NameAndType selection = NameAndType.recognizeNameAndType(selectedActivityName, FullSelection.getInstance());
         this.selectedActivityNumber = selection.getIndex();
         this.selectedActivityFullName = FullSelection.getInstance().waterActivityNames[selectedActivityNumber];
         this.initializeAllSeekBars();

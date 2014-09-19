@@ -33,7 +33,7 @@ public class AddRefuseProductionActivity extends Activity {
             this.selectedProductionName = bundle.getString("selectionName");
         else
             this.selectedProductionName = "segregation"; //default.
-        NameAndType selection = NameAndType.recognizeNameAndType(selectedProductionName);
+        NameAndType selection = NameAndType.recognizeNameAndType(selectedProductionName, FullSelection.getInstance());
         this.selectedProductionNumber = selection.getIndex();
         this.selectedProductionFullName = FullSelection.getInstance().electricDeviceNames[selectedProductionNumber];
         this.initializeAllTextBoxes();

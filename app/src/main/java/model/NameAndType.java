@@ -26,19 +26,19 @@ public class NameAndType {
         return this.index;
     }
 
-    public static NameAndType recognizeNameAndType(String name) {
+    public static NameAndType recognizeNameAndType(String name, FullSelection fullSelection) {
         String lowerCaseName = name.toLowerCase();
         String properName = lowerCaseName.replace(' ', '_');
         int type;
-        int index = Arrays.asList(FullSelection.getInstance().electricDeviceNames).indexOf(name);
+        int index = Arrays.asList(fullSelection.electricDeviceNames).indexOf(name);
         if (index > -1)
             type = 0;
         else {
-            index = Arrays.asList(FullSelection.getInstance().waterActivityNames).indexOf(name);
+            index = Arrays.asList(fullSelection.waterActivityNames).indexOf(name);
             if (index > -1)
                 type = 1;
             else {
-                index = Arrays.asList(FullSelection.getInstance().refuseProductionNames).indexOf(name);
+                index = Arrays.asList(fullSelection.refuseProductionNames).indexOf(name);
                 type = 2;
             }
         }

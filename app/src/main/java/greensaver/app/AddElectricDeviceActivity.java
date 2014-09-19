@@ -42,7 +42,7 @@ public class AddElectricDeviceActivity extends Activity implements SeekBar.OnSee
             this.selectedDeviceName = bundle.getString("selectionName");
         else
             this.selectedDeviceName = "tv"; //default.
-        NameAndType selection = NameAndType.recognizeNameAndType(selectedDeviceName);
+        NameAndType selection = NameAndType.recognizeNameAndType(selectedDeviceName, FullSelection.getInstance());
         this.selectedDeviceNumber = selection.getIndex();
         this.selectedDeviceFullName = FullSelection.getInstance().electricDeviceNames[selectedDeviceNumber];
         this.initializeAllSeekBars();

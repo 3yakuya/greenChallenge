@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 
 import model.ElectricDevice;
+import model.FullSelection;
 import model.INamable;
 import model.NameAndType;
 import model.RefuseProduction;
@@ -29,7 +30,7 @@ public class ImageButtonAdapter extends BaseAdapter{
         if (convertView == null) {
             imageButton = new ImageButton(this.context);
             String name = elements[position].getName();
-            NameAndType selection = NameAndType.recognizeNameAndType(name);
+            NameAndType selection = NameAndType.recognizeNameAndType(name, FullSelection.getInstance());
             int drawableResourceId = context.getResources().getIdentifier(selection.getName(), "drawable", context.getPackageName());
             imageButton.setImageResource(drawableResourceId);
             imageButton.setTag(name);

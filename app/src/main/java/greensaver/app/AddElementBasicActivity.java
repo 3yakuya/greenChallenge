@@ -35,7 +35,7 @@ public class AddElementBasicActivity extends Activity {
             this.selectionFullName = bundle.getString("selectionName");
         else
             this.selectionFullName = "TV"; //default.
-        NameAndType selection = NameAndType.recognizeNameAndType(selectionFullName);
+        NameAndType selection = NameAndType.recognizeNameAndType(selectionFullName, FullSelection.getInstance());
         this.initializeAllControls();
         this.setBasicSettingsElementImage(selection.getName());
         this.setRemoveElementButtonOnClick(selection.getType());
