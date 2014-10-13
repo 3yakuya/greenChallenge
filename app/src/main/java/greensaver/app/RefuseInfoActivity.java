@@ -41,6 +41,7 @@ public class RefuseInfoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_refuse_info);
         this.showInfo();
+        BackgroundHelper.setBackground(this);
     }
 
 

@@ -40,6 +40,7 @@ public class ElectricInfoActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_electric_info);
+        BackgroundHelper.setBackground(this);
         this.showInfo();
     }
 

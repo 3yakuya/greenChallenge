@@ -2,12 +2,16 @@ package greensaver.app;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import model.FullSelection;
@@ -33,6 +37,7 @@ public class AddElementBasicActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_element_basic);
+        BackgroundHelper.setBackground(this);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null)
             this.selectionFullName = bundle.getString("selectionName");

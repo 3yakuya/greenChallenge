@@ -48,6 +48,9 @@ public class FullSelection {
     public final int[] maxWaterTimesPerDay = {2, 2, 5, 3, 3, 10, 5, 2};
     public final int[] minWaterTimesPerDay = {1, 1, 1, 1, 1, 3, 2, 0};
     public final int[] refusePointValues = {10, 8, 4, 5, 5, 5, 5};
+    public final int[] powerLevelLimits = {6000, 3000};
+    public final int[] waterLevelLimits = {160, 100};
+    public final int[] refuseLevelLimits = {14, 30};
 
 
     public ArrayList<ElectricDevice> getAllElectricDevices() {

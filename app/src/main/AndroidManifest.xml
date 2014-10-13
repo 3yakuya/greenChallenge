@@ -86,7 +86,7 @@
         </activity>
         <activity
             android:name=".AddElementBasicActivity"
-            android:label="@string/title_activity_add_electric_device_basic"
+            android:label="@string/title_activity_add_element_basic"
             android:parentActivityName=".ShowUserActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

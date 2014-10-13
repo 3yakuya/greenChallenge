@@ -26,6 +26,7 @@ public class ShowUserActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_user);
+        BackgroundHelper.setBackground(this);
 
         GridView electricDevicesGrid = (GridView) findViewById(R.id.electric_devices_grid);
         GridView waterActivityGrid = (GridView) findViewById(R.id.water_activity_grid);

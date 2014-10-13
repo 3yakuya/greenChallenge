@@ -32,6 +32,7 @@ public class AddWaterActivityActivity extends Activity implements SeekBar.OnSeek
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_water);
+        BackgroundHelper.setBackground(this);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null)
             this.selectedActivityName = bundle.getString("selectionName");

@@ -41,6 +41,7 @@ public class WaterInfoActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water_info);
         this.showInfo();
+        BackgroundHelper.setBackground(this);
     }
 
 

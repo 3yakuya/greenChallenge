@@ -2,11 +2,15 @@ package greensaver.app;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -37,6 +41,7 @@ public class AddElectricDeviceActivity extends Activity implements SeekBar.OnSee
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_electric_device);
+        BackgroundHelper.setBackground(this);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null)
             this.selectedDeviceName = bundle.getString("selectionName");
