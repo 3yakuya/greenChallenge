@@ -6,59 +6,76 @@
     android:background="@drawable/aaa"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingTop="?android:attr/actionBarSize"
     android:paddingBottom="@dimen/activity_bottom_margin"
     android:orientation="vertical"
     android:gravity="center_horizontal"
     tools:context="greensaver.app.AddRefuseProductionActivity">
 
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/refuse_production_name_box"
-        android:layout_gravity="center"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:textAlignment="center"/>
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@drawable/text_border">
+
         <TextView
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:id="@+id/refuse_production_name_box"
+            android:layout_gravity="center"
+            android:padding="15dp"
             android:textStyle="bold"
             android:textSize="20dp"
-            android:textAlignment="center"
-            android:text="Point value:"/>
+            android:textAlignment="center"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:padding="10dp"
+                android:textAlignment="center"
+                android:text="Point value:"/>
+
+            <TextView
+                android:id="@+id/refuse_production_point_value_box"
+                android:layout_weight="0"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:padding="12dp"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:text="@string/zero_value"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
         <TextView
-            android:id="@+id/refuse_production_point_value_box"
-            android:layout_weight="0"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:textSize="20dp"
-            android:text="@string/zero_value"
-            android:textStyle="bold"/>
+            android:padding="15dp"
+            android:text="@string/refuse_production_info"/>
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/add_refuse_production_button"
+            android:id="@+id/add_refuse_production_button"
+            android:onClick="addRefuseProduction"
+            android:layout_marginTop="20dp" />
+
     </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="20dp"
-        android:padding="15dp"
-        android:background="@drawable/text_border"
-        android:text="@string/refuse_production_info"/>
-
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_refuse_production_button"
-        android:id="@+id/add_refuse_production_button"
-        android:onClick="addRefuseProduction"
-        android:layout_marginTop="20dp" />
 
 </LinearLayout>
