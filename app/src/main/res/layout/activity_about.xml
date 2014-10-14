@@ -22,6 +22,7 @@
         android:gravity="center"
         android:textSize="23dp"
         android:textStyle="bold"
+        android:layout_margin="10dp"
         android:background="@drawable/text_border"
         android:text="Daria Folwarska \nContent Manager"/>
 
@@ -35,6 +36,7 @@
         android:gravity="center"
         android:textSize="23dp"
         android:textStyle="bold"
+        android:layout_margin="10dp"
         android:background="@drawable/text_border"
         android:text="Jakub Pilch \nCEO, Programmer"/>
 
@@ -48,6 +50,7 @@
         android:gravity="center"
         android:textSize="23sp"
         android:textStyle="bold"
+        android:layout_margin="10dp"
         android:background="@drawable/text_border"
         android:text="Bartlomiej Flak \nGraphics Designer"/>
 
@@ -61,6 +64,7 @@
         android:gravity="center"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:layout_margin="10dp"
         android:background="@drawable/text_border"
         android:text="Designed and created by Stream\n 2014"/>
 

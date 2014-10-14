@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/electric_device_name_box"
                 android:layout_gravity="center"
+                android:gravity="center"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:padding="15dp"

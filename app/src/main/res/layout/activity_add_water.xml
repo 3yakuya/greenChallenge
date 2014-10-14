@@ -25,6 +25,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/water_activity_name_box"
             android:layout_gravity="center"
+            android:gravity="center"
             android:textStyle="bold"
             android:textSize="20sp"
             android:padding="15dp"
