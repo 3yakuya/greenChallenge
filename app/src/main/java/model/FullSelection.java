@@ -52,6 +52,47 @@ public class FullSelection {
     public final int[] waterLevelLimits = {160, 100};
     public final int[] refuseLevelLimits = {14, 30};
 
+    public final String[] electricTips = {
+            "When selecting electric devices check their energy class.",
+            "If you have a device you rarely use, pull its plug out of an outlet.",
+            "Fridge and freezer should stand as far away from heaters as possible.",
+            "A single bulb gives less light than two bulbs with half as much power each.",
+            "Buy energy saver bulbs for all the rooms you spend a lot of time in.",
+            "If you are going to walk away from your computer for a longer while, put it to sleep.",
+            "More powerful kettles boil water faster and therefore loose less energy.",
+            "Traditional or plasma-screen TVs are much more energy consuming than LED ones.",
+            "Ink printers usually consume much less power than laser ones.",
+            "Turn off the TV if you are not watching it. Do the same with the radio.",
+            "Remember - saving power is not only good for the planet. It is also great for your wallet."
+    };
+    public final String[] waterTips = {
+            "Turn on the washing machine or dishwasher only after it is full, or use energy-saving mode.",
+            "Gather rain water and use it to water the plants.",
+            "Always turn off the tap while brushing your teeth or shaving.",
+            "When washing your car use a sponge and a bucket of water. Use a garden hose only to rinse the car.",
+            "Do not use running water to defrost food (place it in a fridge the night before instead.)",
+            "Don't pour out water you can use to wash something or to water the plants.",
+            "Avoid unnecessary flushing the toilet (for example, after you throw a single tissue in.)",
+            "Water the plants late in the evening to avoid excessive transpiration (this is good for plants too!)",
+            "Fix a leaking tap, check all the valves and gaskets.",
+            "Use a single-handle tap. Using two spigots to regulate temperature wastes both water and time.",
+            "Don't make a mistake to think that water is an infinite resource - it is not."
+    };
+    public final String[] refuseTips = {
+            "Food packagings are usually made of many materials. Segregate them as plastic.",
+            "There is no need to wash empty yoghurt cups - it's just a waste of water.",
+            "Crush plastic bottles, cartons and cans before throwing them away. This will save a lot " +
+                    "of space in the bin.",
+            "When you throw a bottle away, throw its cap and label seperately - it is good for recycling.",
+            "Do not throw diapers, wallpapers or sanitary towels to bins for paper.",
+            "Old batteries, electronic devices or paints should be brought to specialistic points.",
+            "In many countries you pay less if you segregate your waste. Save the environment and money " +
+                    "at once!",
+            "Old windows, windscreens, mirrors, ceramic elements or light bulbs should not be segregated " +
+                    "as glass.",
+            "Do not throw medicine away after its date expired - bring it to a local pharmacy instead."
+    };
+
 
     public ArrayList<ElectricDevice> getAllElectricDevices() {
         return this.electricDevices;

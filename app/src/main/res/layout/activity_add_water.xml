@@ -26,7 +26,7 @@
             android:id="@+id/water_activity_name_box"
             android:layout_gravity="center"
             android:textStyle="bold"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:padding="15dp"
             android:textAlignment="center"/>
 
@@ -34,7 +34,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold"
             android:text="@string/add_water_activity_liters_used"/>
 
@@ -52,7 +52,7 @@
                 android:layout_weight="0"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:text="@string/zero_value"
                 android:textStyle="bold"/>
         </LinearLayout>
@@ -60,7 +60,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:textStyle="bold"
             android:text="@string/add_water_activity_times_per_day"/>
 
@@ -79,7 +79,7 @@
                 android:layout_weight="0"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:textSize="15dp"
+                android:textSize="15sp"
                 android:text="@string/zero_value"
                 android:textStyle="bold"/>
         </LinearLayout>

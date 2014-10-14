@@ -17,20 +17,6 @@ import services.DataManager;
 
 public class WaterInfoActivity extends Activity {
 
-    private final String[] tips = {
-            "Turn on the washing machine or dishwasher only after it is full, or use energy-saving mode.",
-            "Gather rain water and use it to water the plants.",
-            "Always turn off the tap while brushing your teeth or shaving.",
-            "When washing your car use a sponge and a bucket of water. Use a garden hose only to rinse the car.",
-            "Do not use running water to defrost food (place it in a fridge the night before instead.)",
-            "Don't pour out water you can use to wash something or to water the plants.",
-            "Avoid unnecessary flushing the toilet (for example, after you throw a single tissue in.)",
-            "Water the plants late in the evening to avoid excessive transpiration (this is good for plants too!)",
-            "Fix a leaking tap, check all the valves and gaskets.",
-            "Use a single-handle tap. Using two spigots to regulate temperature wastes both water and time.",
-            "Don't make a mistake to think that water is an infinite resource - it is not."
-    };
-
     private TextView waterInfo;
     private TextView waterHint;
     private TextView waterValue;
@@ -64,9 +50,10 @@ public class WaterInfoActivity extends Activity {
         this.waterHint = (TextView) findViewById(R.id.water_hint);
         this.waterValue = (TextView) findViewById(R.id.water_value);
         User user = User.getInstance();
+        FullSelection fullSelection = FullSelection.getInstance();
         this.waterInfo.setText(getUsageInfo());
-        int index = new Random().nextInt(tips.length);
-        this.waterHint.setText(tips[index]);
+        int index = new Random().nextInt(fullSelection.waterTips.length);
+        this.waterHint.setText(fullSelection.waterTips[index]);
         this.waterValue.setText(this.getValue());
         int waterUsage = user.getUserStats().getWaterUsage();
         if (waterUsage > FullSelection.getInstance().waterLevelLimits[0])

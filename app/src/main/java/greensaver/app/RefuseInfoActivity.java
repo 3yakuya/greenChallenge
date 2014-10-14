@@ -16,21 +16,6 @@ import services.DataManager;
 
 public class RefuseInfoActivity extends Activity {
 
-    private final String[] tips = {
-            "Food packagings are usually made of many materials. Segregate them as plastic.",
-            "There is no need to wash empty yoghurt cups - it's just a waste of water.",
-            "Crush plastic bottles, cartons and cans before throwing them away. This will save a lot " +
-                    "of space in the bin.",
-            "When you throw a bottle away, throw its cap and label seperately - it is good for recycling.",
-            "Do not throw diapers, wallpapers or sanitary towels to bins for paper.",
-            "Old batteries, electronic devices or paints should be brought to specialistic points.",
-            "In many countries you pay less if you segregate your waste. Save the environment and money " +
-                    "at once!",
-            "Old windows, windscreens, mirrors, ceramic elements or light bulbs should not be segregated " +
-                    "as glass.",
-            "Do not throw medicine away after its date expired - bring it to a local pharmacy instead."
-    };
-
     private TextView refuseInfo;
     private TextView refuseHint;
     private TextView refuseValue;
@@ -64,9 +49,10 @@ public class RefuseInfoActivity extends Activity {
         this.refuseHint = (TextView) findViewById(R.id.refuse_hint);
         this.refuseValue = (TextView) findViewById(R.id.refuse_value);
         User user = User.getInstance();
+        FullSelection fullSelection = FullSelection.getInstance();
         this.refuseInfo.setText(getUsageInfo());
-        int index = new Random().nextInt(tips.length);
-        this.refuseHint.setText(tips[index]);
+        int index = new Random().nextInt(fullSelection.refuseTips.length);
+        this.refuseHint.setText(fullSelection.refuseTips[index]);
         this.refuseValue.setText(this.getValue());
         int refusePoints = user.getUserStats().getRefuseProductionPoints();
         if (refusePoints < FullSelection.getInstance().refuseLevelLimits[0])

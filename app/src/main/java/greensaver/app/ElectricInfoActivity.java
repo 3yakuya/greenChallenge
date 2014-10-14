@@ -17,20 +17,6 @@ import services.DataManager;
 
 public class ElectricInfoActivity extends Activity {
 
-    private final String[] tips = {
-            "When selecting electric devices check their energy class.",
-            "If you have a device you rarely use, pull its plug out of an outlet.",
-            "Fridge and freezer should stand as far away from heaters as possible.",
-            "A single bulb gives less light than two bulbs with half as much power each.",
-            "Buy energy saver bulbs for all the rooms you spend a lot of time in.",
-            "If you are going to walk away from your computer for a longer while, put it to sleep.",
-            "More powerful kettles boil water faster and therefore loose less energy.",
-            "Traditional or plasma-screen TVs are much more energy consuming than LED ones.",
-            "Ink printers usually consume much less power than laser ones.",
-            "Turn off the TV if you are not watching it. Do the same with the radio.",
-            "Remember - saving power is not only good for the planet. It is also great for your wallet."
-    };
-
     private TextView electricInfo;
     private TextView electricHint;
     private TextView electricValue;
@@ -65,9 +51,10 @@ public class ElectricInfoActivity extends Activity {
         this.electricHint = (TextView) findViewById(R.id.electric_hint);
         this.electricValue = (TextView) findViewById(R.id.electric_value);
         User user = User.getInstance();
+        FullSelection fullSelection = FullSelection.getInstance();
         this.electricInfo.setText(getUsageInfo());
-        int index = new Random().nextInt(tips.length);
-        this.electricHint.setText(tips[index]);
+        int index = new Random().nextInt(fullSelection.electricTips.length);
+        this.electricHint.setText(fullSelection.electricTips[index]);
         this.electricValue.setText(this.getValue());
         int powerUsage = user.getUserStats().getPowerUsage();
         if (powerUsage > FullSelection.getInstance().powerLevelLimits[0])
