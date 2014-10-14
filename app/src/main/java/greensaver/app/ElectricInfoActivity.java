@@ -10,13 +10,12 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 import java.util.Random;
 
+import model.FullSelection;
 import model.User;
 import services.DataManager;
 
 
 public class ElectricInfoActivity extends Activity {
-
-    private final int[] powerLimits = {6000, 3000};
 
     private final String[] tips = {
             "When selecting electric devices check their energy class.",
@@ -71,9 +70,9 @@ public class ElectricInfoActivity extends Activity {
         this.electricHint.setText(tips[index]);
         this.electricValue.setText(this.getValue());
         int powerUsage = user.getUserStats().getPowerUsage();
-        if (powerUsage > this.powerLimits[0])
+        if (powerUsage > FullSelection.getInstance().powerLevelLimits[0])
             electricValue.setTextColor(Color.parseColor("#FF0000"));
-        else if (powerUsage > this.powerLimits[1])
+        else if (powerUsage > FullSelection.getInstance().powerLevelLimits[1])
             electricValue.setTextColor(Color.parseColor("#FCC800"));
         else
             electricValue.setTextColor(Color.parseColor("#00FF00"));

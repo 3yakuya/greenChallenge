@@ -10,13 +10,12 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 import java.util.Random;
 
+import model.FullSelection;
 import model.User;
 import services.DataManager;
 
 
 public class WaterInfoActivity extends Activity {
-
-    private final int[] waterLimits = {160, 100};
 
     private final String[] tips = {
             "Turn on the washing machine or dishwasher only after it is full, or use energy-saving mode.",
@@ -70,9 +69,9 @@ public class WaterInfoActivity extends Activity {
         this.waterHint.setText(tips[index]);
         this.waterValue.setText(this.getValue());
         int waterUsage = user.getUserStats().getWaterUsage();
-        if (waterUsage > this.waterLimits[0])
+        if (waterUsage > FullSelection.getInstance().waterLevelLimits[0])
             waterValue.setTextColor(Color.parseColor("#FF0000"));
-        else if (waterUsage > this.waterLimits[1])
+        else if (waterUsage > FullSelection.getInstance().waterLevelLimits[1])
             waterValue.setTextColor(Color.parseColor("#FCC800"));
         else
             waterValue.setTextColor(Color.parseColor("#00FF00"));

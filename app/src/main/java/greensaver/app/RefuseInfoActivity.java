@@ -9,13 +9,12 @@ import android.widget.TextView;
 
 import java.util.Random;
 
+import model.FullSelection;
 import model.User;
 import services.DataManager;
 
 
 public class RefuseInfoActivity extends Activity {
-
-    private final int[] refuseLimits = {14, 30};
 
     private final String[] tips = {
             "Food packagings are usually made of many materials. Segregate them as plastic.",
@@ -70,9 +69,9 @@ public class RefuseInfoActivity extends Activity {
         this.refuseHint.setText(tips[index]);
         this.refuseValue.setText(this.getValue());
         int refusePoints = user.getUserStats().getRefuseProductionPoints();
-        if (refusePoints < this.refuseLimits[0])
+        if (refusePoints < FullSelection.getInstance().refuseLevelLimits[0])
             refuseValue.setTextColor(Color.parseColor("#FF0000"));
-        else if (refusePoints < this.refuseLimits[1])
+        else if (refusePoints < FullSelection.getInstance().refuseLevelLimits[1])
             refuseValue.setTextColor(Color.parseColor("#FCC800"));
         else
             refuseValue.setTextColor(Color.parseColor("#00FF00"));
