@@ -15,7 +15,7 @@ class BackgroundHelper {
     public static void setBackground(Activity activity) {
         View layout = activity.findViewById(R.id.background);
         final BitmapFactory.Options blurOptions = new BitmapFactory.Options();
-        blurOptions.inSampleSize = 12;
+        blurOptions.inSampleSize = 15;
         Bitmap blurTemplate = BitmapFactory.decodeResource(activity.getResources(), BackgroundHelper.selectBackgroundImage(), blurOptions);
         BitmapDrawable drawableBackground = new BitmapDrawable(blurTemplate);
         layout.setBackground(drawableBackground);
