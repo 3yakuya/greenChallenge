@@ -27,8 +27,7 @@
             android:gravity="center"
             android:padding="15dp"
             android:textStyle="bold"
-            android:textSize="20dp"
-            android:textAlignment="center"/>
+            android:textSize="30sp"/>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -42,7 +41,8 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="20sp"
+                android:gravity="center"
                 android:padding="10dp"
                 android:text="Point value:"/>
 
@@ -52,8 +52,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:gravity="center"
-                android:textSize="20dp"
-                android:textAlignment="center"
+                android:textSize="20sp"
                 android:text="@string/zero_value"
                 android:textStyle="bold"/>
         </LinearLayout>
@@ -61,8 +60,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:textSize="20dp"
+            android:gravity="center"
+            android:textSize="20sp"
             android:padding="15dp"
             android:text="@string/refuse_production_info"/>
 
@@ -73,8 +72,7 @@
             android:padding="10dp"
             android:text="@string/add_refuse_production_button"
             android:id="@+id/add_refuse_production_button"
-            android:onClick="addRefuseProduction"
-            android:layout_marginTop="20dp" />
+            android:onClick="addRefuseProduction" />
 
     </LinearLayout>
 

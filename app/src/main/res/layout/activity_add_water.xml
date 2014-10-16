@@ -28,9 +28,8 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:textStyle="bold"
-            android:textSize="20sp"
-            android:padding="15dp"
-            android:textAlignment="center"/>
+            android:textSize="30sp"
+            android:padding="15dp"/>
 
 
         <TextView
@@ -91,8 +90,7 @@
             android:layout_height="wrap_content"
             android:text="@string/add_water_activity_button"
             android:id="@+id/add_electric_device_button"
-            android:onClick="addWaterActivity"
-            android:layout_marginTop="20dp" />
+            android:onClick="addWaterActivity" />
 
     </LinearLayout>
 
