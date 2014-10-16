@@ -33,8 +33,8 @@ public class FullSelection {
             "Brushing teeth and shaving", "Washing the car"
     };
     public final String[] refuseProductionNames = {
-            "Segregation", "Plastic bags", "Pressing bottles", "Medicine", "Batteries and bulbs",
-            "Household facilities", "Big size waste"
+            "General segregation", "Multi use bags", "Pressing bottles", "Disposing medicine", " Disposing batteries and bulbs",
+            "Disposing household facilities", "Disposing big size waste"
     };
 
     public final int[] minPowerConsumptions = {50, 5, 30, 5, 3, 5, 10, 650};
@@ -43,14 +43,14 @@ public class FullSelection {
     public final int[] maxStandbyPowerConsumptions = {6, 25, 98, 5, 8, 40, 15, 40};
     public final int[] maxDeviceTime = {16, 16, 16, 2, 24, 16, 16, 2};
     public final int[] minDeviceTime = {1, 1, 1, 0, 1, 1, 1, 0};
-    public final int[] minWaterUsage = {45, 9, 30, 120, 30, 1, 10, 50};
-    public final int[] maxWaterUsage = {60, 25, 80, 150, 40, 2, 15, 150};
+    public final int[] minWaterUsage = {35, 9, 10, 40, 10, 1, 1, 50};
+    public final int[] maxWaterUsage = {60, 30, 80, 120, 40, 2, 15, 150};
     public final int[] maxWaterTimesPerDay = {2, 2, 5, 3, 3, 10, 5, 2};
     public final int[] minWaterTimesPerDay = {1, 1, 1, 1, 1, 3, 2, 0};
     public final int[] refusePointValues = {10, 8, 4, 5, 5, 5, 5};
     public final int[] powerLevelLimits = {6000, 3000};
     public final int[] waterLevelLimits = {160, 100};
-    public final int[] refuseLevelLimits = {14, 30};
+    public final int[] refuseLevelLimits = {14, 28};
 
     public final String[] electricTips = {
             "When selecting electric devices check their energy class.",
@@ -90,7 +90,9 @@ public class FullSelection {
                     "at once!",
             "Old windows, windscreens, mirrors, ceramic elements or light bulbs should not be segregated " +
                     "as glass.",
-            "Do not throw medicine away after its date expired - bring it to a local pharmacy instead."
+            "Do not throw disposing_medicine away after its date expired - bring it to a local pharmacy instead.",
+            "If you are unsure what to do with some kind of rubbish or waste, " +
+            "check it online. Intuition is not a good advisor here."
     };
 
 

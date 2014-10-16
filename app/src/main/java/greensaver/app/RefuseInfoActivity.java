@@ -76,9 +76,7 @@ public class RefuseInfoActivity extends Activity {
         DataManager.prepareUserStats();
         int refusePoints = user.getUserStats().getRefuseProductionPoints();
         String info = "Your way of dealing with waste was graded for " + refusePoints + " points.";
-        info = info.concat("\n\n The more points the better for the environment.");
-        info = info.concat("\n\nIf you are unsure what to do with some kind of rubbish or waste, " +
-                "check it online. Intuition is not a good advisor here.");
+        info = info.concat(" In short: the more points the better for the environment.");
         info = info.concat("\n\nCheck the tip below to see how to deal with different kinds of waste.");
         return info;
     }

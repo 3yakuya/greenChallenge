@@ -29,7 +29,7 @@ public class NameAndTypeTest extends InstrumentationTestCase {
         FullSelection fullSelection = FullSelection.getInstance();
         String name = fullSelection.refuseProductionNames[5];
         NameAndType one = NameAndType.recognizeNameAndType(name, fullSelection);
-        assertEquals(one.getName(), "household_facilities");
+        assertEquals(one.getName(), "disposing_household_facilities");
         assertEquals(one.getType(), 2);
         assertEquals(fullSelection.refuseProductionNames[one.getIndex()], name);
     }
