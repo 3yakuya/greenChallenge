@@ -9,13 +9,12 @@
     android:id="@+id/background"
     android:background="@drawable/aaa"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
+    android:gravity="center"
     tools:context="greensaver.app.AddElectricDeviceActivity">
 
     <ScrollView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="fill_parent"

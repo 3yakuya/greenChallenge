@@ -9,7 +9,7 @@
     android:paddingTop="?android:attr/actionBarSize"
     android:paddingBottom="@dimen/activity_bottom_margin"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
+    android:gravity="center"
     tools:context="greensaver.app.AddRefuseProductionActivity">
 
     <LinearLayout
