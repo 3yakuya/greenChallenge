@@ -79,17 +79,11 @@ public class ElectricInfoActivity extends Activity {
         DataManager.prepareUserStats();
         int powerUsage = user.getUserStats().getPowerUsage();
         int standbyPowerUsage = user.getUserStats().getStandbyPowerUsage();
-        DecimalFormat decimalFormat = new DecimalFormat("0.00");
-        double approximateCost = (powerUsage/1000.0) * 0.16;
         String info = "Basic devices you selected consume approximately " + powerUsage + " Wh per day.";
         info = info.concat("This includes " + standbyPowerUsage + " Wh used by stand-by devices.");
-        info = info.concat("\n\nAll this devices' power consumption costs approx. " +
-                decimalFormat.format(approximateCost) + " USD per day.");
         if (standbyPowerUsage > 600) {
-            double approximateStandbyCost = (standbyPowerUsage/1000.0) * 0.16;
-            info = info.concat("\n\nYour devices remaining in stand-by mode cost you approx. " +
-                    decimalFormat.format(approximateStandbyCost) + "USD per day.");
             info = info.concat("\n\nCheck if you really need your devices to run stand-by.");
+            info = info.concat("\n\nConsider investing in energy-saving devices.");
         }
         return info;
     }

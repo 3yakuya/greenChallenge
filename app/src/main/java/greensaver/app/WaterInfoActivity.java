@@ -76,17 +76,8 @@ public class WaterInfoActivity extends Activity {
         User user = User.getInstance();
         DataManager.prepareUserStats();
         int waterUsage = user.getUserStats().getWaterUsage();
-        DecimalFormat decimalFormat = new DecimalFormat("0.00");
-        double approximateCost = (waterUsage/1000.0) * 1.28;
         String info = "Every day you use about " + waterUsage + " liters of water.";
-        info = info.concat("\n\nThis used water cost you approx. " +
-                decimalFormat.format(approximateCost) + " USD per day.");
-        double approximateCost2 = (waterUsage/1000.0) * 2.26;
-        info = info.concat("\n\nIf you use public sewage system, total cost of the water you use" +
-                " every day is increased by approx. " + decimalFormat.format(approximateCost2) + " USD.");
-        info = info.concat("  This gives you a total of " +
-                decimalFormat.format(approximateCost2 + approximateCost) + " USD every day.");
-        info = info.concat("\n\nCheck the tip below to see how you can save water.");
+        info = info.concat("\n\nCheck the tip below to see how you can save it.");
         return info;
     }
 }

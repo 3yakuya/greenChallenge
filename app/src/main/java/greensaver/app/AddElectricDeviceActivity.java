@@ -2,15 +2,11 @@ package greensaver.app;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -53,6 +49,7 @@ public class AddElectricDeviceActivity extends Activity implements SeekBar.OnSee
         this.initializeAllSeekBars();
         this.initializeAllTextBoxes();
         this.prepareAverageValuesForDevice();
+        this.setStandbyButton();
     }
 
     @Override
@@ -167,8 +164,14 @@ public class AddElectricDeviceActivity extends Activity implements SeekBar.OnSee
 
     public void setStandby(View v) {
         this.isRunningStandby = !this.isRunningStandby;
+        this.setStandbyButton();
+    }
+
+    private void setStandbyButton() {
         ImageButton setStandbyButton = (ImageButton) findViewById(R.id.set_standby_button);
         TextView setStandbyBox = (TextView) findViewById(R.id.set_standby_box);
+        setStandbyButton.setMinimumHeight(20);
+        setStandbyButton.setMinimumWidth(20);
         if (this.isRunningStandby) {
             setStandbyButton.setImageResource(R.drawable.standby_on);
             setStandbyBox.setText(R.string.standby_on);
