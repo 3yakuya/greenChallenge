@@ -33,7 +33,7 @@ public class FullSelection {
             "Brushing teeth and shaving", "Washing the car"
     };
     public final String[] refuseProductionNames = {
-            "General segregation", "Multi use bags", "Pressing bottles", "Disposing medicine", " Disposing batteries and bulbs",
+            "General segregation", "Multi use bags", "Pressing bottles", "Disposing medicine", "Disposing batteries and bulbs",
             "Disposing household facilities", "Disposing big size waste"
     };
 

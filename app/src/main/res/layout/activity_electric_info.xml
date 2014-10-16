@@ -18,7 +18,7 @@
         android:layout_height="fill_parent"
         android:layout_marginTop="22dp"
         android:padding="15dp"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:gravity="center"
         android:layout_weight="1"
         android:background="@drawable/text_border"/>
@@ -43,7 +43,7 @@
         android:layout_marginTop="10dp"
         android:padding="15dp"
         android:layout_weight="1"
-        android:textSize="23sp"
+        android:textSize="20sp"
         android:gravity="center"
         android:background="@drawable/text_border"/>
 

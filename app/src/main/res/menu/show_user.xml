@@ -1,9 +1,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="greensaver.app.ShowUserActivity" >
 
     <item android:id="@+id/reset_all_user_elements"
         android:title="@string/reset_button"
-        app:showAsAction="never"/>
+        android:showAsAction="never"/>
 </menu>

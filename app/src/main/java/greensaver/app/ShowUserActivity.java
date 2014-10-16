@@ -1,16 +1,11 @@
 package greensaver.app;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.PopupWindow;
 
 import java.util.ArrayList;
 
@@ -18,8 +13,6 @@ import model.ElectricDevice;
 import model.FullSelection;
 import model.RefuseProduction;
 import model.WaterActivity;
-import services.DataManager;
-import services.DataSaver;
 
 
 public class ShowUserActivity extends Activity {

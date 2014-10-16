@@ -7,7 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import java.text.DecimalFormat;
 import java.util.Random;
 
 import model.FullSelection;
@@ -80,11 +79,7 @@ public class ElectricInfoActivity extends Activity {
         int powerUsage = user.getUserStats().getPowerUsage();
         int standbyPowerUsage = user.getUserStats().getStandbyPowerUsage();
         String info = "Basic devices you selected consume approximately " + powerUsage + " Wh per day.";
-        info = info.concat("This includes " + standbyPowerUsage + " Wh used by stand-by devices.");
-        if (standbyPowerUsage > 600) {
-            info = info.concat("\n\nCheck if you really need your devices to run stand-by.");
-            info = info.concat("\n\nConsider investing in energy-saving devices.");
-        }
+        info = info.concat("\nThis includes " + standbyPowerUsage + " Wh used by ones running stand-by.");
         return info;
     }
 }
