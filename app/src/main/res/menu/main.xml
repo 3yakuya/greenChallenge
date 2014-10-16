@@ -3,7 +3,7 @@
     tools:context="greensaver.app.MainActivity" >
 
     <item android:id="@+id/action_show_user"
-        android:icon="@drawable/prad"
+        android:icon="@drawable/home"
         android:title="@string/show_user"
         android:orderInCategory="0"
         android:showAsAction="always"/>

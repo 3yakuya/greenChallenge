@@ -53,6 +53,7 @@
                 android:layout_weight="0"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:gravity="center"
                 android:textSize="15sp"
                 android:text="@string/zero_value"
                 android:textStyle="bold"/>
@@ -80,6 +81,7 @@
                 android:layout_weight="0"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:gravity="center"
                 android:textSize="15sp"
                 android:text="@string/zero_value"
                 android:textStyle="bold"/>
