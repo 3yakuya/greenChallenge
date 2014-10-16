@@ -15,7 +15,7 @@ import model.RefuseProduction;
 import model.WaterActivity;
 import services.DataManager;
 
-public class ImageButtonAdapter extends BaseAdapter{
+class ImageButtonAdapter extends BaseAdapter{
     private Context context;
     private INamable[] elements;
 

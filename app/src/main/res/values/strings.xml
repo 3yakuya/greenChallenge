@@ -76,4 +76,8 @@
     <string name="title_activity_about">About</string>
     <string name="title_activity_add_element_basic">Basic properties</string>
 
+    <string name="reset_dialog_message">This will erase all your settings.</string>
+    <string name="reset">Reset</string>
+    <string name="cancel">Cancel</string>
+
 </resources>
