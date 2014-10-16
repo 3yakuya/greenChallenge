@@ -118,7 +118,8 @@
 
             <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center">
 
                 <TextView
                     android:id="@+id/set_standby_box"
@@ -137,7 +138,7 @@
                     android:layout_height="50dp"
                     android:id="@+id/set_standby_button"
                     android:layout_gravity="top"
-                    android:background="@drawable/prad"
+                    android:background="@drawable/standby_on"
                     android:layout_marginLeft="50dp"
                     android:onClick="setStandby"
                     android:layout_marginTop="20dp" />

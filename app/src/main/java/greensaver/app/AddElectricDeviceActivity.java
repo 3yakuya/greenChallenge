@@ -169,11 +169,11 @@ public class AddElectricDeviceActivity extends Activity implements SeekBar.OnSee
         this.isRunningStandby = !this.isRunningStandby;
         ImageButton setStandbyButton = (ImageButton) findViewById(R.id.set_standby_button);
         TextView setStandbyBox = (TextView) findViewById(R.id.set_standby_box);
-        if (this.isRunningStandby) {        //TODO Change button images to proper ones standby on/off.
-            setStandbyButton.setImageResource(R.drawable.prad);
+        if (this.isRunningStandby) {
+            setStandbyButton.setImageResource(R.drawable.standby_on);
             setStandbyBox.setText(R.string.standby_on);
         } else {
-            setStandbyButton.setImageResource(R.drawable.woda);
+            setStandbyButton.setImageResource(R.drawable.standby_off);
             setStandbyBox.setText(R.string.standby_off);
         }
     }

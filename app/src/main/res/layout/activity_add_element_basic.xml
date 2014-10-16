@@ -45,18 +45,22 @@
                     android:id="@+id/advanced_settings_button"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/ic_launcher"/>
+                    android:layout_margin="10dp"
+                    android:background="@drawable/advanced_settings"/>
 
                 <ImageView
                     android:id="@+id/basic_settings_element_image"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:minHeight="200dp"
+                    android:minWidth="200dp"/>
 
                 <ImageButton
                     android:id="@+id/remove_element_button"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/ic_launcher"/>
+                    android:layout_margin="10dp"
+                    android:background="@drawable/delete"/>
 
             </LinearLayout>
 
@@ -71,17 +75,20 @@
                     android:id="@+id/small_usage_button"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/ic_launcher"/>
+                    android:layout_margin="15dp"
+                    android:background="@drawable/low_usage"/>
                 <ImageButton
                     android:id="@+id/medium_usage_button"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/ic_launcher"/>
+                    android:layout_margin="15dp"
+                    android:background="@drawable/mid_usage"/>
                 <ImageButton
                     android:id="@+id/large_usage_button"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:background="@drawable/ic_launcher"/>
+                    android:layout_margin="15dp"
+                    android:background="@drawable/hi_usage"/>
 
             </LinearLayout>
 
