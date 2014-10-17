@@ -90,7 +90,7 @@ public class FullSelection {
                     "at once!",
             "Old windows, windscreens, mirrors, ceramic elements or light bulbs should not be segregated " +
                     "as glass.",
-            "Do not throw disposing_medicine away after its date expired - bring it to a local pharmacy instead.",
+            "Do not throw medicine away after its date expired - bring it to a local pharmacy instead.",
             "If you are unsure what to do with some kind of rubbish or waste, " +
             "check it online. Intuition is not a good advisor here."
     };
