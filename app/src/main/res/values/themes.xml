@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="GreenSaverTheme"
+    <style name="GreenfoTheme"
         parent="@android:style/Theme.Holo.Light.DarkActionBar">
-        <item name="android:actionBarStyle">@style/GreenSaverActionBar</item>
+        <item name="android:actionBarStyle">@style/GreenfoActionBar</item>
         <item name="android:windowActionBarOverlay">true</item>
     </style>
 
 
-    <style name="GreenSaverActionBar"
+    <style name="GreenfoActionBar"
         parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
         <item name="android:background">#64000000</item>
     </style>
