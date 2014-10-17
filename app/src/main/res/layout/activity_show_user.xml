@@ -8,7 +8,7 @@
     android:paddingBottom="@dimen/activity_bottom_margin"
     android:id="@+id/background"
     android:background="@drawable/aaa"
-    tools:context="greensaver.app.ShowUserActivity">
+    tools:context="greenfo.app.ShowUserActivity">
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -29,13 +29,13 @@
                 android:padding="10dp"
                 android:text="@string/electric_device_list"/>
 
-            <greensaver.app.ExpandableGridView
+            <greenfo.app.ExpandableGridView
                 android:id="@+id/electric_devices_grid"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:numColumns="2" >
 
-            </greensaver.app.ExpandableGridView>
+            </greenfo.app.ExpandableGridView>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -46,13 +46,13 @@
                 android:padding="10dp"
                 android:text="@string/water_activity_list"/>
 
-            <greensaver.app.ExpandableGridView
+            <greenfo.app.ExpandableGridView
                 android:id="@+id/water_activity_grid"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:numColumns="2">
 
-            </greensaver.app.ExpandableGridView>
+            </greenfo.app.ExpandableGridView>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -63,13 +63,13 @@
                 android:padding="10dp"
                 android:text="@string/refuse_production_list" />
 
-            <greensaver.app.ExpandableGridView
+            <greenfo.app.ExpandableGridView
                 android:id="@+id/refuse_production_grid"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:numColumns="2">
 
-            </greensaver.app.ExpandableGridView>
+            </greenfo.app.ExpandableGridView>
 >
         </LinearLayout>
 

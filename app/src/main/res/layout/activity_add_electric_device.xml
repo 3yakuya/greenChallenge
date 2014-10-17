@@ -10,7 +10,7 @@
     android:background="@drawable/aaa"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="greensaver.app.AddElectricDeviceActivity">
+    tools:context="greenfo.app.AddElectricDeviceActivity">
 
     <ScrollView
         android:layout_width="fill_parent"

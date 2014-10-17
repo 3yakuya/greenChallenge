@@ -10,7 +10,7 @@
     android:paddingTop="?android:attr/actionBarSize"
     android:paddingBottom="@dimen/activity_bottom_margin"
     android:gravity="center"
-    tools:context="greensaver.app.ElectricInfoActivity">
+    tools:context="greenfo.app.ElectricInfoActivity">
 
     <TextView
         android:id="@+id/electric_info"

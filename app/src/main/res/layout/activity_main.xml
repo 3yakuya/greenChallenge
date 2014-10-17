@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:id="@+id/background"
     android:background="@drawable/aaa"
-    tools:context="greensaver.app.MainActivity">
+    tools:context="greenfo.app.MainActivity">
 
     <ImageButton
         android:layout_width="70dp"

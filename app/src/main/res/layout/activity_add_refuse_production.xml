@@ -10,7 +10,7 @@
     android:paddingBottom="@dimen/activity_bottom_margin"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="greensaver.app.AddRefuseProductionActivity">
+    tools:context="greenfo.app.AddRefuseProductionActivity">
 
     <LinearLayout
         android:layout_width="fill_parent"

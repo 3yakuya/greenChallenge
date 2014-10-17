@@ -1,6 +1,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="greensaver.app.ShowUserActivity" >
+    tools:context="greenfo.app.ShowUserActivity" >
 
     <item android:id="@+id/reset_all_user_elements"
         android:title="@string/reset_button"

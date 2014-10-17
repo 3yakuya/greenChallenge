@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/GreenSaver.iml" filepath="$PROJECT_DIR$/GreenSaver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Greenfo.iml" filepath="$PROJECT_DIR$/Greenfo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

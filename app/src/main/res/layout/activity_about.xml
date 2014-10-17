@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="?android:attr/actionBarSize"
     android:paddingBottom="@dimen/activity_bottom_margin"
-    tools:context="greensaver.app.AboutActivity">
+    tools:context="greenfo.app.AboutActivity">
 
     <TextView
         android:id="@+id/daria"

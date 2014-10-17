@@ -10,7 +10,7 @@
     android:paddingBottom="@dimen/activity_bottom_margin"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context="greensaver.app.AddWaterActivityActivity">
+    tools:context="greenfo.app.AddWaterActivityActivity">
 
     <LinearLayout
         android:layout_width="fill_parent"

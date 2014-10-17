@@ -9,7 +9,7 @@
     android:paddingTop="?android:attr/actionBarSize"
     android:paddingBottom="@dimen/activity_bottom_margin"
     android:gravity="center"
-    tools:context="greensaver.app.AddElementBasicActivity">
+    tools:context="greenfo.app.AddElementBasicActivity">
 
     <ScrollView
         android:layout_width="fill_parent"
