@@ -64,7 +64,7 @@ public class RefuseInfoActivity extends Activity {
         if (refusePoints < FullSelection.getInstance().refuseLevelLimits[0])
             refuseValue.setTextColor(Color.parseColor("#FF0000"));
         else if (refusePoints < FullSelection.getInstance().refuseLevelLimits[1])
-            refuseValue.setTextColor(Color.parseColor("#FFC900"));
+            refuseValue.setTextColor(Color.parseColor("#EEBB00"));
         else
             refuseValue.setTextColor(Color.parseColor("#35C30A"));
     }
@@ -83,7 +83,6 @@ public class RefuseInfoActivity extends Activity {
         int refusePoints = user.getUserStats().getRefuseProductionPoints();
         String info = "Your way of dealing with waste was graded for " + refusePoints + " points.";
         info = info.concat(" In short: the more points the better for the environment.");
-        info = info.concat("\n\nCheck the tip below to see how to deal with different kinds of waste.");
         return info;
     }
 }

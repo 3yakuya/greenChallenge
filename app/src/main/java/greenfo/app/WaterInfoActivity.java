@@ -64,7 +64,7 @@ public class WaterInfoActivity extends Activity {
         if (waterUsage > FullSelection.getInstance().waterLevelLimits[0])
             waterValue.setTextColor(Color.parseColor("#FF0000"));
         else if (waterUsage > FullSelection.getInstance().waterLevelLimits[1])
-            waterValue.setTextColor(Color.parseColor("#FFC900"));
+            waterValue.setTextColor(Color.parseColor("#EEBB00"));
         else
             waterValue.setTextColor(Color.parseColor("#35C30A"));
     }

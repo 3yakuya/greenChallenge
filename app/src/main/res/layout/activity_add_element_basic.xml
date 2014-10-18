@@ -56,9 +56,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Advanced"
+                        android:text="Details"
                         android:textStyle="bold"
-                        android:textSize="12sp"/>
+                        android:textSize="11sp"/>
 
                 </LinearLayout>
 
@@ -87,7 +87,7 @@
                         android:layout_height="wrap_content"
                         android:text="Delete"
                         android:textStyle="bold"
-                        android:textSize="12sp"/>
+                        android:textSize="11sp"/>
 
                 </LinearLayout>
 
@@ -127,7 +127,7 @@
                         android:layout_height="wrap_content"
                         android:text="Low"
                         android:textStyle="bold"
-                        android:textSize="12sp"/>
+                        android:textSize="11sp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -148,7 +148,7 @@
                         android:layout_height="wrap_content"
                         android:text="Medium"
                         android:textStyle="bold"
-                        android:textSize="12sp"/>
+                        android:textSize="11sp"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -169,7 +169,7 @@
                         android:layout_height="wrap_content"
                         android:text="High"
                         android:textStyle="bold"
-                        android:textSize="12sp"/>
+                        android:textSize="11sp"/>
                 </LinearLayout>
 
             </LinearLayout>
