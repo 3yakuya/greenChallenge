@@ -64,9 +64,9 @@ public class RefuseInfoActivity extends Activity {
         if (refusePoints < FullSelection.getInstance().refuseLevelLimits[0])
             refuseValue.setTextColor(Color.parseColor("#FF0000"));
         else if (refusePoints < FullSelection.getInstance().refuseLevelLimits[1])
-            refuseValue.setTextColor(Color.parseColor("#FCC800"));
+            refuseValue.setTextColor(Color.parseColor("#FFC900"));
         else
-            refuseValue.setTextColor(Color.parseColor("#00FF00"));
+            refuseValue.setTextColor(Color.parseColor("#35C30A"));
     }
 
     private String getValue() {

@@ -65,9 +65,9 @@ public class ElectricInfoActivity extends Activity {
         if (powerUsage > FullSelection.getInstance().powerLevelLimits[0])
             electricValue.setTextColor(Color.parseColor("#FF0000"));
         else if (powerUsage > FullSelection.getInstance().powerLevelLimits[1])
-            electricValue.setTextColor(Color.parseColor("#FCC800"));
+            electricValue.setTextColor(Color.parseColor("#FFC900"));
         else
-            electricValue.setTextColor(Color.parseColor("#00FF00"));
+            electricValue.setTextColor(Color.parseColor("#35C30A"));
 
     }
 
