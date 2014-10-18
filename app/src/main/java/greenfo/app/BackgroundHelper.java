@@ -55,7 +55,7 @@ class BackgroundHelper {
             case 112:
                 return R.drawable.bbc;
             case 120:
-                return R.drawable.aca;
+                return R.drawable.bca;
             case 121:
                 return R.drawable.bcb;
             case 122:
