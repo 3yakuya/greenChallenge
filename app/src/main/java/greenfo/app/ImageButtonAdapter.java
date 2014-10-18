@@ -2,6 +2,7 @@ package greenfo.app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -71,7 +72,12 @@ class ImageButtonAdapter extends BaseAdapter{
 
     private void setButtonSelectionBackground(ImageButton imageButton, int type, String name){
         if (isSelected(type, name))
-            imageButton.setBackground(this.context.getResources().getDrawable(R.drawable.image_button_selection_border));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                imageButton.setBackground(this.context.getResources().getDrawable(R.drawable.image_button_selection_border));
+
+            } else {
+                imageButton.setBackgroundDrawable(this.context.getResources().getDrawable(R.drawable.image_button_selection_border));
+            }
     }
 
     private boolean isSelected(int type, String name) {

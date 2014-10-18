@@ -18,7 +18,7 @@ class BackgroundHelper {
         blurOptions.inSampleSize = 15;
         Bitmap blurTemplate = BitmapFactory.decodeResource(activity.getResources(), BackgroundHelper.selectBackgroundImage(), blurOptions);
         BitmapDrawable drawableBackground = new BitmapDrawable(blurTemplate);
-        layout.setBackground(drawableBackground);
+        layout.setBackgroundDrawable(drawableBackground);
     }
 
     public static int selectBackgroundImage() {
