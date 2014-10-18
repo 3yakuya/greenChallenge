@@ -46,10 +46,10 @@ public class FullSelection {
     public final int[] minWaterUsage = {35, 9, 10, 40, 10, 1, 1, 50};
     public final int[] maxWaterUsage = {60, 30, 80, 120, 40, 2, 15, 150};
     public final int[] maxWaterTimesPerDay = {2, 2, 5, 3, 3, 10, 5, 2};
-    public final int[] minWaterTimesPerDay = {1, 1, 1, 1, 1, 3, 2, 0};
+    public final int[] minWaterTimesPerDay = {0, 1, 1, 1, 1, 3, 2, 0};
     public final int[] refusePointValues = {10, 8, 4, 5, 5, 5, 5};
     public final int[] powerLevelLimits = {6000, 3000};
-    public final int[] waterLevelLimits = {160, 100};
+    public final int[] waterLevelLimits = {180, 120};
     public final int[] refuseLevelLimits = {14, 28};
 
     public final String[] electricTips = {
@@ -69,6 +69,7 @@ public class FullSelection {
             "Turn on the washing machine or dishwasher only after it is full, or use energy-saving mode.",
             "Gather rain water and use it to water the plants.",
             "Always turn off the tap while brushing your teeth or shaving.",
+            "Take a shower rather than a bath. This should cut your water usage by half or more.",
             "When washing your car use a sponge and a bucket of water. Use a garden hose only to rinse the car.",
             "Do not use running water to defrost food (place it in a fridge the night before instead.)",
             "Don't pour out water you can use to wash something or to water the plants.",
