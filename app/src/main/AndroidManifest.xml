@@ -28,7 +28,7 @@
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
+                android:value="greenfo.app.MainActivity" />
         </activity>
         <activity
             android:name=".AddElectricDeviceActivity"
@@ -37,7 +37,7 @@
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ShowUserActivity" />
+                android:value="greenfo.app.ShowUserActivity" />
         </activity>
         <activity
             android:name=".ElectricInfoActivity"
@@ -46,7 +46,7 @@
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
+                android:value="greenfo.app.MainActivity" />
         </activity>
         <activity
             android:name=".AddWaterActivityActivity"
@@ -55,7 +55,7 @@
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ShowUserActivity" />
+                android:value="greenfo.app.ShowUserActivity" />
         </activity>
         <activity
             android:name=".AddRefuseProductionActivity"
@@ -64,7 +64,7 @@
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="ShowUserActivity" />
+                android:value="greenfo.app.ShowUserActivity" />
         </activity>
         <activity
             android:name=".WaterInfoActivity"
@@ -73,7 +73,7 @@
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
+                android:value="greenfo.app.MainActivity" />
         </activity>
         <activity
             android:name=".RefuseInfoActivity"
@@ -82,7 +82,7 @@
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
+                android:value="greenfo.app.MainActivity" />
         </activity>
         <activity
             android:name=".AboutActivity"
@@ -91,7 +91,7 @@
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="MainActivity" />
+                android:value="greenfo.app.MainActivity" />
         </activity>
         <activity
             android:name=".AddElementBasicActivity"

@@ -2,16 +2,10 @@
 <pre-dex-items>
 
     <item
-        dex="C:\Users\Kuba\AndroidStudioProjects\GreenSaver\app\build\intermediates\pre-dexed\debug\classes-75dd2610b99bfdba7f110ec4e9aa00f99a427de0.jar"
-        jar="C:\Users\Kuba\AndroidStudioProjects\GreenSaver\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\19.1.0\classes.jar"
+        dex="C:\Users\Kuba\AndroidStudioProjects\Greenfo\app\build\intermediates\pre-dexed\debug\support-v4-18.0.0-03d2a791fc6935636cde8425c513df13c348b3d3.jar"
+        jar="C:\Program Files (x86)\Android\android-sdk\extras\android\m2repository\com\android\support\support-v4\18.0.0\support-v4-18.0.0.jar"
         jumboMode="false"
         revision="19.1.0"
-        sha1="3499ceba05ca1f6037c6a2fad73df8f636224a28"/>
-    <item
-        dex="C:\Users\Kuba\AndroidStudioProjects\GreenSaver\app\build\intermediates\pre-dexed\debug\support-v4-19.1.0-c30e376a8a37b42530721aa3276156097e39d8df.jar"
-        jar="C:\Program Files (x86)\Android\android-sdk\extras\android\m2repository\com\android\support\support-v4\19.1.0\support-v4-19.1.0.jar"
-        jumboMode="false"
-        revision="19.1.0"
-        sha1="85f201b380937e61a9dce6ca90ccf6872abbfb67"/>
+        sha1="44ec51e9d395a47aab135e5e1b556c0007442156"/>
 
 </pre-dex-items>

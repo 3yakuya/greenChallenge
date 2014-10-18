@@ -1,7 +1,9 @@
 package greenfo.app;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,6 +23,8 @@ public class ShowUserActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_user);
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
         BackgroundHelper.setBackground(this);
 
         GridView electricDevicesGrid = (GridView) findViewById(R.id.electric_devices_grid);
@@ -56,6 +60,10 @@ public class ShowUserActivity extends Activity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
+
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
 
             case R.id.reset_all_user_elements:
                 ResetDialog resetDialog = new ResetDialog();
