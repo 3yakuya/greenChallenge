@@ -11,7 +11,6 @@ import android.widget.TextView;
 import model.FullSelection;
 import model.NameAndType;
 import services.DataManager;
-import services.DataSaver;
 
 
 public class AddRefuseProductionActivity extends Activity {
@@ -68,7 +67,7 @@ public class AddRefuseProductionActivity extends Activity {
         int pointValue = Integer.parseInt(this.pointValueBox.getText().toString());
         DataManager.storeRefuseProductionData(this.selectedProductionFullName, pointValue);
         Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
-        DataSaver.saveDataToFile(this);
+        DataManager.saveUserDataToFile(this);
         startActivity(intent);
     }
 }

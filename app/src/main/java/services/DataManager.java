@@ -1,5 +1,7 @@
 package services;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 import model.ElectricDevice;
@@ -70,6 +72,14 @@ public class DataManager {
 
     public static void resetAllUserElements() {
         User.getInstance().reset();
+    }
+
+    public static void saveUserDataToFile(Context context) {
+        DataSaver.saveDataToFile(context, User.getInstance());
+    }
+
+    public static void loadUserDataFromFile(Context context) {
+        DataLoader.loadDataFromFile(context, User.getInstance());
     }
 
 }

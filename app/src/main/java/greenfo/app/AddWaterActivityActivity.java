@@ -12,7 +12,6 @@ import android.widget.TextView;
 import model.FullSelection;
 import model.NameAndType;
 import services.DataManager;
-import services.DataSaver;
 
 
 public class AddWaterActivityActivity extends Activity implements SeekBar.OnSeekBarChangeListener {
@@ -129,7 +128,7 @@ public class AddWaterActivityActivity extends Activity implements SeekBar.OnSeek
         int timesPerDay = Integer.parseInt(this.timesPerDayBox.getText().toString());
         DataManager.storeWaterActivityData(this.selectedActivityFullName, litersUsed, timesPerDay);
         Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
-        DataSaver.saveDataToFile(this);
+        DataManager.saveUserDataToFile(this);
         startActivity(intent);
     }
 

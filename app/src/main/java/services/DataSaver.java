@@ -13,9 +13,9 @@ import model.RefuseProduction;
 import model.User;
 import model.WaterActivity;
 
-public class DataSaver {
+class DataSaver {
 
-    public static boolean saveDataToFile(Context context) {
+    public static boolean saveDataToFile(Context context, User user) {
         File file = new File(context.getFilesDir(), "userStats");
         if (!clearFileContent(file))
             return false;
@@ -29,7 +29,6 @@ public class DataSaver {
         }
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
-            User user = User.getInstance();
             saveElectricDevicesToFile(bw, user);
             saveWaterActivitiesToFile(bw, user);
             saveRefuseProductionsToFile(bw, user);

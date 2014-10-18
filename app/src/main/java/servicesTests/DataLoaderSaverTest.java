@@ -8,8 +8,7 @@ import model.ElectricDevice;
 import model.RefuseProduction;
 import model.User;
 import model.WaterActivity;
-import services.DataLoader;
-import services.DataSaver;
+import services.DataManager;
 
 public class DataLoaderSaverTest extends InstrumentationTestCase {
 
@@ -17,12 +16,12 @@ public class DataLoaderSaverTest extends InstrumentationTestCase {
         User user = User.getInstance();
         this.prepareUser(user);
         ArrayList<ElectricDevice> electricDevices = user.getElectricDevices();
-        DataSaver.saveDataToFile(this.getInstrumentation().getContext());
+        DataManager.saveUserDataToFile(this.getInstrumentation().getContext());
 
         user.reset();
         assertTrue(user.getElectricDevices().isEmpty());
 
-        DataLoader.loadDataFromFile(this.getInstrumentation().getContext());
+        DataManager.loadUserDataFromFile(this.getInstrumentation().getContext());
         assertEquals(electricDevices.size(), user.getElectricDevices().size());
         for (int i = 0; i < electricDevices.size(); i++) {
             assertTrue(electricDevices.get(i).getHoursPerDay() == user.getElectricDevices().get(i).getHoursPerDay());
@@ -37,12 +36,12 @@ public class DataLoaderSaverTest extends InstrumentationTestCase {
         User user = User.getInstance();
         this.prepareUser(user);
         ArrayList<WaterActivity> waterActivities = user.getWaterActivities();
-        DataSaver.saveDataToFile(this.getInstrumentation().getContext());
+        DataManager.saveUserDataToFile(this.getInstrumentation().getContext());
 
         user.reset();
         assertTrue(user.getWaterActivities().isEmpty());
 
-        DataLoader.loadDataFromFile(this.getInstrumentation().getContext());
+        DataManager.loadUserDataFromFile(this.getInstrumentation().getContext());
         assertEquals(waterActivities.size(), user.getWaterActivities().size());
         for (int i = 0; i < waterActivities.size(); i++) {
             assertTrue(waterActivities.get(i).getLitersUsed() == user.getWaterActivities().get(i).getLitersUsed());
@@ -55,12 +54,12 @@ public class DataLoaderSaverTest extends InstrumentationTestCase {
         User user = User.getInstance();
         this.prepareUser(user);
         ArrayList<RefuseProduction> refuseProductions = user.getRefuseProductions();
-        DataSaver.saveDataToFile(this.getInstrumentation().getContext());
+        DataManager.saveUserDataToFile(this.getInstrumentation().getContext());
 
         user.reset();
         assertTrue(user.getRefuseProductions().isEmpty());
 
-        DataLoader.loadDataFromFile(this.getInstrumentation().getContext());
+        DataManager.loadUserDataFromFile(this.getInstrumentation().getContext());
         assertEquals(refuseProductions.size(), user.getRefuseProductions().size());
         for (int i = 0; i < refuseProductions.size(); i++) {
             assertTrue(refuseProductions.get(i).getPointValue() == user.getRefuseProductions().get(i).getPointValue());

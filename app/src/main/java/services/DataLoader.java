@@ -12,9 +12,9 @@ import model.RefuseProduction;
 import model.User;
 import model.WaterActivity;
 
-public class DataLoader {
+class DataLoader {
 
-    public static boolean loadDataFromFile(Context context) {
+    public static boolean loadDataFromFile(Context context, User user) {
         File file = new File(context.getFilesDir(), "userStats");
         boolean status = false;
         if (!file.exists()) {
@@ -28,7 +28,6 @@ public class DataLoader {
         }
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
-            User user = User.getInstance();
             status = parseDataFromFile(br, user);
             br.close();
         } catch (IOException e) {

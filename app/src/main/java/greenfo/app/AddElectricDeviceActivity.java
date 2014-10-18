@@ -13,7 +13,6 @@ import android.widget.TextView;
 import model.FullSelection;
 import model.NameAndType;
 import services.DataManager;
-import services.DataSaver;
 
 
 public class AddElectricDeviceActivity extends Activity implements SeekBar.OnSeekBarChangeListener {
@@ -157,7 +156,7 @@ public class AddElectricDeviceActivity extends Activity implements SeekBar.OnSee
         int standbyHoursPerDay = this.getStandbyHoursPerDay(hoursPerDay);
         DataManager.storeElectricDeviceData(this.selectedDeviceFullName, powerConsumption, hoursPerDay,
                 standbyPowerConsumption, standbyHoursPerDay);
-        DataSaver.saveDataToFile(this);
+        DataManager.saveUserDataToFile(this);
         Intent intent = new Intent(getApplicationContext(), ShowUserActivity.class);
         startActivity(intent);
     }

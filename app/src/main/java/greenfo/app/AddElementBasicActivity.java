@@ -13,7 +13,6 @@ import android.widget.TextView;
 import model.FullSelection;
 import model.NameAndType;
 import services.DataManager;
-import services.DataSaver;
 
 
 public class AddElementBasicActivity extends Activity {
@@ -84,7 +83,7 @@ public class AddElementBasicActivity extends Activity {
                     @Override
                     public void onClick(View v) {
                         DataManager.removeElectricDevice(selectionFullName);
-                        DataSaver.saveDataToFile(v.getContext());
+                        DataManager.saveUserDataToFile(v.getContext());
                         returnToShowUserActivity();
                     }
                 });
@@ -95,7 +94,7 @@ public class AddElementBasicActivity extends Activity {
                     @Override
                     public void onClick(View v) {
                         DataManager.removeWaterActivity(selectionFullName);
-                        DataSaver.saveDataToFile(v.getContext());
+                        DataManager.saveUserDataToFile(v.getContext());
                         returnToShowUserActivity();
                     }
                 });
@@ -106,7 +105,7 @@ public class AddElementBasicActivity extends Activity {
                     @Override
                     public void onClick(View v) {
                         DataManager.removeRefuseProduction(selectionFullName);
-                        DataSaver.saveDataToFile(v.getContext());
+                        DataManager.saveUserDataToFile(v.getContext());
                         returnToShowUserActivity();
                     }
                 });
@@ -153,7 +152,7 @@ public class AddElementBasicActivity extends Activity {
                                 hoursPerDay,
                                 standbyPowerConsumption,
                                 standbyHoursPerDay);
-                        DataSaver.saveDataToFile(v.getContext());
+                        DataManager.saveUserDataToFile(v.getContext());
                         returnToShowUserActivity();
                     }
                 });
@@ -167,7 +166,7 @@ public class AddElementBasicActivity extends Activity {
                         int litersUsed = getAverageWaterUsage(activityNumber);
                         int timesPerDay = getSmallWaterTimesPerDay(activityNumber);
                         DataManager.storeWaterActivityData(selectionFullName, litersUsed, timesPerDay);
-                        DataSaver.saveDataToFile(v.getContext());
+                        DataManager.saveUserDataToFile(v.getContext());
                         returnToShowUserActivity();
                     }
                 });
@@ -180,7 +179,7 @@ public class AddElementBasicActivity extends Activity {
                         int productionNumber = selection.getIndex();
                         int pointValue = getSmallRefusePointValue(productionNumber);
                         DataManager.storeRefuseProductionData(selectionFullName, pointValue);
-                        DataSaver.saveDataToFile(v.getContext());
+                        DataManager.saveUserDataToFile(v.getContext());
                         returnToShowUserActivity();
                     }
                 });
@@ -206,7 +205,7 @@ public class AddElementBasicActivity extends Activity {
                                 hoursPerDay,
                                 standbyPowerConsumption,
                                 standbyHoursPerDay);
-                        DataSaver.saveDataToFile(v.getContext());
+                        DataManager.saveUserDataToFile(v.getContext());
                         returnToShowUserActivity();
                     }
                 });
@@ -220,7 +219,7 @@ public class AddElementBasicActivity extends Activity {
                         int litersUsed = getAverageWaterUsage(activityNumber);
                         int timesPerDay = getAverageWaterTimesPerDay(activityNumber);
                         DataManager.storeWaterActivityData(selectionFullName, litersUsed, timesPerDay);
-                        DataSaver.saveDataToFile(v.getContext());
+                        DataManager.saveUserDataToFile(v.getContext());
                         returnToShowUserActivity();
                     }
                 });
@@ -233,7 +232,7 @@ public class AddElementBasicActivity extends Activity {
                         int productionNumber = selection.getIndex();
                         int pointValue = getAverageRefusePointValue(productionNumber);
                         DataManager.storeRefuseProductionData(selectionFullName, pointValue);
-                        DataSaver.saveDataToFile(v.getContext());
+                        DataManager.saveUserDataToFile(v.getContext());
                         returnToShowUserActivity();
                     }
                 });
@@ -259,7 +258,7 @@ public class AddElementBasicActivity extends Activity {
                                 hoursPerDay,
                                 standbyPowerConsumption,
                                 standbyHoursPerDay);
-                        DataSaver.saveDataToFile(v.getContext());
+                        DataManager.saveUserDataToFile(v.getContext());
                         returnToShowUserActivity();
                     }
                 });
@@ -273,7 +272,7 @@ public class AddElementBasicActivity extends Activity {
                         int litersUsed = getAverageWaterUsage(activityNumber);
                         int timesPerDay = getLargeWaterTimesPerDay(activityNumber);
                         DataManager.storeWaterActivityData(selectionFullName, litersUsed, timesPerDay);
-                        DataSaver.saveDataToFile(v.getContext());
+                        DataManager.saveUserDataToFile(v.getContext());
                         returnToShowUserActivity();
                     }
                 });
@@ -286,7 +285,7 @@ public class AddElementBasicActivity extends Activity {
                         int productionNumber = selection.getIndex();
                         int pointValue = getLargeRefusePointValue(productionNumber);
                         DataManager.storeRefuseProductionData(selectionFullName, pointValue);
-                        DataSaver.saveDataToFile(v.getContext());
+                        DataManager.saveUserDataToFile(v.getContext());
                         returnToShowUserActivity();
                     }
                 });

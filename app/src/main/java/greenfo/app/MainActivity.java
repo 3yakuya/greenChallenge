@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import services.DataLoader;
+import services.DataManager;
 
 
 public class MainActivity extends Activity {
@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         RelativeLayout layout =(RelativeLayout) findViewById(R.id.background);
-        DataLoader.loadDataFromFile(this);
+        DataManager.loadUserDataFromFile(this);
         layout.setBackgroundResource(BackgroundHelper.selectBackgroundImage());
     }
 
